@@ -7368,7 +7368,7 @@ class binance(Exchange, ImplicitAPI):
                     body = self.urlencode(params)
             else:
                 raise AuthenticationError(self.id + ' userDataStream endpoint requires `apiKey` credential')
-        elif (api == 'private') or (api == 'eapiPrivate') or (api == 'sapi' and path != 'system/status') or (api == 'sapiV2') or (api == 'sapiV3') or (api == 'sapiV4') or (api == 'wapi' and path != 'systemStatus') or (api == 'dapiPrivate') or (api == 'dapiPrivateV2') or (api == 'fapiPrivate') or (api == 'fapiPrivateV2'):
+        elif (api == 'private') or (api == 'eapiPrivate') or (api == 'sapi' and path != 'system/status') or (api == 'sapiV2') or (api == 'sapiV3') or (api == 'sapiV4') or (api == 'wapi' and path != 'systemStatus') or (api == 'dapiPrivate') or (api == 'dapiPrivateV2') or (api == 'fapiPrivate') or (api == 'fapiPrivateV2') or (api == 'papi'):
             self.check_required_credentials()
             if method == 'POST' and path == 'order':
                 # inject in implicit API calls
