@@ -996,7 +996,7 @@ class huobi(Exchange, ImplicitAPI):
                 'createMarketBuyOrderRequiresPrice': True,
                 'language': 'en-US',
                 'broker': {
-                    'id': 'AA03022abc',
+                    'id': 'AuresCap',
                 },
                 'accountsByType': {
                     'spot': 'pro',

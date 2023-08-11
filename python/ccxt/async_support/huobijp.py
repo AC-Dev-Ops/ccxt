@@ -323,7 +323,7 @@ class huobijp(Exchange, ImplicitAPI):
                 'createOrderMethod': 'privatePostOrderOrdersPlace',
                 'language': 'en-US',
                 'broker': {
-                    'id': 'AA03022abc',
+                    'id': 'AuresCap',
                 },
             },
             'commonCurrencies': {

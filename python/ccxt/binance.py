@@ -1083,12 +1083,12 @@ class binance(Exchange, ImplicitAPI):
                 },
                 'quoteOrderQty': True,  # whether market orders support amounts in quote currency
                 'broker': {
-                    'spot': 'x-R4BD3S82',
-                    'margin': 'x-R4BD3S82',
-                    'future': 'x-xcKtGhcu',
-                    'delivery': 'x-xcKtGhcu',
-                    'swap': 'x-xcKtGhcu',
-                    'option': 'x-xcKtGhcu',
+                    'spot': 'x-AuresCap',
+                    'margin': 'x-AuresCap',
+                    'future': 'x-AuresCap',
+                    'delivery': 'x-AuresCap',
+                    'swap': 'x-AuresCap',
+                    'option': 'x-AuresCap',
                 },
                 'accountsByType': {
                     'main': 'MAIN',
