@@ -596,7 +596,7 @@ class ImplicitAPI:
     papi_post_auto_collection = papiPostAutoCollection = Entry('auto-collection', 'papi', 'POST', {'cost': 0.6667})
     papi_post_bnb_transfer = papiPostBnbTransfer = Entry('bnb-transfer', 'papi', 'POST', {'cost': 0.6667})
     papi_post_portfolio_repay_futures_switch = papiPostPortfolioRepayFuturesSwitch = Entry('portfolio/repay-futures-switch', 'papi', 'POST', {'cost': 150})
-    papi_post_portfolio_repay_futures_negative_balance = papiPostPortfolioRepayFuturesNegativeBalance = Entry('portfolio/repay-futures-negative-balance', 'papi', 'POST', {'cost': 150})
+    papi_post_portfolio_repay_futures_negative_balance = papiPostPortfolioRepayFuturesNegativeBalance = Entry('repay-futures-negative-balance', 'papi', 'POST', {'cost': 150})
     papi_post_listenkey = papiPostListenKey = Entry('listenKey', 'papi', 'POST', {'cost': 1})
     papi_post_asset_collection = papiPostAssetCollection = Entry('asset-collection', 'papi', 'POST', {'cost': 3})
     papi_put_listenkey = papiPutListenKey = Entry('listenKey', 'papi', 'PUT', {'cost': 1})
