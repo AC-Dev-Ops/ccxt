@@ -567,6 +567,7 @@ class ImplicitAPI:
     papi_get_cm_positionside_dual = papiGetCmPositionSideDual = Entry('cm/positionSide/dual', 'papi', 'GET', {'cost': 30})
     papi_get_um_usertrades = papiGetUmUserTrades = Entry('um/userTrades', 'papi', 'GET', {'cost': 5})
     papi_get_cm_usertrades = papiGetCmUserTrades = Entry('cm/userTrades', 'papi', 'GET', {'cost': 20})
+    papi_get_margin_usertrades = papiGetMarginUserTrades = Entry('margin/myTrades', 'papi', 'GET', {'cost': 5})
     papi_get_um_leveragebracket = papiGetUmLeverageBracket = Entry('um/leverageBracket', 'papi', 'GET', {'cost': 1})
     papi_get_cm_leveragebracket = papiGetCmLeverageBracket = Entry('cm/leverageBracket', 'papi', 'GET', {'cost': 1})
     papi_get_margin_forceorders = papiGetMarginForceOrders = Entry('margin/forceOrders', 'papi', 'GET', {'cost': 1})
