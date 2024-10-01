@@ -586,7 +586,7 @@ class ImplicitAPI:
     papi_get_margin_marginloan = papiGetMarginMarginLoan = Entry('margin/marginLoan', 'papi', 'GET', {'cost': 0.0667})
     papi_get_margin_repayloan = papiGetMarginRepayLoan = Entry('margin/repayLoan', 'papi', 'GET', {'cost': 0.0667})
     papi_get_margin_margininteresthistory = papiGetMarginMarginInterestHistory = Entry('margin/marginInterestHistory', 'papi', 'GET', {'cost': 0.1})
-    papi_get_ping = papiDeleteListenKey = Entry('ping', 'papi', 'GET', {'cost': 1})
+    papi_get_ping = papiGetPing = Entry('ping', 'papi', 'GET', {'cost': 1})
     papi_get_portfolio_interest_history = papiGetPortfolioInterestHistory = Entry('portfolio/interest-history', 'papi', 'GET', {'cost': 50})
     papi_post_um_order = papiPostUmOrder = Entry('um/order', 'papi', 'POST', {'cost': 1})
     papi_post_cm_order = papiPostCmOrder = Entry('cm/order', 'papi', 'POST', {'cost': 1})
