@@ -223,6 +223,7 @@ class ImplicitAPI:
     private_post_account_set_riskoffset_type = privatePostAccountSetRiskOffsetType = Entry('account/set-riskOffset-type', 'private', 'POST', {'cost': 2})
     private_post_account_activate_option = privatePostAccountActivateOption = Entry('account/activate-option', 'private', 'POST', {'cost': 4})
     private_post_account_set_auto_loan = privatePostAccountSetAutoLoan = Entry('account/set-auto-loan', 'private', 'POST', {'cost': 4})
+    private_post_account_set_auto_repay = privatePostAccountSetAutoRepay = Entry('account/set-auto-repay', 'private', 'POST', {'cost': 4})
     private_post_account_set_account_level = privatePostAccountSetAccountLevel = Entry('account/set-account-level', 'private', 'POST', {'cost': 4})
     private_post_account_mmp_reset = privatePostAccountMmpReset = Entry('account/mmp-reset', 'private', 'POST', {'cost': 4})
     private_post_account_mmp_config = privatePostAccountMmpConfig = Entry('account/mmp-config', 'private', 'POST', {'cost': 100})
