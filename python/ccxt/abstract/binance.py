@@ -294,7 +294,7 @@ class ImplicitAPI:
     sapi_post_loan_vip_borrow = sapiPostLoanVipBorrow = Entry('loan/vip/borrow', 'sapi', 'POST', {'cost': 40})
     sapi_post_loan_borrow = sapiPostLoanBorrow = Entry('loan/borrow', 'sapi', 'POST', {'cost': 40})
     sapi_post_loan_repay = sapiPostLoanRepay = Entry('loan/repay', 'sapi', 'POST', {'cost': 40})
-    sapi_post_loan_borrow_repay = sapiPostLoanBorrow = Entry('loan/borrow-repay', 'sapi', 'POST', {'cost': 40})
+    sapi_post_loan_borrow_repay = sapiPostLoanBorrowRepay = Entry('loan/borrow-repay', 'sapi', 'POST', {'cost': 40})
     sapi_post_loan_adjust_ltv = sapiPostLoanAdjustLtv = Entry('loan/adjust/ltv', 'sapi', 'POST', {'cost': 40})
     sapi_post_loan_customize_margin_call = sapiPostLoanCustomizeMarginCall = Entry('loan/customize/margin_call', 'sapi', 'POST', {'cost': 40})
     sapi_post_loan_vip_repay = sapiPostLoanVipRepay = Entry('loan/vip/repay', 'sapi', 'POST', {'cost': 40})
