@@ -41,1550 +41,1553 @@ from ccxt.base.precise import Precise
 class binance(Exchange, ImplicitAPI):
 
     def describe(self):
-        return self.deep_extend(super(binance, self).describe(), {
-            'id': 'binance',
-            'name': 'Binance',
-            'countries': ['JP', 'MT'],  # Japan, Malta
-            'rateLimit': 50,
-            'certified': True,
-            'pro': True,
-            # new metainfo interface
-            'has': {
-                'CORS': None,
-                'spot': True,
-                'margin': True,
-                'swap': True,
-                'future': True,
-                'option': True,
-                'addMargin': True,
-                'borrowMargin': True,
-                'cancelAllOrders': True,
-                'cancelOrder': True,
-                'cancelOrders': None,
-                'createDepositAddress': False,
-                'createOrder': True,
-                'createPostOnlyOrder': True,
-                'createReduceOnlyOrder': True,
-                'createStopLimitOrder': True,
-                'createStopMarketOrder': False,
-                'createStopOrder': True,
-                'editOrder': True,
-                'fetchAccounts': None,
-                'fetchBalance': True,
-                'fetchBidsAsks': True,
-                'fetchBorrowInterest': True,
-                'fetchBorrowRate': True,
-                'fetchBorrowRateHistories': False,
-                'fetchBorrowRateHistory': True,
-                'fetchBorrowRates': False,
-                'fetchBorrowRatesPerSymbol': False,
-                'fetchCanceledOrders': 'emulated',
-                'fetchClosedOrder': False,
-                'fetchClosedOrders': 'emulated',
-                'fetchCurrencies': True,
-                'fetchDeposit': False,
-                'fetchDepositAddress': True,
-                'fetchDepositAddresses': False,
-                'fetchDepositAddressesByNetwork': False,
-                'fetchDeposits': True,
-                'fetchDepositsWithdrawals': False,
-                'fetchDepositWithdrawFee': 'emulated',
-                'fetchDepositWithdrawFees': True,
-                'fetchFundingHistory': True,
-                'fetchFundingRate': True,
-                'fetchFundingRateHistory': True,
-                'fetchFundingRates': True,
-                'fetchIndexOHLCV': True,
-                'fetchL3OrderBook': None,
-                'fetchLastPrices': True,
-                'fetchLedger': True,
-                'fetchLeverage': False,
-                'fetchLeverageTiers': True,
-                'fetchMarketLeverageTiers': 'emulated',
-                'fetchMarkets': True,
-                'fetchMarkOHLCV': True,
-                'fetchMyTrades': True,
-                'fetchOHLCV': True,
-                'fetchOpenInterest': True,
-                'fetchOpenInterestHistory': True,
-                'fetchOpenOrder': False,
-                'fetchOpenOrders': True,
-                'fetchOrder': True,
-                'fetchOrderBook': True,
-                'fetchOrderBooks': False,
-                'fetchOrders': True,
-                'fetchOrderTrades': True,
-                'fetchPosition': True,
-                'fetchPositions': True,
-                'fetchPositionsRisk': True,
-                'fetchPremiumIndexOHLCV': False,
-                'fetchSettlementHistory': True,
-                'fetchStatus': True,
-                'fetchTicker': True,
-                'fetchTickers': True,
-                'fetchTime': True,
-                'fetchTrades': True,
-                'fetchTradingFee': True,
-                'fetchTradingFees': True,
-                'fetchTradingLimits': None,
-                'fetchTransactionFee': None,
-                'fetchTransactionFees': True,
-                'fetchTransactions': False,
-                'fetchTransfers': True,
-                'fetchVolatilityHistory': False,
-                'fetchWithdrawal': False,
-                'fetchWithdrawals': True,
-                'fetchWithdrawalWhitelist': False,
-                'reduceMargin': True,
-                'repayMargin': True,
-                'setLeverage': True,
-                'setMargin': False,
-                'setMarginMode': True,
-                'setPositionMode': True,
-                'signIn': False,
-                'transfer': True,
-                'withdraw': True,
-            },
-            'timeframes': {
-                '1s': '1s',  # spot only for now
-                '1m': '1m',
-                '3m': '3m',
-                '5m': '5m',
-                '15m': '15m',
-                '30m': '30m',
-                '1h': '1h',
-                '2h': '2h',
-                '4h': '4h',
-                '6h': '6h',
-                '8h': '8h',
-                '12h': '12h',
-                '1d': '1d',
-                '3d': '3d',
-                '1w': '1w',
-                '1M': '1M',
-            },
-            'urls': {
-                'logo': 'https://user-images.githubusercontent.com/1294454/29604020-d5483cdc-87ee-11e7-94c7-d1a8d9169293.jpg',
-                'test': {
-                    'dapiPublic': 'https://testnet.binancefuture.com/dapi/v1',
-                    'dapiPrivate': 'https://testnet.binancefuture.com/dapi/v1',
-                    'dapiPrivateV2': 'https://testnet.binancefuture.com/dapi/v2',
-                    'fapiPublic': 'https://testnet.binancefuture.com/fapi/v1',
-                    'fapiPrivate': 'https://testnet.binancefuture.com/fapi/v1',
-                    'fapiPrivateV2': 'https://testnet.binancefuture.com/fapi/v2',
-                    'public': 'https://testnet.binance.vision/api/v3',
-                    'private': 'https://testnet.binance.vision/api/v3',
-                    'v1': 'https://testnet.binance.vision/api/v1',
+        return self.deep_extend(
+            super(binance, self).describe(),
+            {
+                'id': 'binance',
+                'name': 'Binance',
+                'countries': ['JP', 'MT'],  # Japan, Malta
+                'rateLimit': 50,
+                'certified': True,
+                'pro': True,
+                # new metainfo interface
+                'has': {
+                    'CORS': None,
+                    'spot': True,
+                    'margin': True,
+                    'swap': True,
+                    'future': True,
+                    'option': True,
+                    'addMargin': True,
+                    'borrowMargin': True,
+                    'cancelAllOrders': True,
+                    'cancelOrder': True,
+                    'cancelOrders': None,
+                    'createDepositAddress': False,
+                    'createOrder': True,
+                    'createPostOnlyOrder': True,
+                    'createReduceOnlyOrder': True,
+                    'createStopLimitOrder': True,
+                    'createStopMarketOrder': False,
+                    'createStopOrder': True,
+                    'editOrder': True,
+                    'fetchAccounts': None,
+                    'fetchBalance': True,
+                    'fetchBidsAsks': True,
+                    'fetchBorrowInterest': True,
+                    'fetchBorrowRate': True,
+                    'fetchBorrowRateHistories': False,
+                    'fetchBorrowRateHistory': True,
+                    'fetchBorrowRates': False,
+                    'fetchBorrowRatesPerSymbol': False,
+                    'fetchCanceledOrders': 'emulated',
+                    'fetchClosedOrder': False,
+                    'fetchClosedOrders': 'emulated',
+                    'fetchCurrencies': True,
+                    'fetchDeposit': False,
+                    'fetchDepositAddress': True,
+                    'fetchDepositAddresses': False,
+                    'fetchDepositAddressesByNetwork': False,
+                    'fetchDeposits': True,
+                    'fetchDepositsWithdrawals': False,
+                    'fetchDepositWithdrawFee': 'emulated',
+                    'fetchDepositWithdrawFees': True,
+                    'fetchFundingHistory': True,
+                    'fetchFundingRate': True,
+                    'fetchFundingRateHistory': True,
+                    'fetchFundingRates': True,
+                    'fetchIndexOHLCV': True,
+                    'fetchL3OrderBook': None,
+                    'fetchLastPrices': True,
+                    'fetchLedger': True,
+                    'fetchLeverage': False,
+                    'fetchLeverageTiers': True,
+                    'fetchMarketLeverageTiers': 'emulated',
+                    'fetchMarkets': True,
+                    'fetchMarkOHLCV': True,
+                    'fetchMyTrades': True,
+                    'fetchOHLCV': True,
+                    'fetchOpenInterest': True,
+                    'fetchOpenInterestHistory': True,
+                    'fetchOpenOrder': False,
+                    'fetchOpenOrders': True,
+                    'fetchOrder': True,
+                    'fetchOrderBook': True,
+                    'fetchOrderBooks': False,
+                    'fetchOrders': True,
+                    'fetchOrderTrades': True,
+                    'fetchPosition': True,
+                    'fetchPositions': True,
+                    'fetchPositionsRisk': True,
+                    'fetchPremiumIndexOHLCV': False,
+                    'fetchSettlementHistory': True,
+                    'fetchStatus': True,
+                    'fetchTicker': True,
+                    'fetchTickers': True,
+                    'fetchTime': True,
+                    'fetchTrades': True,
+                    'fetchTradingFee': True,
+                    'fetchTradingFees': True,
+                    'fetchTradingLimits': None,
+                    'fetchTransactionFee': None,
+                    'fetchTransactionFees': True,
+                    'fetchTransactions': False,
+                    'fetchTransfers': True,
+                    'fetchVolatilityHistory': False,
+                    'fetchWithdrawal': False,
+                    'fetchWithdrawals': True,
+                    'fetchWithdrawalWhitelist': False,
+                    'reduceMargin': True,
+                    'repayMargin': True,
+                    'setLeverage': True,
+                    'setMargin': False,
+                    'setMarginMode': True,
+                    'setPositionMode': True,
+                    'signIn': False,
+                    'transfer': True,
+                    'withdraw': True,
+                },
+                'timeframes': {
+                    '1s': '1s',  # spot only for now
+                    '1m': '1m',
+                    '3m': '3m',
+                    '5m': '5m',
+                    '15m': '15m',
+                    '30m': '30m',
+                    '1h': '1h',
+                    '2h': '2h',
+                    '4h': '4h',
+                    '6h': '6h',
+                    '8h': '8h',
+                    '12h': '12h',
+                    '1d': '1d',
+                    '3d': '3d',
+                    '1w': '1w',
+                    '1M': '1M',
+                },
+                'urls': {
+                    'logo': 'https://user-images.githubusercontent.com/1294454/29604020-d5483cdc-87ee-11e7-94c7-d1a8d9169293.jpg',
+                    'test': {
+                        'dapiPublic': 'https://testnet.binancefuture.com/dapi/v1',
+                        'dapiPrivate': 'https://testnet.binancefuture.com/dapi/v1',
+                        'dapiPrivateV2': 'https://testnet.binancefuture.com/dapi/v2',
+                        'fapiPublic': 'https://testnet.binancefuture.com/fapi/v1',
+                        'fapiPrivate': 'https://testnet.binancefuture.com/fapi/v1',
+                        'fapiPrivateV2': 'https://testnet.binancefuture.com/fapi/v2',
+                        'public': 'https://testnet.binance.vision/api/v3',
+                        'private': 'https://testnet.binance.vision/api/v3',
+                        'v1': 'https://testnet.binance.vision/api/v1',
+                    },
+                    'api': {
+                        'wapi': 'https://api.binance.com/wapi/v3',
+                        'sapi': 'https://api.binance.com/sapi/v1',
+                        'sapiV2': 'https://api.binance.com/sapi/v2',
+                        'sapiV3': 'https://api.binance.com/sapi/v3',
+                        'sapiV4': 'https://api.binance.com/sapi/v4',
+                        'dapiPublic': 'https://dapi.binance.com/dapi/v1',
+                        'dapiPrivate': 'https://dapi.binance.com/dapi/v1',
+                        'eapiPublic': 'https://eapi.binance.com/eapi/v1',
+                        'eapiPrivate': 'https://eapi.binance.com/eapi/v1',
+                        'dapiPrivateV2': 'https://dapi.binance.com/dapi/v2',
+                        'dapiData': 'https://dapi.binance.com/futures/data',
+                        'fapiPublic': 'https://fapi.binance.com/fapi/v1',
+                        'fapiPrivate': 'https://fapi.binance.com/fapi/v1',
+                        'fapiData': 'https://fapi.binance.com/futures/data',
+                        'fapiPrivateV2': 'https://fapi.binance.com/fapi/v2',
+                        'public': 'https://api.binance.com/api/v3',
+                        'private': 'https://api.binance.com/api/v3',
+                        'v1': 'https://api.binance.com/api/v1',
+                        'papi': 'https://papi.binance.com/papi/v1',
+                    },
+                    'www': 'https://www.binance.com',
+                    'referral': {
+                        'url': 'https://accounts.binance.com/en/register?ref=D7YA7CLY',
+                        'discount': 0.1,
+                    },
+                    'doc': [
+                        'https://binance-docs.github.io/apidocs/spot/en',
+                    ],
+                    'api_management': 'https://www.binance.com/en/usercenter/settings/api-management',
+                    'fees': 'https://www.binance.com/en/fee/schedule',
                 },
                 'api': {
-                    'wapi': 'https://api.binance.com/wapi/v3',
-                    'sapi': 'https://api.binance.com/sapi/v1',
-                    'sapiV2': 'https://api.binance.com/sapi/v2',
-                    'sapiV3': 'https://api.binance.com/sapi/v3',
-                    'sapiV4': 'https://api.binance.com/sapi/v4',
-                    'dapiPublic': 'https://dapi.binance.com/dapi/v1',
-                    'dapiPrivate': 'https://dapi.binance.com/dapi/v1',
-                    'eapiPublic': 'https://eapi.binance.com/eapi/v1',
-                    'eapiPrivate': 'https://eapi.binance.com/eapi/v1',
-                    'dapiPrivateV2': 'https://dapi.binance.com/dapi/v2',
-                    'dapiData': 'https://dapi.binance.com/futures/data',
-                    'fapiPublic': 'https://fapi.binance.com/fapi/v1',
-                    'fapiPrivate': 'https://fapi.binance.com/fapi/v1',
-                    'fapiData': 'https://fapi.binance.com/futures/data',
-                    'fapiPrivateV2': 'https://fapi.binance.com/fapi/v2',
-                    'public': 'https://api.binance.com/api/v3',
-                    'private': 'https://api.binance.com/api/v3',
-                    'v1': 'https://api.binance.com/api/v1',
-                    'papi': 'https://papi.binance.com/papi/v1',
-                },
-                'www': 'https://www.binance.com',
-                'referral': {
-                    'url': 'https://accounts.binance.com/en/register?ref=D7YA7CLY',
-                    'discount': 0.1,
-                },
-                'doc': [
-                    'https://binance-docs.github.io/apidocs/spot/en',
-                ],
-                'api_management': 'https://www.binance.com/en/usercenter/settings/api-management',
-                'fees': 'https://www.binance.com/en/fee/schedule',
-            },
-            'api': {
-                # the API structure below will need 3-layer apidefs
-                'sapi': {
-                    # IP(api) = 1200 per minute =>(rateLimit = 50)
-                    # IP(sapi) request rate limit of 12 000 per minute
-                    # 1 IP(sapi) => cost = 0.1
-                    # 10 IP(sapi) => cost = 1
-                    # UID(sapi) request rate limit of 180 000 per minute
-                    # 1 UID(sapi) => cost = 1200 / 180 000 = 0.006667
-                    'get': {
-                        'system/status': 0.1,
-                        # these endpoints require self.apiKey
-                        'accountSnapshot': 240,  # Weight(IP): 2400 => cost = 0.1 * 2400 = 240
-                        'margin/asset': 1,  # Weight(IP): 10 => cost = 0.1 * 10 = 1
-                        'margin/pair': 1,
-                        'margin/allAssets': 0.1,
-                        'margin/allPairs': 0.1,
-                        'margin/priceIndex': 1,
-                        # these endpoints require self.apiKey + self.secret
-                        'asset/assetDividend': 1,
-                        'asset/dribblet': 0.1,
-                        'asset/transfer': 0.1,
-                        'asset/assetDetail': 0.1,
-                        'asset/tradeFee': 0.1,
-                        'asset/ledger-transfer/cloud-mining/queryByPage': 4,
-                        'asset/convert-transfer/queryByPage': 0.033335,
-                        'margin/loan': 1,
-                        'margin/repay': 1,
-                        'margin/account': 1,
-                        'margin/transfer': 0.1,
-                        'margin/interestHistory': 0.1,
-                        'margin/forceLiquidationRec': 0.1,
-                        'margin/order': 1,
-                        'margin/openOrders': 1,
-                        'margin/allOrders': 20,  # Weight(IP): 200 => cost = 0.1 * 200 = 20
-                        'margin/myTrades': 1,
-                        'margin/maxBorrowable': 5,  # Weight(IP): 50 => cost = 0.1 * 50 = 5
-                        'margin/maxTransferable': 5,
-                        'margin/tradeCoeff': 1,
-                        'margin/isolated/transfer': 0.1,
-                        'margin/isolated/account': 1,
-                        'margin/isolated/pair': 1,
-                        'margin/isolated/allPairs': 1,
-                        'margin/isolated/accountLimit': 0.1,
-                        'margin/interestRateHistory': 0.1,
-                        'margin/orderList': 1,
-                        'margin/allOrderList': 20,  # Weight(IP): 200 => cost = 0.1 * 200 = 20
-                        'margin/openOrderList': 1,
-                        'margin/crossMarginData': {'cost': 0.1, 'noCoin': 0.5},
-                        'margin/isolatedMarginData': {'cost': 0.1, 'noCoin': 1},
-                        'margin/isolatedMarginTier': 0.1,
-                        'margin/rateLimit/order': 2,
-                        'margin/dribblet': 0.1,
-                        'margin/dust': 20,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20
-                        'margin/crossMarginCollateralRatio': 10,
-                        'margin/exchange-small-liability': 0.6667,
-                        'margin/exchange-small-liability-history': 0.6667,
-                        'margin/next-hourly-interest-rate': 0.6667,
-                        'loan/vip/loanable/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/vip/collateral/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/vip/request/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/income': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'loan/ongoing/orders': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/ltv/adjustment/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/borrow/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/repay/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/loanable/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/collateral/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/repay/collateral/rate': 600,  # Weight(IP): 6000 => cost = 0.1 * 6000 = 600
-                        'loan/vip/ongoing/orders': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/vip/repay/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
-                        'loan/vip/collateral/account': 600,  # Weight(IP): 6000 => cost = 0.1 * 6000 = 600
-                        'fiat/orders': 600.03,  # Weight(UID): 90000 => cost = 0.006667 * 90000 = 600.03
-                        'fiat/payments': 0.1,
-                        'futures/transfer': 1,
-                        'futures/loan/borrow/history': 1,
-                        'futures/loan/repay/history': 1,
-                        'futures/loan/wallet': 1,
-                        'futures/loan/adjustCollateral/history': 1,
-                        'futures/loan/liquidationHistory': 1,
-                        'rebate/taxQuery': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
-                        # https://binance-docs.github.io/apidocs/spot/en/#withdraw-sapi
-                        'capital/config/getall': 1,  # get networks for withdrawing USDT ERC20 vs USDT Omni
-                        'capital/deposit/address': 1,
-                        'capital/deposit/hisrec': 0.1,
-                        'capital/deposit/subAddress': 0.1,
-                        'capital/deposit/subHisrec': 0.1,
-                        'capital/withdraw/history': 0.1,
-                        'capital/contract/convertible-coins': 4.0002,
-                        'convert/tradeFlow': 20.0001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.0001
-                        'convert/exchangeInfo': 50,
-                        'convert/assetInfo': 10,
-                        'convert/orderStatus': 0.6667,
-                        'account/status': 0.1,
-                        'account/apiTradingStatus': 0.1,
-                        'account/apiRestrictions/ipRestriction': 0.1,
-                        'bnbBurn': 0.1,
-                        # 'sub-account/assets': 1,(v3 endpoint)
-                        'sub-account/futures/account': 1,
-                        'sub-account/futures/accountSummary': 0.1,
-                        'sub-account/futures/positionRisk': 1,
-                        'sub-account/futures/internalTransfer': 0.1,
-                        'sub-account/list': 0.1,
-                        'sub-account/margin/account': 1,
-                        'sub-account/margin/accountSummary': 1,
-                        'sub-account/spotSummary': 0.1,
-                        'sub-account/status': 1,
-                        'sub-account/sub/transfer/history': 0.1,
-                        'sub-account/transfer/subUserHistory': 0.1,
-                        'sub-account/universalTransfer': 0.1,
-                        'sub-account/apiRestrictions/ipRestriction/thirdPartyList': 1,
-                        'sub-account/transaction-tatistics': 0.4,
-                        'managed-subaccount/asset': 0.1,
-                        'managed-subaccount/accountSnapshot': 240,
-                        'managed-subaccount/queryTransLogForInvestor': 0.1,
-                        'managed-subaccount/queryTransLogForTradeParent': 0.1,
-                        'managed-subaccount/fetch-future-asset': 0.1,
-                        'managed-subaccount/marginAsset': 0.1,
-                        'managed-subaccount/info': 0.4,
-                        'managed-subaccount/deposit/address': 0.1,
-                        'managed-subaccount/query-trans-log': 0.40002,
-                        # lending endpoints
-                        'lending/daily/product/list': 0.1,
-                        'lending/daily/userLeftQuota': 0.1,
-                        'lending/daily/userRedemptionQuota': 0.1,
-                        'lending/daily/token/position': 0.1,
-                        'lending/union/account': 0.1,
-                        'lending/union/purchaseRecord': 0.1,
-                        'lending/union/redemptionRecord': 0.1,
-                        'lending/union/interestHistory': 0.1,
-                        'lending/project/list': 0.1,
-                        'lending/project/position/list': 0.1,
-                        # mining endpoints
-                        'mining/pub/algoList': 0.1,
-                        'mining/pub/coinList': 0.1,
-                        'mining/worker/detail': 0.5,  # Weight(IP): 5 => cost = 0.1 * 5 = 0.5
-                        'mining/worker/list': 0.5,
-                        'mining/payment/list': 0.5,
-                        'mining/statistics/user/status': 0.5,
-                        'mining/statistics/user/list': 0.5,
-                        'mining/payment/uid': 0.5,
-                        # liquid swap endpoints
-                        'bswap/pools': 0.1,
-                        'bswap/liquidity': {'cost': 0.1, 'noPoolId': 1},
-                        'bswap/liquidityOps': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
-                        'bswap/quote': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
-                        'bswap/swap': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
-                        'bswap/poolConfigure': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
-                        'bswap/addLiquidityPreview': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
-                        'bswap/removeLiquidityPreview': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
-                        'bswap/unclaimedRewards': 6.667,  # Weight(UID): 1000 => cost = 0.006667 * 1000 = 6.667
-                        'bswap/claimedHistory': 6.667,  # Weight(UID): 1000 => cost = 0.006667 * 1000 = 6.667
-                        # leveraged token endpoints
-                        'blvt/tokenInfo': 0.1,
-                        'blvt/subscribe/record': 0.1,
-                        'blvt/redeem/record': 0.1,
-                        'blvt/userLimit': 0.1,
-                        # broker api TODO(NOT IN DOCS)
-                        'apiReferral/ifNewUser': 1,
-                        'apiReferral/customization': 1,
-                        'apiReferral/userCustomization': 1,
-                        'apiReferral/rebate/recentRecord': 1,
-                        'apiReferral/rebate/historicalRecord': 1,
-                        'apiReferral/kickback/recentRecord': 1,
-                        'apiReferral/kickback/historicalRecord': 1,
-                        # brokerage API TODO https://binance-docs.github.io/Brokerage-API/General/ does not state ratelimits
-                        'broker/subAccountApi': 1,
-                        'broker/subAccount': 1,
-                        'broker/subAccountApi/commission/futures': 1,
-                        'broker/subAccountApi/commission/coinFutures': 1,
-                        'broker/info': 1,
-                        'broker/transfer': 1,
-                        'broker/transfer/futures': 1,
-                        'broker/rebate/recentRecord': 1,
-                        'broker/rebate/historicalRecord': 1,
-                        'broker/subAccount/bnbBurn/status': 1,
-                        'broker/subAccount/depositHist': 1,
-                        'broker/subAccount/spotSummary': 1,
-                        'broker/subAccount/marginSummary': 1,
-                        'broker/subAccount/futuresSummary': 1,
-                        'broker/rebate/futures/recentRecord': 1,
-                        'broker/subAccountApi/ipRestriction': 1,
-                        'broker/universalTransfer': 1,
-                        # v2 not supported yet
-                        # GET /sapi/v2/broker/subAccount/futuresSummary
-                        'account/apiRestrictions': 0.1,
-                        # c2c / p2p
-                        'c2c/orderMatch/listUserOrderHistory': 0.1,
-                        # nft endpoints
-                        'nft/history/transactions': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
-                        'nft/history/deposit': 20.001,
-                        'nft/history/withdraw': 20.001,
-                        'nft/user/getAsset': 20.001,
-                        'pay/transactions': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
-                        'giftcard/verify': 0.1,
-                        'giftcard/cryptography/rsa-public-key': 0.1,
-                        'giftcard/buyCode/token-limit': 0.1,
-                        'algo/futures/openOrders': 0.1,
-                        'algo/futures/historicalOrders': 0.1,
-                        'algo/futures/subOrders': 0.1,
-                        'portfolio/account': 0.1,
-                        'portfolio/collateralRate': 5,
-                        'portfolio/pmLoan': 3.3335,
-                        'portfolio/interest-history': 0.6667,
-                        'portfolio/asset-index-price': 0.1,
-                        'portfolio/repay-futures-switch': 3,  # Weight(IP): 30 => cost = 0.1 * 30 = 3
-                        # staking
-                        'staking/productList': 0.1,
-                        'staking/position': 0.1,
-                        'staking/stakingRecord': 0.1,
-                        'staking/personalLeftQuota': 0.1,
-                        'lending/auto-invest/target-asset/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/target-asset/roi/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/all/asset': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/source-asset/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/plan/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/plan/id': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/history/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        # simple earn
-                        'simple-earn/flexible/list': 15,
-                        'simple-earn/locked/list': 15,
-                        'simple-earn/flexible/personalLeftQuota': 15,
-                        'simple-earn/locked/personalLeftQuota': 15,
-                        'simple-earn/flexible/subscriptionPreview': 15,
-                        'simple-earn/locked/subscriptionPreview': 15,
-                        'simple-earn/flexible/history/rateHistory': 15,
-                        'simple-earn/flexible/position': 15,
-                        'simple-earn/locked/position': 15,
-                        'simple-earn/account': 15,
-                        'simple-earn/flexible/history/subscriptionRecord': 15,
-                        'simple-earn/locked/history/subscriptionRecord': 15,
-                        'simple-earn/flexible/history/redemptionRecord': 15,
-                        'simple-earn/locked/history/redemptionRecord': 15,
-                        'simple-earn/flexible/history/rewardsRecord': 15,
-                        'simple-earn/locked/history/rewardsRecord': 15,
-                        'simple-earn/flexible/history/collateralRecord': 0.1,
+                    # the API structure below will need 3-layer apidefs
+                    'sapi': {
+                        # IP(api) = 1200 per minute =>(rateLimit = 50)
+                        # IP(sapi) request rate limit of 12 000 per minute
+                        # 1 IP(sapi) => cost = 0.1
+                        # 10 IP(sapi) => cost = 1
+                        # UID(sapi) request rate limit of 180 000 per minute
+                        # 1 UID(sapi) => cost = 1200 / 180 000 = 0.006667
+                        'get': {
+                            'system/status': 0.1,
+                            # these endpoints require self.apiKey
+                            'accountSnapshot': 240,  # Weight(IP): 2400 => cost = 0.1 * 2400 = 240
+                            'margin/asset': 1,  # Weight(IP): 10 => cost = 0.1 * 10 = 1
+                            'margin/pair': 1,
+                            'margin/allAssets': 0.1,
+                            'margin/allPairs': 0.1,
+                            'margin/priceIndex': 1,
+                            # these endpoints require self.apiKey + self.secret
+                            'asset/assetDividend': 1,
+                            'asset/dribblet': 0.1,
+                            'asset/transfer': 0.1,
+                            'asset/assetDetail': 0.1,
+                            'asset/tradeFee': 0.1,
+                            'asset/ledger-transfer/cloud-mining/queryByPage': 4,
+                            'asset/convert-transfer/queryByPage': 0.033335,
+                            'margin/loan': 1,
+                            'margin/repay': 1,
+                            'margin/account': 1,
+                            'margin/transfer': 0.1,
+                            'margin/interestHistory': 0.1,
+                            'margin/forceLiquidationRec': 0.1,
+                            'margin/order': 1,
+                            'margin/openOrders': 1,
+                            'margin/allOrders': 20,  # Weight(IP): 200 => cost = 0.1 * 200 = 20
+                            'margin/myTrades': 1,
+                            'margin/maxBorrowable': 5,  # Weight(IP): 50 => cost = 0.1 * 50 = 5
+                            'margin/maxTransferable': 5,
+                            'margin/tradeCoeff': 1,
+                            'margin/isolated/transfer': 0.1,
+                            'margin/isolated/account': 1,
+                            'margin/isolated/pair': 1,
+                            'margin/isolated/allPairs': 1,
+                            'margin/isolated/accountLimit': 0.1,
+                            'margin/interestRateHistory': 0.1,
+                            'margin/orderList': 1,
+                            'margin/allOrderList': 20,  # Weight(IP): 200 => cost = 0.1 * 200 = 20
+                            'margin/openOrderList': 1,
+                            'margin/crossMarginData': {'cost': 0.1, 'noCoin': 0.5},
+                            'margin/isolatedMarginData': {'cost': 0.1, 'noCoin': 1},
+                            'margin/isolatedMarginTier': 0.1,
+                            'margin/rateLimit/order': 2,
+                            'margin/dribblet': 0.1,
+                            'margin/dust': 20,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20
+                            'margin/crossMarginCollateralRatio': 10,
+                            'margin/exchange-small-liability': 0.6667,
+                            'margin/exchange-small-liability-history': 0.6667,
+                            'margin/next-hourly-interest-rate': 0.6667,
+                            'loan/vip/loanable/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/vip/collateral/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/vip/request/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/income': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'loan/ongoing/orders': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/ltv/adjustment/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/borrow/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/repay/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/loanable/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/collateral/data': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/repay/collateral/rate': 600,  # Weight(IP): 6000 => cost = 0.1 * 6000 = 600
+                            'loan/vip/ongoing/orders': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/vip/repay/history': 40,  # Weight(IP): 400 => cost = 0.1 * 400 = 40
+                            'loan/vip/collateral/account': 600,  # Weight(IP): 6000 => cost = 0.1 * 6000 = 600
+                            'fiat/orders': 600.03,  # Weight(UID): 90000 => cost = 0.006667 * 90000 = 600.03
+                            'fiat/payments': 0.1,
+                            'futures/transfer': 1,
+                            'futures/loan/borrow/history': 1,
+                            'futures/loan/repay/history': 1,
+                            'futures/loan/wallet': 1,
+                            'futures/loan/adjustCollateral/history': 1,
+                            'futures/loan/liquidationHistory': 1,
+                            'rebate/taxQuery': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
+                            # https://binance-docs.github.io/apidocs/spot/en/#withdraw-sapi
+                            'capital/config/getall': 1,  # get networks for withdrawing USDT ERC20 vs USDT Omni
+                            'capital/deposit/address': 1,
+                            'capital/deposit/hisrec': 0.1,
+                            'capital/deposit/subAddress': 0.1,
+                            'capital/deposit/subHisrec': 0.1,
+                            'capital/withdraw/history': 0.1,
+                            'capital/contract/convertible-coins': 4.0002,
+                            'convert/tradeFlow': 20.0001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.0001
+                            'convert/exchangeInfo': 50,
+                            'convert/assetInfo': 10,
+                            'convert/orderStatus': 0.6667,
+                            'account/status': 0.1,
+                            'account/apiTradingStatus': 0.1,
+                            'account/apiRestrictions/ipRestriction': 0.1,
+                            'bnbBurn': 0.1,
+                            # 'sub-account/assets': 1,(v3 endpoint)
+                            'sub-account/futures/account': 1,
+                            'sub-account/futures/accountSummary': 0.1,
+                            'sub-account/futures/positionRisk': 1,
+                            'sub-account/futures/internalTransfer': 0.1,
+                            'sub-account/list': 0.1,
+                            'sub-account/margin/account': 1,
+                            'sub-account/margin/accountSummary': 1,
+                            'sub-account/spotSummary': 0.1,
+                            'sub-account/status': 1,
+                            'sub-account/sub/transfer/history': 0.1,
+                            'sub-account/transfer/subUserHistory': 0.1,
+                            'sub-account/universalTransfer': 0.1,
+                            'sub-account/apiRestrictions/ipRestriction/thirdPartyList': 1,
+                            'sub-account/transaction-tatistics': 0.4,
+                            'managed-subaccount/asset': 0.1,
+                            'managed-subaccount/accountSnapshot': 240,
+                            'managed-subaccount/queryTransLogForInvestor': 0.1,
+                            'managed-subaccount/queryTransLogForTradeParent': 0.1,
+                            'managed-subaccount/fetch-future-asset': 0.1,
+                            'managed-subaccount/marginAsset': 0.1,
+                            'managed-subaccount/info': 0.4,
+                            'managed-subaccount/deposit/address': 0.1,
+                            'managed-subaccount/query-trans-log': 0.40002,
+                            # lending endpoints
+                            'lending/daily/product/list': 0.1,
+                            'lending/daily/userLeftQuota': 0.1,
+                            'lending/daily/userRedemptionQuota': 0.1,
+                            'lending/daily/token/position': 0.1,
+                            'lending/union/account': 0.1,
+                            'lending/union/purchaseRecord': 0.1,
+                            'lending/union/redemptionRecord': 0.1,
+                            'lending/union/interestHistory': 0.1,
+                            'lending/project/list': 0.1,
+                            'lending/project/position/list': 0.1,
+                            # mining endpoints
+                            'mining/pub/algoList': 0.1,
+                            'mining/pub/coinList': 0.1,
+                            'mining/worker/detail': 0.5,  # Weight(IP): 5 => cost = 0.1 * 5 = 0.5
+                            'mining/worker/list': 0.5,
+                            'mining/payment/list': 0.5,
+                            'mining/statistics/user/status': 0.5,
+                            'mining/statistics/user/list': 0.5,
+                            'mining/payment/uid': 0.5,
+                            # liquid swap endpoints
+                            'bswap/pools': 0.1,
+                            'bswap/liquidity': {'cost': 0.1, 'noPoolId': 1},
+                            'bswap/liquidityOps': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
+                            'bswap/quote': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
+                            'bswap/swap': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
+                            'bswap/poolConfigure': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
+                            'bswap/addLiquidityPreview': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
+                            'bswap/removeLiquidityPreview': 1.00005,  # Weight(UID): 150 => cost = 0.006667 * 150 = 1.00005
+                            'bswap/unclaimedRewards': 6.667,  # Weight(UID): 1000 => cost = 0.006667 * 1000 = 6.667
+                            'bswap/claimedHistory': 6.667,  # Weight(UID): 1000 => cost = 0.006667 * 1000 = 6.667
+                            # leveraged token endpoints
+                            'blvt/tokenInfo': 0.1,
+                            'blvt/subscribe/record': 0.1,
+                            'blvt/redeem/record': 0.1,
+                            'blvt/userLimit': 0.1,
+                            # broker api TODO(NOT IN DOCS)
+                            'apiReferral/ifNewUser': 1,
+                            'apiReferral/customization': 1,
+                            'apiReferral/userCustomization': 1,
+                            'apiReferral/rebate/recentRecord': 1,
+                            'apiReferral/rebate/historicalRecord': 1,
+                            'apiReferral/kickback/recentRecord': 1,
+                            'apiReferral/kickback/historicalRecord': 1,
+                            # brokerage API TODO https://binance-docs.github.io/Brokerage-API/General/ does not state ratelimits
+                            'broker/subAccountApi': 1,
+                            'broker/subAccount': 1,
+                            'broker/subAccountApi/commission/futures': 1,
+                            'broker/subAccountApi/commission/coinFutures': 1,
+                            'broker/info': 1,
+                            'broker/transfer': 1,
+                            'broker/transfer/futures': 1,
+                            'broker/rebate/recentRecord': 1,
+                            'broker/rebate/historicalRecord': 1,
+                            'broker/subAccount/bnbBurn/status': 1,
+                            'broker/subAccount/depositHist': 1,
+                            'broker/subAccount/spotSummary': 1,
+                            'broker/subAccount/marginSummary': 1,
+                            'broker/subAccount/futuresSummary': 1,
+                            'broker/rebate/futures/recentRecord': 1,
+                            'broker/subAccountApi/ipRestriction': 1,
+                            'broker/universalTransfer': 1,
+                            # v2 not supported yet
+                            # GET /sapi/v2/broker/subAccount/futuresSummary
+                            'account/apiRestrictions': 0.1,
+                            # c2c / p2p
+                            'c2c/orderMatch/listUserOrderHistory': 0.1,
+                            # nft endpoints
+                            'nft/history/transactions': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
+                            'nft/history/deposit': 20.001,
+                            'nft/history/withdraw': 20.001,
+                            'nft/user/getAsset': 20.001,
+                            'pay/transactions': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
+                            'giftcard/verify': 0.1,
+                            'giftcard/cryptography/rsa-public-key': 0.1,
+                            'giftcard/buyCode/token-limit': 0.1,
+                            'algo/futures/openOrders': 0.1,
+                            'algo/futures/historicalOrders': 0.1,
+                            'algo/futures/subOrders': 0.1,
+                            'portfolio/account': 0.1,
+                            'portfolio/collateralRate': 5,
+                            'portfolio/pmLoan': 3.3335,
+                            'portfolio/interest-history': 0.6667,
+                            'portfolio/asset-index-price': 0.1,
+                            'portfolio/repay-futures-switch': 3,  # Weight(IP): 30 => cost = 0.1 * 30 = 3
+                            # staking
+                            'staking/productList': 0.1,
+                            'staking/position': 0.1,
+                            'staking/stakingRecord': 0.1,
+                            'staking/personalLeftQuota': 0.1,
+                            'lending/auto-invest/target-asset/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/target-asset/roi/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/all/asset': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/source-asset/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/plan/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/plan/id': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/history/list': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            # simple earn
+                            'simple-earn/flexible/list': 15,
+                            'simple-earn/locked/list': 15,
+                            'simple-earn/flexible/personalLeftQuota': 15,
+                            'simple-earn/locked/personalLeftQuota': 15,
+                            'simple-earn/flexible/subscriptionPreview': 15,
+                            'simple-earn/locked/subscriptionPreview': 15,
+                            'simple-earn/flexible/history/rateHistory': 15,
+                            'simple-earn/flexible/position': 15,
+                            'simple-earn/locked/position': 15,
+                            'simple-earn/account': 15,
+                            'simple-earn/flexible/history/subscriptionRecord': 15,
+                            'simple-earn/locked/history/subscriptionRecord': 15,
+                            'simple-earn/flexible/history/redemptionRecord': 15,
+                            'simple-earn/locked/history/redemptionRecord': 15,
+                            'simple-earn/flexible/history/rewardsRecord': 15,
+                            'simple-earn/locked/history/rewardsRecord': 15,
+                            'simple-earn/flexible/history/collateralRecord': 0.1,
+                        },
+                        'post': {
+                            'asset/dust': 1,
+                            'asset/dust-btc': 0.1,
+                            'asset/transfer': 0.1,
+                            'asset/get-funding-asset': 0.1,
+                            'asset/convert-transfer': 0.033335,
+                            'account/disableFastWithdrawSwitch': 0.1,
+                            'account/enableFastWithdrawSwitch': 0.1,
+                            # 'account/apiRestrictions/ipRestriction': 1, discontinued
+                            # 'account/apiRestrictions/ipRestriction/ipList': 1, discontinued
+                            'capital/withdraw/apply': 4.0002,  # Weight(UID): 600 => cost = 0.006667 * 600 = 4.0002
+                            'capital/contract/convertible-coins': 4.0002,
+                            'capital/deposit/credit-apply': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'margin/transfer': 1,  # Weight(IP): 600 => cost = 0.1 * 600 = 60
+                            'margin/loan': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
+                            'margin/repay': 20.001,
+                            'margin/order': 0.040002,  # Weight(UID): 6 => cost = 0.006667 * 6 = 0.040002
+                            'margin/order/oco': 0.040002,
+                            'margin/dust': 20,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20
+                            'margin/exchange-small-liability': 20.001,
+                            # 'margin/isolated/create': 1, discontinued
+                            'margin/isolated/transfer': 4.0002,  # Weight(UID): 600 => cost = 0.006667 * 600 = 4.0002
+                            'margin/isolated/account': 2.0001,  # Weight(UID): 300 => cost = 0.006667 * 300 = 2.0001
+                            'margin/max-leverage': 300,  # Weight(IP): 3000 => cost = 0.1 * 3000 = 300
+                            'bnbBurn': 0.1,
+                            'sub-account/virtualSubAccount': 0.1,
+                            'sub-account/margin/transfer': 4.0002,  # Weight(UID): 600 => cost =  0.006667 * 600 = 4.0002
+                            'sub-account/margin/enable': 0.1,
+                            'sub-account/futures/enable': 0.1,
+                            'sub-account/futures/transfer': 0.1,
+                            'sub-account/futures/internalTransfer': 0.1,
+                            'sub-account/transfer/subToSub': 0.1,
+                            'sub-account/transfer/subToMaster': 0.1,
+                            'sub-account/universalTransfer': 0.1,
+                            'sub-account/options/enable': 0.1,
+                            # v2 not supported yet
+                            # 'sub-account/subAccountApi/ipRestriction': 20,
+                            'managed-subaccount/deposit': 0.1,
+                            'managed-subaccount/withdraw': 0.1,
+                            'userDataStream': 0.1,
+                            'userDataStream/isolated': 0.1,
+                            'futures/transfer': 0.1,
+                            # lending
+                            'lending/customizedFixed/purchase': 0.1,
+                            'lending/daily/purchase': 0.1,
+                            'lending/daily/redeem': 0.1,
+                            # liquid swap endpoints
+                            'bswap/liquidityAdd': 60,  # Weight(UID): 1000 + (Additional: 1 request every 3 seconds =  0.333 requests per second) => cost = ( 1000 / rateLimit ) / 0.333 = 60.0000006
+                            'bswap/liquidityRemove': 60,  # Weight(UID): 1000 + (Additional: 1 request every three seconds)
+                            'bswap/swap': 60,  # Weight(UID): 1000 + (Additional: 1 request every three seconds)
+                            'bswap/claimRewards': 6.667,  # Weight(UID): 1000 => cost = 0.006667 * 1000 = 6.667
+                            # leveraged token endpoints
+                            'blvt/subscribe': 0.1,
+                            'blvt/redeem': 0.1,
+                            # brokerage API TODO: NO MENTION OF RATELIMITS IN BROKERAGE DOCS
+                            'apiReferral/customization': 1,
+                            'apiReferral/userCustomization': 1,
+                            'apiReferral/rebate/historicalRecord': 1,
+                            'apiReferral/kickback/historicalRecord': 1,
+                            'broker/subAccount': 1,
+                            'broker/subAccount/margin': 1,
+                            'broker/subAccount/futures': 1,
+                            'broker/subAccountApi': 1,
+                            'broker/subAccountApi/permission': 1,
+                            'broker/subAccountApi/commission': 1,
+                            'broker/subAccountApi/commission/futures': 1,
+                            'broker/subAccountApi/commission/coinFutures': 1,
+                            'broker/transfer': 1,
+                            'broker/transfer/futures': 1,
+                            'broker/rebate/historicalRecord': 1,
+                            'broker/subAccount/bnbBurn/spot': 1,
+                            'broker/subAccount/bnbBurn/marginInterest': 1,
+                            'broker/subAccount/blvt': 1,
+                            'broker/subAccountApi/ipRestriction': 1,
+                            'broker/subAccountApi/ipRestriction/ipList': 1,
+                            'broker/universalTransfer': 1,
+                            'broker/subAccountApi/permission/universalTransfer': 1,
+                            'broker/subAccountApi/permission/vanillaOptions': 1,
+                            #
+                            'giftcard/createCode': 0.1,
+                            'giftcard/redeemCode': 0.1,
+                            'giftcard/buyCode': 0.1,
+                            'algo/futures/newOrderVp': 20.001,
+                            'algo/futures/newOrderTwap': 20.001,
+                            # staking
+                            'staking/purchase': 0.1,
+                            'staking/redeem': 0.1,
+                            'staking/setAutoStaking': 0.1,
+                            'portfolio/repay': 20.001,
+                            'loan/vip/renew': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'loan/vip/borrow': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'loan/borrow': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'loan/repay': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'loan/adjust/ltv': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'loan/customize/margin_call': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'loan/vip/repay': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
+                            'convert/getQuote': 20.001,
+                            'convert/acceptQuote': 3.3335,
+                            'portfolio/auto-collection': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
+                            'portfolio/asset-collection': 6,  # Weight(IP): 60 => cost = 0.1 * 60 = 6
+                            'portfolio/bnb-transfer': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
+                            'portfolio/repay-futures-switch': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
+                            'portfolio/repay-futures-negative-balance': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
+                            'lending/auto-invest/plan/add': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/plan/edit': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'lending/auto-invest/plan/edit-status': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            # simple earn
+                            'simple-earn/flexible/subscribe': 0.1,
+                            'simple-earn/locked/subscribe': 0.1,
+                            'simple-earn/flexible/redeem': 0.1,
+                            'simple-earn/locked/redeem': 0.1,
+                            'simple-earn/flexible/setAutoSubscribe': 15,
+                            'simple-earn/locked/setAutoSubscribe': 15,
+                        },
+                        'put': {
+                            'userDataStream': 0.1,
+                            'userDataStream/isolated': 0.1,
+                        },
+                        'delete': {
+                            # 'account/apiRestrictions/ipRestriction/ipList': 1, discontinued
+                            'margin/openOrders': 0.1,
+                            'margin/order': 0.0066667,  # Weight(UID): 1 => cost = 0.006667
+                            'margin/orderList': 0.0066667,
+                            'margin/isolated/account': 2.0001,  # Weight(UID): 300 => cost =  0.006667 * 300 = 2.0001
+                            'userDataStream': 0.1,
+                            'userDataStream/isolated': 0.1,
+                            # brokerage API TODO NO MENTION OF RATELIMIT IN BROKERAGE DOCS
+                            'broker/subAccountApi': 1,
+                            'broker/subAccountApi/ipRestriction/ipList': 1,
+                            'algo/futures/order': 0.1,
+                        },
                     },
-                    'post': {
-                        'asset/dust': 1,
-                        'asset/dust-btc': 0.1,
-                        'asset/transfer': 0.1,
-                        'asset/get-funding-asset': 0.1,
-                        'asset/convert-transfer': 0.033335,
-                        'account/disableFastWithdrawSwitch': 0.1,
-                        'account/enableFastWithdrawSwitch': 0.1,
-                        # 'account/apiRestrictions/ipRestriction': 1, discontinued
-                        # 'account/apiRestrictions/ipRestriction/ipList': 1, discontinued
-                        'capital/withdraw/apply': 4.0002,  # Weight(UID): 600 => cost = 0.006667 * 600 = 4.0002
-                        'capital/contract/convertible-coins': 4.0002,
-                        'capital/deposit/credit-apply': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'margin/transfer': 1,  # Weight(IP): 600 => cost = 0.1 * 600 = 60
-                        'margin/loan': 20.001,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20.001
-                        'margin/repay': 20.001,
-                        'margin/order': 0.040002,  # Weight(UID): 6 => cost = 0.006667 * 6 = 0.040002
-                        'margin/order/oco': 0.040002,
-                        'margin/dust': 20,  # Weight(UID): 3000 => cost = 0.006667 * 3000 = 20
-                        'margin/exchange-small-liability': 20.001,
-                        # 'margin/isolated/create': 1, discontinued
-                        'margin/isolated/transfer': 4.0002,  # Weight(UID): 600 => cost = 0.006667 * 600 = 4.0002
-                        'margin/isolated/account': 2.0001,  # Weight(UID): 300 => cost = 0.006667 * 300 = 2.0001
-                        'margin/max-leverage': 300,  # Weight(IP): 3000 => cost = 0.1 * 3000 = 300
-                        'bnbBurn': 0.1,
-                        'sub-account/virtualSubAccount': 0.1,
-                        'sub-account/margin/transfer': 4.0002,  # Weight(UID): 600 => cost =  0.006667 * 600 = 4.0002
-                        'sub-account/margin/enable': 0.1,
-                        'sub-account/futures/enable': 0.1,
-                        'sub-account/futures/transfer': 0.1,
-                        'sub-account/futures/internalTransfer': 0.1,
-                        'sub-account/transfer/subToSub': 0.1,
-                        'sub-account/transfer/subToMaster': 0.1,
-                        'sub-account/universalTransfer': 0.1,
-                        'sub-account/options/enable': 0.1,
-                        # v2 not supported yet
-                        # 'sub-account/subAccountApi/ipRestriction': 20,
-                        'managed-subaccount/deposit': 0.1,
-                        'managed-subaccount/withdraw': 0.1,
-                        'userDataStream': 0.1,
-                        'userDataStream/isolated': 0.1,
-                        'futures/transfer': 0.1,
-                        # lending
-                        'lending/customizedFixed/purchase': 0.1,
-                        'lending/daily/purchase': 0.1,
-                        'lending/daily/redeem': 0.1,
-                        # liquid swap endpoints
-                        'bswap/liquidityAdd': 60,  # Weight(UID): 1000 + (Additional: 1 request every 3 seconds =  0.333 requests per second) => cost = ( 1000 / rateLimit ) / 0.333 = 60.0000006
-                        'bswap/liquidityRemove': 60,  # Weight(UID): 1000 + (Additional: 1 request every three seconds)
-                        'bswap/swap': 60,  # Weight(UID): 1000 + (Additional: 1 request every three seconds)
-                        'bswap/claimRewards': 6.667,  # Weight(UID): 1000 => cost = 0.006667 * 1000 = 6.667
-                        # leveraged token endpoints
-                        'blvt/subscribe': 0.1,
-                        'blvt/redeem': 0.1,
-                        # brokerage API TODO: NO MENTION OF RATELIMITS IN BROKERAGE DOCS
-                        'apiReferral/customization': 1,
-                        'apiReferral/userCustomization': 1,
-                        'apiReferral/rebate/historicalRecord': 1,
-                        'apiReferral/kickback/historicalRecord': 1,
-                        'broker/subAccount': 1,
-                        'broker/subAccount/margin': 1,
-                        'broker/subAccount/futures': 1,
-                        'broker/subAccountApi': 1,
-                        'broker/subAccountApi/permission': 1,
-                        'broker/subAccountApi/commission': 1,
-                        'broker/subAccountApi/commission/futures': 1,
-                        'broker/subAccountApi/commission/coinFutures': 1,
-                        'broker/transfer': 1,
-                        'broker/transfer/futures': 1,
-                        'broker/rebate/historicalRecord': 1,
-                        'broker/subAccount/bnbBurn/spot': 1,
-                        'broker/subAccount/bnbBurn/marginInterest': 1,
-                        'broker/subAccount/blvt': 1,
-                        'broker/subAccountApi/ipRestriction': 1,
-                        'broker/subAccountApi/ipRestriction/ipList': 1,
-                        'broker/universalTransfer': 1,
-                        'broker/subAccountApi/permission/universalTransfer': 1,
-                        'broker/subAccountApi/permission/vanillaOptions': 1,
-                        #
-                        'giftcard/createCode': 0.1,
-                        'giftcard/redeemCode': 0.1,
-                        'giftcard/buyCode': 0.1,
-                        'algo/futures/newOrderVp': 20.001,
-                        'algo/futures/newOrderTwap': 20.001,
-                        # staking
-                        'staking/purchase': 0.1,
-                        'staking/redeem': 0.1,
-                        'staking/setAutoStaking': 0.1,
-                        'portfolio/repay': 20.001,
-                        'loan/vip/renew': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'loan/vip/borrow': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'loan/borrow': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'loan/repay': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'loan/adjust/ltv': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'loan/customize/margin_call': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'loan/vip/repay': 40,  # Weight(UID): 6000 => cost = 0.006667 * 6000 = 40
-                        'convert/getQuote': 20.001,
-                        'convert/acceptQuote': 3.3335,
-                        'portfolio/auto-collection': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
-                        'portfolio/asset-collection': 6,  # Weight(IP): 60 => cost = 0.1 * 60 = 6
-                        'portfolio/bnb-transfer': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
-                        'portfolio/repay-futures-switch': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
-                        'portfolio/repay-futures-negative-balance': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
-                        'lending/auto-invest/plan/add': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/plan/edit': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'lending/auto-invest/plan/edit-status': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        # simple earn
-                        'simple-earn/flexible/subscribe': 0.1,
-                        'simple-earn/locked/subscribe': 0.1,
-                        'simple-earn/flexible/redeem': 0.1,
-                        'simple-earn/locked/redeem': 0.1,
-                        'simple-earn/flexible/setAutoSubscribe': 15,
-                        'simple-earn/locked/setAutoSubscribe': 15,
+                    'sapiV2': {
+                        'get': {
+                            'sub-account/futures/account': 0.1,
+                            'sub-account/futures/positionRisk': 0.1,
+                        },
                     },
-                    'put': {
-                        'userDataStream': 0.1,
-                        'userDataStream/isolated': 0.1,
+                    'sapiV3': {
+                        'get': {
+                            'sub-account/assets': 1,
+                        },
+                        'post': {
+                            'asset/getUserAsset': 0.5,
+                        },
                     },
-                    'delete': {
-                        # 'account/apiRestrictions/ipRestriction/ipList': 1, discontinued
-                        'margin/openOrders': 0.1,
-                        'margin/order': 0.0066667,  # Weight(UID): 1 => cost = 0.006667
-                        'margin/orderList': 0.0066667,
-                        'margin/isolated/account': 2.0001,  # Weight(UID): 300 => cost =  0.006667 * 300 = 2.0001
-                        'userDataStream': 0.1,
-                        'userDataStream/isolated': 0.1,
-                        # brokerage API TODO NO MENTION OF RATELIMIT IN BROKERAGE DOCS
-                        'broker/subAccountApi': 1,
-                        'broker/subAccountApi/ipRestriction/ipList': 1,
-                        'algo/futures/order': 0.1,
+                    'sapiV4': {
+                        'get': {
+                            'sub-account/assets': 1,
+                        },
                     },
-                },
-                'sapiV2': {
-                    'get': {
-                        'sub-account/futures/account': 0.1,
-                        'sub-account/futures/positionRisk': 0.1,
+                    # deprecated
+                    'wapi': {
+                        'post': {
+                            'withdraw': 1,
+                            'sub-account/transfer': 1,
+                        },
+                        'get': {
+                            'depositHistory': 1,
+                            'withdrawHistory': 1,
+                            'depositAddress': 1,
+                            'accountStatus': 1,
+                            'systemStatus': 1,
+                            'apiTradingStatus': 1,
+                            'userAssetDribbletLog': 1,
+                            'tradeFee': 1,
+                            'assetDetail': 1,
+                            'sub-account/list': 1,
+                            'sub-account/transfer/history': 1,
+                            'sub-account/assets': 1,
+                        },
                     },
-                },
-                'sapiV3': {
-                    'get': {
-                        'sub-account/assets': 1,
+                    'dapiPublic': {
+                        'get': {
+                            'ping': 1,
+                            'time': 1,
+                            'exchangeInfo': 1,
+                            'depth': {'cost': 2, 'byLimit': [[50, 2], [100, 5], [500, 10], [1000, 20]]},
+                            'trades': 5,
+                            'historicalTrades': 20,
+                            'aggTrades': 20,
+                            'premiumIndex': 10,
+                            'fundingRate': 1,
+                            'klines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'continuousKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'indexPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'markPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'ticker/24hr': {'cost': 1, 'noSymbol': 40},
+                            'ticker/price': {'cost': 1, 'noSymbol': 2},
+                            'ticker/bookTicker': {'cost': 1, 'noSymbol': 2},
+                            'openInterest': 1,
+                        },
                     },
-                    'post': {
-                        'asset/getUserAsset': 0.5,
+                    'dapiData': {
+                        'get': {
+                            'openInterestHist': 1,
+                            'topLongShortAccountRatio': 1,
+                            'topLongShortPositionRatio': 1,
+                            'globalLongShortAccountRatio': 1,
+                            'takerBuySellVol': 1,
+                            'basis': 1,
+                        },
                     },
-                },
-                'sapiV4': {
-                    'get': {
-                        'sub-account/assets': 1,
+                    'dapiPrivate': {
+                        'get': {
+                            'positionSide/dual': 30,
+                            'order': 1,
+                            'openOrder': 1,
+                            'openOrders': {'cost': 1, 'noSymbol': 5},
+                            'allOrders': {'cost': 20, 'noSymbol': 40},
+                            'balance': 1,
+                            'account': 5,
+                            'positionMargin/history': 1,
+                            'positionRisk': 1,
+                            'userTrades': {'cost': 20, 'noSymbol': 40},
+                            'income': 20,
+                            'leverageBracket': 1,
+                            'forceOrders': {'cost': 20, 'noSymbol': 50},
+                            'adlQuantile': 5,
+                            'orderAmendment': 1,
+                            'pmAccountInfo': 5,
+                        },
+                        'post': {
+                            'positionSide/dual': 1,
+                            'order': 4,
+                            'batchOrders': 5,
+                            'countdownCancelAll': 10,
+                            'leverage': 1,
+                            'marginType': 1,
+                            'positionMargin': 1,
+                            'listenKey': 1,
+                        },
+                        'put': {
+                            'listenKey': 1,
+                            'order': 1,
+                            'batchOrders': 5,
+                        },
+                        'delete': {
+                            'order': 1,
+                            'allOpenOrders': 1,
+                            'batchOrders': 5,
+                            'listenKey': 1,
+                        },
                     },
-                },
-                # deprecated
-                'wapi': {
-                    'post': {
-                        'withdraw': 1,
-                        'sub-account/transfer': 1,
+                    'dapiPrivateV2': {
+                        'get': {
+                            'leverageBracket': 1,
+                        },
                     },
-                    'get': {
-                        'depositHistory': 1,
-                        'withdrawHistory': 1,
-                        'depositAddress': 1,
-                        'accountStatus': 1,
-                        'systemStatus': 1,
-                        'apiTradingStatus': 1,
-                        'userAssetDribbletLog': 1,
-                        'tradeFee': 1,
-                        'assetDetail': 1,
-                        'sub-account/list': 1,
-                        'sub-account/transfer/history': 1,
-                        'sub-account/assets': 1,
+                    'fapiPublic': {
+                        'get': {
+                            'ping': 1,
+                            'time': 1,
+                            'exchangeInfo': 1,
+                            'depth': {'cost': 2, 'byLimit': [[50, 2], [100, 5], [500, 10], [1000, 20]]},
+                            'trades': 5,
+                            'historicalTrades': 20,
+                            'aggTrades': 20,
+                            'klines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'continuousKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'markPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'indexPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
+                            'fundingRate': 1,
+                            'premiumIndex': 1,
+                            'ticker/24hr': {'cost': 1, 'noSymbol': 40},
+                            'ticker/price': {'cost': 1, 'noSymbol': 2},
+                            'ticker/bookTicker': {'cost': 1, 'noSymbol': 2},
+                            'openInterest': 1,
+                            'indexInfo': 1,
+                            'apiTradingStatus': {'cost': 1, 'noSymbol': 10},
+                            'lvtKlines': 1,
+                        },
                     },
-                },
-                'dapiPublic': {
-                    'get': {
-                        'ping': 1,
-                        'time': 1,
-                        'exchangeInfo': 1,
-                        'depth': {'cost': 2, 'byLimit': [[50, 2], [100, 5], [500, 10], [1000, 20]]},
-                        'trades': 5,
-                        'historicalTrades': 20,
-                        'aggTrades': 20,
-                        'premiumIndex': 10,
-                        'fundingRate': 1,
-                        'klines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'continuousKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'indexPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'markPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'ticker/24hr': {'cost': 1, 'noSymbol': 40},
-                        'ticker/price': {'cost': 1, 'noSymbol': 2},
-                        'ticker/bookTicker': {'cost': 1, 'noSymbol': 2},
-                        'openInterest': 1,
+                    'fapiData': {
+                        'get': {
+                            'openInterestHist': 1,
+                            'topLongShortAccountRatio': 1,
+                            'topLongShortPositionRatio': 1,
+                            'globalLongShortAccountRatio': 1,
+                            'takerlongshortRatio': 1,
+                        },
                     },
-                },
-                'dapiData': {
-                    'get': {
-                        'openInterestHist': 1,
-                        'topLongShortAccountRatio': 1,
-                        'topLongShortPositionRatio': 1,
-                        'globalLongShortAccountRatio': 1,
-                        'takerBuySellVol': 1,
-                        'basis': 1,
+                    'fapiPrivate': {
+                        'get': {
+                            'forceOrders': {'cost': 20, 'noSymbol': 50},
+                            'allOrders': 5,
+                            'openOrder': 1,
+                            'openOrders': 1,
+                            'order': 1,
+                            'account': 5,
+                            'balance': 5,
+                            'leverageBracket': 1,
+                            'positionMargin/history': 1,
+                            'positionRisk': 5,
+                            'positionSide/dual': 30,
+                            'userTrades': 5,
+                            'income': 30,
+                            'commissionRate': 20,
+                            'apiTradingStatus': 1,
+                            'multiAssetsMargin': 30,
+                            # broker endpoints
+                            'apiReferral/ifNewUser': 1,
+                            'apiReferral/customization': 1,
+                            'apiReferral/userCustomization': 1,
+                            'apiReferral/traderNum': 1,
+                            'apiReferral/overview': 1,
+                            'apiReferral/tradeVol': 1,
+                            'apiReferral/rebateVol': 1,
+                            'apiReferral/traderSummary': 1,
+                            'adlQuantile': 5,
+                            'pmAccountInfo': 5,
+                            'orderAmendment': 1,
+                            'order/asyn': 5,
+                            'order/asyn/id': 5,
+                            'trade/asyn': 5,
+                            'trade/asyn/id': 5,
+                        },
+                        'post': {
+                            'batchOrders': 5,
+                            'positionSide/dual': 1,
+                            'positionMargin': 1,
+                            'marginType': 1,
+                            'order': 4,
+                            'leverage': 1,
+                            'listenKey': 1,
+                            'countdownCancelAll': 10,
+                            'multiAssetsMargin': 1,
+                            # broker endpoints
+                            'apiReferral/customization': 1,
+                            'apiReferral/userCustomization': 1,
+                        },
+                        'put': {
+                            'listenKey': 1,
+                            'order': 1,
+                            'batchOrders': 5,
+                        },
+                        'delete': {
+                            'batchOrders': 1,
+                            'order': 1,
+                            'allOpenOrders': 1,
+                            'listenKey': 1,
+                        },
                     },
-                },
-                'dapiPrivate': {
-                    'get': {
-                        'positionSide/dual': 30,
-                        'order': 1,
-                        'openOrder': 1,
-                        'openOrders': {'cost': 1, 'noSymbol': 5},
-                        'allOrders': {'cost': 20, 'noSymbol': 40},
-                        'balance': 1,
-                        'account': 5,
-                        'positionMargin/history': 1,
-                        'positionRisk': 1,
-                        'userTrades': {'cost': 20, 'noSymbol': 40},
-                        'income': 20,
-                        'leverageBracket': 1,
-                        'forceOrders': {'cost': 20, 'noSymbol': 50},
-                        'adlQuantile': 5,
-                        'orderAmendment': 1,
-                        'pmAccountInfo': 5,
+                    'fapiPrivateV2': {
+                        'get': {
+                            'account': 1,
+                            'balance': 1,
+                            'positionRisk': 1,
+                        },
                     },
-                    'post': {
-                        'positionSide/dual': 1,
-                        'order': 4,
-                        'batchOrders': 5,
-                        'countdownCancelAll': 10,
-                        'leverage': 1,
-                        'marginType': 1,
-                        'positionMargin': 1,
-                        'listenKey': 1,
+                    'eapiPublic': {
+                        'get': {
+                            'ping': 1,
+                            'time': 1,
+                            'exchangeInfo': 1,
+                            'index': 1,
+                            'ticker': 5,
+                            'mark': 5,
+                            'depth': 1,
+                            'klines': 1,
+                            'trades': 5,
+                            'historicalTrades': 20,
+                            'exerciseHistory': 3,
+                            'openInterest': 3,
+                        },
                     },
-                    'put': {
-                        'listenKey': 1,
-                        'order': 1,
-                        'batchOrders': 5,
+                    'eapiPrivate': {
+                        'get': {
+                            'account': 3,
+                            'position': 5,
+                            'openOrders': {'cost': 1, 'noSymbol': 40},
+                            'historyOrders': 3,
+                            'userTrades': 5,
+                            'exerciseRecord': 5,
+                            'bill': 1,
+                            'income/asyn': 5,
+                            'income/asyn/id': 5,
+                            'marginAccount': 3,
+                            'mmp': 1,
+                            'countdownCancelAll': 1,
+                            'order': 1,
+                        },
+                        'post': {
+                            'order': 1,
+                            'batchOrders': 5,
+                            'listenKey': 1,
+                            'mmpSet': 1,
+                            'mmpReset': 1,
+                            'countdownCancelAll': 1,
+                            'countdownCancelAllHeartBeat': 10,
+                        },
+                        'put': {
+                            'listenKey': 1,
+                        },
+                        'delete': {
+                            'order': 1,
+                            'batchOrders': 1,
+                            'allOpenOrders': 1,
+                            'allOpenOrdersByUnderlying': 1,
+                            'listenKey': 1,
+                        },
                     },
-                    'delete': {
-                        'order': 1,
-                        'allOpenOrders': 1,
-                        'batchOrders': 5,
-                        'listenKey': 1,
+                    'public': {
+                        'get': {
+                            'ping': 1,
+                            'time': 1,
+                            'depth': {'cost': 1, 'byLimit': [[100, 1], [500, 5], [1000, 10], [5000, 50]]},
+                            'trades': 1,
+                            'aggTrades': 1,
+                            'historicalTrades': 5,
+                            'klines': 1,
+                            'ticker/24hr': {'cost': 1, 'noSymbol': 40},
+                            'ticker/price': {'cost': 1, 'noSymbol': 2},
+                            'ticker/bookTicker': {'cost': 1, 'noSymbol': 2},
+                            'exchangeInfo': 10,
+                        },
+                        'put': {
+                            'userDataStream': 1,
+                        },
+                        'post': {
+                            'userDataStream': 1,
+                        },
+                        'delete': {
+                            'userDataStream': 1,
+                        },
                     },
-                },
-                'dapiPrivateV2': {
-                    'get': {
-                        'leverageBracket': 1,
+                    'private': {
+                        'get': {
+                            'allOrderList': 10,  # oco
+                            'openOrderList': 3,  # oco
+                            'orderList': 2,  # oco
+                            'order': 2,
+                            'openOrders': {'cost': 3, 'noSymbol': 40},
+                            'allOrders': 10,
+                            'account': 10,
+                            'myTrades': 10,
+                            'rateLimit/order': 20,
+                            'myPreventedMatches': 1,
+                            'myAllocations': 10,
+                        },
+                        'post': {
+                            'order/oco': 1,
+                            'sor/order': 1,
+                            'sor/order/test': 1,
+                            'order': 1,
+                            'order/cancelReplace': 1,
+                            'order/test': 1,
+                        },
+                        'delete': {
+                            'openOrders': 1,  # added on 2020-04-25 for canceling all open orders per symbol
+                            'orderList': 1,  # oco
+                            'order': 1,
+                        },
                     },
-                },
-                'fapiPublic': {
-                    'get': {
-                        'ping': 1,
-                        'time': 1,
-                        'exchangeInfo': 1,
-                        'depth': {'cost': 2, 'byLimit': [[50, 2], [100, 5], [500, 10], [1000, 20]]},
-                        'trades': 5,
-                        'historicalTrades': 20,
-                        'aggTrades': 20,
-                        'klines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'continuousKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'markPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'indexPriceKlines': {'cost': 1, 'byLimit': [[99, 1], [499, 2], [1000, 5], [10000, 10]]},
-                        'fundingRate': 1,
-                        'premiumIndex': 1,
-                        'ticker/24hr': {'cost': 1, 'noSymbol': 40},
-                        'ticker/price': {'cost': 1, 'noSymbol': 2},
-                        'ticker/bookTicker': {'cost': 1, 'noSymbol': 2},
-                        'openInterest': 1,
-                        'indexInfo': 1,
-                        'apiTradingStatus': {'cost': 1, 'noSymbol': 10},
-                        'lvtKlines': 1,
-                    },
-                },
-                'fapiData': {
-                    'get': {
-                        'openInterestHist': 1,
-                        'topLongShortAccountRatio': 1,
-                        'topLongShortPositionRatio': 1,
-                        'globalLongShortAccountRatio': 1,
-                        'takerlongshortRatio': 1,
-                    },
-                },
-                'fapiPrivate': {
-                    'get': {
-                        'forceOrders': {'cost': 20, 'noSymbol': 50},
-                        'allOrders': 5,
-                        'openOrder': 1,
-                        'openOrders': 1,
-                        'order': 1,
-                        'account': 5,
-                        'balance': 5,
-                        'leverageBracket': 1,
-                        'positionMargin/history': 1,
-                        'positionRisk': 5,
-                        'positionSide/dual': 30,
-                        'userTrades': 5,
-                        'income': 30,
-                        'commissionRate': 20,
-                        'apiTradingStatus': 1,
-                        'multiAssetsMargin': 30,
-                        # broker endpoints
-                        'apiReferral/ifNewUser': 1,
-                        'apiReferral/customization': 1,
-                        'apiReferral/userCustomization': 1,
-                        'apiReferral/traderNum': 1,
-                        'apiReferral/overview': 1,
-                        'apiReferral/tradeVol': 1,
-                        'apiReferral/rebateVol': 1,
-                        'apiReferral/traderSummary': 1,
-                        'adlQuantile': 5,
-                        'pmAccountInfo': 5,
-                        'orderAmendment': 1,
-                        'order/asyn': 5,
-                        'order/asyn/id': 5,
-                        'trade/asyn': 5,
-                        'trade/asyn/id': 5,
-                    },
-                    'post': {
-                        'batchOrders': 5,
-                        'positionSide/dual': 1,
-                        'positionMargin': 1,
-                        'marginType': 1,
-                        'order': 4,
-                        'leverage': 1,
-                        'listenKey': 1,
-                        'countdownCancelAll': 10,
-                        'multiAssetsMargin': 1,
-                        # broker endpoints
-                        'apiReferral/customization': 1,
-                        'apiReferral/userCustomization': 1,
-                    },
-                    'put': {
-                        'listenKey': 1,
-                        'order': 1,
-                        'batchOrders': 5,
-                    },
-                    'delete': {
-                        'batchOrders': 1,
-                        'order': 1,
-                        'allOpenOrders': 1,
-                        'listenKey': 1,
-                    },
-                },
-                'fapiPrivateV2': {
-                    'get': {
-                        'account': 1,
-                        'balance': 1,
-                        'positionRisk': 1,
-                    },
-                },
-                'eapiPublic': {
-                    'get': {
-                        'ping': 1,
-                        'time': 1,
-                        'exchangeInfo': 1,
-                        'index': 1,
-                        'ticker': 5,
-                        'mark': 5,
-                        'depth': 1,
-                        'klines': 1,
-                        'trades': 5,
-                        'historicalTrades': 20,
-                        'exerciseHistory': 3,
-                        'openInterest': 3,
-                    },
-                },
-                'eapiPrivate': {
-                    'get': {
-                        'account': 3,
-                        'position': 5,
-                        'openOrders': {'cost': 1, 'noSymbol': 40},
-                        'historyOrders': 3,
-                        'userTrades': 5,
-                        'exerciseRecord': 5,
-                        'bill': 1,
-                        'income/asyn': 5,
-                        'income/asyn/id': 5,
-                        'marginAccount': 3,
-                        'mmp': 1,
-                        'countdownCancelAll': 1,
-                        'order': 1,
-                    },
-                    'post': {
-                        'order': 1,
-                        'batchOrders': 5,
-                        'listenKey': 1,
-                        'mmpSet': 1,
-                        'mmpReset': 1,
-                        'countdownCancelAll': 1,
-                        'countdownCancelAllHeartBeat': 10,
-                    },
-                    'put': {
-                        'listenKey': 1,
-                    },
-                    'delete': {
-                        'order': 1,
-                        'batchOrders': 1,
-                        'allOpenOrders': 1,
-                        'allOpenOrdersByUnderlying': 1,
-                        'listenKey': 1,
-                    },
-                },
-                'public': {
-                    'get': {
-                        'ping': 1,
-                        'time': 1,
-                        'depth': {'cost': 1, 'byLimit': [[100, 1], [500, 5], [1000, 10], [5000, 50]]},
-                        'trades': 1,
-                        'aggTrades': 1,
-                        'historicalTrades': 5,
-                        'klines': 1,
-                        'ticker/24hr': {'cost': 1, 'noSymbol': 40},
-                        'ticker/price': {'cost': 1, 'noSymbol': 2},
-                        'ticker/bookTicker': {'cost': 1, 'noSymbol': 2},
-                        'exchangeInfo': 10,
-                    },
-                    'put': {
-                        'userDataStream': 1,
-                    },
-                    'post': {
-                        'userDataStream': 1,
-                    },
-                    'delete': {
-                        'userDataStream': 1,
-                    },
-                },
-                'private': {
-                    'get': {
-                        'allOrderList': 10,  # oco
-                        'openOrderList': 3,  # oco
-                        'orderList': 2,  # oco
-                        'order': 2,
-                        'openOrders': {'cost': 3, 'noSymbol': 40},
-                        'allOrders': 10,
-                        'account': 10,
-                        'myTrades': 10,
-                        'rateLimit/order': 20,
-                        'myPreventedMatches': 1,
-                        'myAllocations': 10,
-                    },
-                    'post': {
-                        'order/oco': 1,
-                        'sor/order': 1,
-                        'sor/order/test': 1,
-                        'order': 1,
-                        'order/cancelReplace': 1,
-                        'order/test': 1,
-                    },
-                    'delete': {
-                        'openOrders': 1,  # added on 2020-04-25 for canceling all open orders per symbol
-                        'orderList': 1,  # oco
-                        'order': 1,
-                    },
-                },
-                'papi': {
-                    'get': {
-                        'um/order': 1,  # 1
-                        'um/openOrder': 1,  # 1
-                        'um/openOrders': 1,  # 1
-                        'um/allOrders': 5,  # 5
-                        'cm/order': 1,  # 1
-                        'cm/openOrder': 1,  # 1
-                        'cm/openOrders': 1,  # 1
-                        'cm/allOrders': 20,  # 20
-                        'balance': 20,  # 20
-                        'account': 20,  # 20
-                        'margin/maxBorrowable': 5,  # 5
-                        'margin/maxWithdraw': 5,  # 5
-                        'um/positionRisk': 5,  # 5
-                        'cm/positionRisk': 1,  # 1
-                        'um/positionSide/dual': 30,  # 30
-                        'cm/positionSide/dual': 30,  # 30
-                        'um/userTrades': 5,  # 5
-                        'cm/userTrades': 20,  # 20
-                        'um/leverageBracket': 1,  # 1
-                        'cm/leverageBracket': 1,  # 1
-                        'margin/forceOrders': 1,  # 1
-                        'um/forceOrders': 20,  # 20
-                        'cm/forceOrders': 20,  # 20
-                        'um/apiTradingStatus': 1,  # 1
-                        'um/commissionRate': 20,  # 20
-                        'cm/commissionRate': 20,  # 20
-                        'um/income': 30,
-                        'cm/income ': 30,
-                        'um/account': 5,
-                        'cm/account': 5,
-                        'portfolio/repay-futures-switch': 3,  # Weight(IP): 30 => cost = 0.1 * 30 = 3
-                        'um/adlQuantile': 5,
-                        'cm/adlQuantile': 5,
-                        'margin/marginLoan': 0.0667,  # Weight(UID): 10 => cost = 0.006667 * 10 = 0.06667
-                        'margin/repayLoan': 0.0667,  # Weight(UID): 10 => cost = 0.006667 * 10 = 0.06667
-                        'margin/marginInterestHistory': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
-                        'portfolio/interest-history': 50,  # 50
-                    },
-                    'post': {
-                        'um/order': 1,  # 0
-                        'cm/order': 1,  # 0
-                        'margin/order': 0.0133,  # Weight(UID): 2 => cost = 0.006667 * 2 = 0.013334
-                        'marginLoan': 0.1333,  # Weight(UID): 20 => cost = 0.006667 * 20 = 0.13334
-                        'repayLoan': 0.1333,  # Weight(UID): 20 => cost = 0.006667 * 20 = 0.13334
-                        'margin/order/oco': 0.0400,  # Weight(UID): 6 => cost = 0.006667 * 6 = 0.040002
-                        'um/leverage': 1,  # 1
-                        'cm/leverage': 1,  # 1
-                        'um/positionSide/dual': 1,  # 1
-                        'cm/positionSide/dual': 1,  # 1
-                        'auto-collection': 0.6667,  # Weight(UID): 100 => cost = 0.006667 * 100 = 0.6667
-                        'bnb-transfer': 0.6667,  # Weight(UID): 100 => cost = 0.006667 * 100 = 0.6667
-                        'portfolio/repay-futures-switch': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
-                        'portfolio/repay-futures-negative-balance': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
-                        'listenKey': 1,  # 1
-                        'asset-collection': 3,
-                    },
-                    'put': {
-                        'listenKey': 1,  # 1
-                    },
-                    'delete': {
-                        'um/order': 1,  # 1
-                        'um/allOpenOrders': 1,  # 1
-                        'cm/order': 1,  # 1
-                        'cm/allOpenOrders': 1,  # 1
-                        'margin/order': 1,  # Weight(IP): 10 => cost = 0.1 * 10 = 1
-                        'margin/allOpenOrders': 5,  # 5
-                        'margin/orderList': 2,  # 2
-                        'listenKey': 1,  # 1
-                    },
-                },
-            },
-            'fees': {
-                'trading': {
-                    'feeSide': 'get',
-                    'tierBased': False,
-                    'percentage': True,
-                    'taker': self.parse_number('0.001'),
-                    'maker': self.parse_number('0.001'),
-                },
-                'linear': {
-                    'trading': {
-                        'feeSide': 'quote',
-                        'tierBased': True,
-                        'percentage': True,
-                        'taker': self.parse_number('0.000400'),
-                        'maker': self.parse_number('0.000200'),
-                        'tiers': {
-                            'taker': [
-                                [self.parse_number('0'), self.parse_number('0.000400')],
-                                [self.parse_number('250'), self.parse_number('0.000400')],
-                                [self.parse_number('2500'), self.parse_number('0.000350')],
-                                [self.parse_number('7500'), self.parse_number('0.000320')],
-                                [self.parse_number('22500'), self.parse_number('0.000300')],
-                                [self.parse_number('50000'), self.parse_number('0.000270')],
-                                [self.parse_number('100000'), self.parse_number('0.000250')],
-                                [self.parse_number('200000'), self.parse_number('0.000220')],
-                                [self.parse_number('400000'), self.parse_number('0.000200')],
-                                [self.parse_number('750000'), self.parse_number('0.000170')],
-                            ],
-                            'maker': [
-                                [self.parse_number('0'), self.parse_number('0.000200')],
-                                [self.parse_number('250'), self.parse_number('0.000160')],
-                                [self.parse_number('2500'), self.parse_number('0.000140')],
-                                [self.parse_number('7500'), self.parse_number('0.000120')],
-                                [self.parse_number('22500'), self.parse_number('0.000100')],
-                                [self.parse_number('50000'), self.parse_number('0.000080')],
-                                [self.parse_number('100000'), self.parse_number('0.000060')],
-                                [self.parse_number('200000'), self.parse_number('0.000040')],
-                                [self.parse_number('400000'), self.parse_number('0.000020')],
-                                [self.parse_number('750000'), self.parse_number('0')],
-                            ],
+                    'papi': {
+                        'get': {
+                            'um/order': 1,  # 1
+                            'um/openOrder': 1,  # 1
+                            'um/openOrders': 1,  # 1
+                            'um/allOrders': 5,  # 5
+                            'cm/order': 1,  # 1
+                            'cm/openOrder': 1,  # 1
+                            'cm/openOrders': 1,  # 1
+                            'cm/allOrders': 20,  # 20
+                            'balance': 20,  # 20
+                            'account': 20,  # 20
+                            'margin/maxBorrowable': 5,  # 5
+                            'margin/maxWithdraw': 5,  # 5
+                            'um/positionRisk': 5,  # 5
+                            'cm/positionRisk': 1,  # 1
+                            'um/positionSide/dual': 30,  # 30
+                            'cm/positionSide/dual': 30,  # 30
+                            'um/userTrades': 5,  # 5
+                            'cm/userTrades': 20,  # 20
+                            'um/leverageBracket': 1,  # 1
+                            'cm/leverageBracket': 1,  # 1
+                            'margin/forceOrders': 1,  # 1
+                            'um/forceOrders': 20,  # 20
+                            'cm/forceOrders': 20,  # 20
+                            'um/apiTradingStatus': 1,  # 1
+                            'um/commissionRate': 20,  # 20
+                            'cm/commissionRate': 20,  # 20
+                            'um/income': 30,
+                            'cm/income ': 30,
+                            'um/account': 5,
+                            'cm/account': 5,
+                            'portfolio/repay-futures-switch': 3,  # Weight(IP): 30 => cost = 0.1 * 30 = 3
+                            'um/adlQuantile': 5,
+                            'cm/adlQuantile': 5,
+                            'margin/marginLoan': 0.0667,  # Weight(UID): 10 => cost = 0.006667 * 10 = 0.06667
+                            'margin/repayLoan': 0.0667,  # Weight(UID): 10 => cost = 0.006667 * 10 = 0.06667
+                            'margin/marginInterestHistory': 0.1,  # Weight(IP): 1 => cost = 0.1 * 1 = 0.1
+                            'portfolio/interest-history': 50,  # 50
+                        },
+                        'post': {
+                            'um/order': 1,  # 0
+                            'cm/order': 1,  # 0
+                            'margin/order': 0.0133,  # Weight(UID): 2 => cost = 0.006667 * 2 = 0.013334
+                            'marginLoan': 0.1333,  # Weight(UID): 20 => cost = 0.006667 * 20 = 0.13334
+                            'repayLoan': 0.1333,  # Weight(UID): 20 => cost = 0.006667 * 20 = 0.13334
+                            'margin/order/oco': 0.0400,  # Weight(UID): 6 => cost = 0.006667 * 6 = 0.040002
+                            'um/leverage': 1,  # 1
+                            'cm/leverage': 1,  # 1
+                            'um/positionSide/dual': 1,  # 1
+                            'cm/positionSide/dual': 1,  # 1
+                            'auto-collection': 0.6667,  # Weight(UID): 100 => cost = 0.006667 * 100 = 0.6667
+                            'bnb-transfer': 0.6667,  # Weight(UID): 100 => cost = 0.006667 * 100 = 0.6667
+                            'portfolio/repay-futures-switch': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
+                            'portfolio/repay-futures-negative-balance': 150,  # Weight(IP): 1500 => cost = 0.1 * 1500 = 150
+                            'listenKey': 1,  # 1
+                            'asset-collection': 3,
+                        },
+                        'put': {
+                            'listenKey': 1,  # 1
+                        },
+                        'delete': {
+                            'um/order': 1,  # 1
+                            'um/allOpenOrders': 1,  # 1
+                            'cm/order': 1,  # 1
+                            'cm/allOpenOrders': 1,  # 1
+                            'margin/order': 1,  # Weight(IP): 10 => cost = 0.1 * 10 = 1
+                            'margin/allOpenOrders': 5,  # 5
+                            'margin/orderList': 2,  # 2
+                            'listenKey': 1,  # 1
                         },
                     },
                 },
-                'inverse': {
+                'fees': {
                     'trading': {
-                        'feeSide': 'base',
-                        'tierBased': True,
+                        'feeSide': 'get',
+                        'tierBased': False,
                         'percentage': True,
-                        'taker': self.parse_number('0.000500'),
-                        'maker': self.parse_number('0.000100'),
-                        'tiers': {
-                            'taker': [
-                                [self.parse_number('0'), self.parse_number('0.000500')],
-                                [self.parse_number('250'), self.parse_number('0.000450')],
-                                [self.parse_number('2500'), self.parse_number('0.000400')],
-                                [self.parse_number('7500'), self.parse_number('0.000300')],
-                                [self.parse_number('22500'), self.parse_number('0.000250')],
-                                [self.parse_number('50000'), self.parse_number('0.000240')],
-                                [self.parse_number('100000'), self.parse_number('0.000240')],
-                                [self.parse_number('200000'), self.parse_number('0.000240')],
-                                [self.parse_number('400000'), self.parse_number('0.000240')],
-                                [self.parse_number('750000'), self.parse_number('0.000240')],
-                            ],
-                            'maker': [
-                                [self.parse_number('0'), self.parse_number('0.000100')],
-                                [self.parse_number('250'), self.parse_number('0.000080')],
-                                [self.parse_number('2500'), self.parse_number('0.000050')],
-                                [self.parse_number('7500'), self.parse_number('0.0000030')],
-                                [self.parse_number('22500'), self.parse_number('0')],
-                                [self.parse_number('50000'), self.parse_number('-0.000050')],
-                                [self.parse_number('100000'), self.parse_number('-0.000060')],
-                                [self.parse_number('200000'), self.parse_number('-0.000070')],
-                                [self.parse_number('400000'), self.parse_number('-0.000080')],
-                                [self.parse_number('750000'), self.parse_number('-0.000090')],
-                            ],
+                        'taker': self.parse_number('0.001'),
+                        'maker': self.parse_number('0.001'),
+                    },
+                    'linear': {
+                        'trading': {
+                            'feeSide': 'quote',
+                            'tierBased': True,
+                            'percentage': True,
+                            'taker': self.parse_number('0.000400'),
+                            'maker': self.parse_number('0.000200'),
+                            'tiers': {
+                                'taker': [
+                                    [self.parse_number('0'), self.parse_number('0.000400')],
+                                    [self.parse_number('250'), self.parse_number('0.000400')],
+                                    [self.parse_number('2500'), self.parse_number('0.000350')],
+                                    [self.parse_number('7500'), self.parse_number('0.000320')],
+                                    [self.parse_number('22500'), self.parse_number('0.000300')],
+                                    [self.parse_number('50000'), self.parse_number('0.000270')],
+                                    [self.parse_number('100000'), self.parse_number('0.000250')],
+                                    [self.parse_number('200000'), self.parse_number('0.000220')],
+                                    [self.parse_number('400000'), self.parse_number('0.000200')],
+                                    [self.parse_number('750000'), self.parse_number('0.000170')],
+                                ],
+                                'maker': [
+                                    [self.parse_number('0'), self.parse_number('0.000200')],
+                                    [self.parse_number('250'), self.parse_number('0.000160')],
+                                    [self.parse_number('2500'), self.parse_number('0.000140')],
+                                    [self.parse_number('7500'), self.parse_number('0.000120')],
+                                    [self.parse_number('22500'), self.parse_number('0.000100')],
+                                    [self.parse_number('50000'), self.parse_number('0.000080')],
+                                    [self.parse_number('100000'), self.parse_number('0.000060')],
+                                    [self.parse_number('200000'), self.parse_number('0.000040')],
+                                    [self.parse_number('400000'), self.parse_number('0.000020')],
+                                    [self.parse_number('750000'), self.parse_number('0')],
+                                ],
+                            },
                         },
                     },
+                    'inverse': {
+                        'trading': {
+                            'feeSide': 'base',
+                            'tierBased': True,
+                            'percentage': True,
+                            'taker': self.parse_number('0.000500'),
+                            'maker': self.parse_number('0.000100'),
+                            'tiers': {
+                                'taker': [
+                                    [self.parse_number('0'), self.parse_number('0.000500')],
+                                    [self.parse_number('250'), self.parse_number('0.000450')],
+                                    [self.parse_number('2500'), self.parse_number('0.000400')],
+                                    [self.parse_number('7500'), self.parse_number('0.000300')],
+                                    [self.parse_number('22500'), self.parse_number('0.000250')],
+                                    [self.parse_number('50000'), self.parse_number('0.000240')],
+                                    [self.parse_number('100000'), self.parse_number('0.000240')],
+                                    [self.parse_number('200000'), self.parse_number('0.000240')],
+                                    [self.parse_number('400000'), self.parse_number('0.000240')],
+                                    [self.parse_number('750000'), self.parse_number('0.000240')],
+                                ],
+                                'maker': [
+                                    [self.parse_number('0'), self.parse_number('0.000100')],
+                                    [self.parse_number('250'), self.parse_number('0.000080')],
+                                    [self.parse_number('2500'), self.parse_number('0.000050')],
+                                    [self.parse_number('7500'), self.parse_number('0.0000030')],
+                                    [self.parse_number('22500'), self.parse_number('0')],
+                                    [self.parse_number('50000'), self.parse_number('-0.000050')],
+                                    [self.parse_number('100000'), self.parse_number('-0.000060')],
+                                    [self.parse_number('200000'), self.parse_number('-0.000070')],
+                                    [self.parse_number('400000'), self.parse_number('-0.000080')],
+                                    [self.parse_number('750000'), self.parse_number('-0.000090')],
+                                ],
+                            },
+                        },
+                    },
+                    'option': {},
                 },
-                'option': {},
+                'commonCurrencies': {
+                    'BCC': 'BCC',  # kept for backward-compatibility https://github.com/ccxt/ccxt/issues/4848
+                    'YOYO': 'YOYOW',
+                },
+                'precisionMode': DECIMAL_PLACES,
+                # exchange-specific options
+                'options': {
+                    'sandboxMode': False,
+                    'fetchMarkets': [
+                        'spot',  # allows CORS in browsers
+                        'linear',  # allows CORS in browsers
+                        'inverse',  # allows CORS in browsers
+                        # 'option',  # does not allow CORS, enable outside of the browser only
+                    ],
+                    'fetchCurrencies': True,  # self is a private call and it requires API keys
+                    # 'fetchTradesMethod': 'publicGetAggTrades',  # publicGetTrades, publicGetHistoricalTrades, eapiPublicGetTrades
+                    'defaultTimeInForce': 'GTC',  # 'GTC' = Good To Cancel(default), 'IOC' = Immediate Or Cancel
+                    'defaultType': 'spot',  # 'spot', 'future', 'margin', 'delivery', 'option'
+                    'defaultSubType': None,  # 'linear', 'inverse'
+                    'hasAlreadyAuthenticatedSuccessfully': False,
+                    'warnOnFetchOpenOrdersWithoutSymbol': True,
+                    # not an error
+                    # https://github.com/ccxt/ccxt/issues/11268
+                    # https://github.com/ccxt/ccxt/pull/11624
+                    # POST https://fapi.binance.com/fapi/v1/marginType 400 Bad Request
+                    # binanceusdm
+                    'throwMarginModeAlreadySet': False,
+                    'fetchPositions': 'positionRisk',  # or 'account' or 'option'
+                    'recvWindow': 10 * 1000,  # 10 sec
+                    'timeDifference': 0,  # the difference between system clock and Binance clock
+                    'adjustForTimeDifference': False,  # controls the adjustment logic upon instantiation
+                    'newOrderRespType': {
+                        'market': 'FULL',  # 'ACK' for order id, 'RESULT' for full order or 'FULL' for order with fills
+                        'limit': 'FULL',  # we change it from 'ACK' by default to 'FULL'(returns immediately if limit is not hit)
+                    },
+                    'quoteOrderQty': True,  # whether market orders support amounts in quote currency
+                    'broker': {
+                        'spot': 'x-AuresCap',
+                        'margin': 'x-AuresCap',
+                        'future': 'x-AuresCap',
+                        'delivery': 'x-AuresCap',
+                        'swap': 'x-AuresCap',
+                        'option': 'x-AuresCap',
+                    },
+                    'accountsByType': {
+                        'main': 'MAIN',
+                        'spot': 'MAIN',
+                        'funding': 'FUNDING',
+                        'margin': 'MARGIN',
+                        'cross': 'MARGIN',
+                        'future': 'UMFUTURE',  # backwards compatibility
+                        'delivery': 'CMFUTURE',  # backwards compatbility
+                        'linear': 'UMFUTURE',
+                        'inverse': 'CMFUTURE',
+                        'option': 'OPTION',
+                    },
+                    'accountsById': {
+                        'MAIN': 'spot',
+                        'FUNDING': 'funding',
+                        'MARGIN': 'margin',
+                        'UMFUTURE': 'linear',
+                        'CMFUTURE': 'inverse',
+                        'OPTION': 'option',
+                    },
+                    'networks': {
+                        'ERC20': 'ETH',
+                        'TRC20': 'TRX',
+                        'BEP2': 'BNB',
+                        'BEP20': 'BSC',
+                        'OMNI': 'OMNI',
+                        'EOS': 'EOS',
+                        'SPL': 'SOL',
+                    },
+                    # keeping self object for backward-compatibility
+                    'reverseNetworks': {
+                        'tronscan.org': 'TRC20',
+                        'etherscan.io': 'ERC20',
+                        'bscscan.com': 'BSC',
+                        'explorer.binance.org': 'BEP2',
+                        'bithomp.com': 'XRP',
+                        'bloks.io': 'EOS',
+                        'stellar.expert': 'XLM',
+                        'blockchair.com/bitcoin': 'BTC',
+                        'blockchair.com/bitcoin-cash': 'BCH',
+                        'blockchair.com/ecash': 'XEC',
+                        'explorer.litecoin.net': 'LTC',
+                        'explorer.avax.network': 'AVAX',
+                        'solscan.io': 'SOL',
+                        'polkadot.subscan.io': 'DOT',
+                        'dashboard.internetcomputer.org': 'ICP',
+                        'explorer.chiliz.com': 'CHZ',
+                        'cardanoscan.io': 'ADA',
+                        'mainnet.theoan.com': 'AION',
+                        'algoexplorer.io': 'ALGO',
+                        'explorer.ambrosus.com': 'AMB',
+                        'viewblock.io/zilliqa': 'ZIL',
+                        'viewblock.io/arweave': 'AR',
+                        'explorer.ark.io': 'ARK',
+                        'atomscan.com': 'ATOM',
+                        'www.mintscan.io': 'CTK',
+                        'explorer.bitcoindiamond.org': 'BCD',
+                        'btgexplorer.com': 'BTG',
+                        'bts.ai': 'BTS',
+                        'explorer.celo.org': 'CELO',
+                        'explorer.nervos.org': 'CKB',
+                        'cerebro.cortexlabs.ai': 'CTXC',
+                        'chainz.cryptoid.info': 'VIA',
+                        'explorer.dcrdata.org': 'DCR',
+                        'digiexplorer.info': 'DGB',
+                        'dock.subscan.io': 'DOCK',
+                        'dogechain.info': 'DOGE',
+                        'explorer.elrond.com': 'EGLD',
+                        'blockscout.com': 'ETC',
+                        'explore-fetchhub.fetch.ai': 'FET',
+                        'filfox.info': 'FIL',
+                        'fio.bloks.io': 'FIO',
+                        'explorer.firo.org': 'FIRO',
+                        'neoscan.io': 'NEO',
+                        'ftmscan.com': 'FTM',
+                        'explorer.gochain.io': 'GO',
+                        'block.gxb.io': 'GXS',
+                        'hash-hash.info': 'HBAR',
+                        'www.hiveblockexplorer.com': 'HIVE',
+                        'explorer.helium.com': 'HNT',
+                        'tracker.icon.foundation': 'ICX',
+                        'www.iostabc.com': 'IOST',
+                        'explorer.iota.org': 'IOTA',
+                        'iotexscan.io': 'IOTX',
+                        'irishub.iobscan.io': 'IRIS',
+                        'kava.mintscan.io': 'KAVA',
+                        'scope.klaytn.com': 'KLAY',
+                        'kmdexplorer.io': 'KMD',
+                        'kusama.subscan.io': 'KSM',
+                        'explorer.lto.network': 'LTO',
+                        'polygonscan.com': 'POLYGON',
+                        'explorer.ont.io': 'ONT',
+                        'minaexplorer.com': 'MINA',
+                        'nanolooker.com': 'NANO',
+                        'explorer.nebulas.io': 'NAS',
+                        'explorer.nbs.plus': 'NBS',
+                        'explorer.nebl.io': 'NEBL',
+                        'nulscan.io': 'NULS',
+                        'nxscan.com': 'NXS',
+                        'explorer.harmony.one': 'ONE',
+                        'explorer.poa.network': 'POA',
+                        'qtum.info': 'QTUM',
+                        'explorer.rsk.co': 'RSK',
+                        'www.oasisscan.com': 'ROSE',
+                        'ravencoin.network': 'RVN',
+                        'sc.tokenview.com': 'SC',
+                        'secretnodes.com': 'SCRT',
+                        'explorer.skycoin.com': 'SKY',
+                        'steemscan.com': 'STEEM',
+                        'explorer.stacks.co': 'STX',
+                        'www.thetascan.io': 'THETA',
+                        'scan.tomochain.com': 'TOMO',
+                        'explore.vechain.org': 'VET',
+                        'explorer.vite.net': 'VITE',
+                        'www.wanscan.org': 'WAN',
+                        'wavesexplorer.com': 'WAVES',
+                        'wax.eosx.io': 'WAXP',
+                        'waltonchain.pro': 'WTC',
+                        'chain.nem.ninja': 'XEM',
+                        'verge-blockchain.info': 'XVG',
+                        'explorer.yoyow.org': 'YOYOW',
+                        'explorer.zcha.in': 'ZEC',
+                        'explorer.zensystem.io': 'ZEN',
+                    },
+                    'networksById': {
+                        'tronscan.org': 'TRC20',
+                        'etherscan.io': 'ERC20',
+                        'bscscan.com': 'BSC',
+                        'explorer.binance.org': 'BEP2',
+                        'bithomp.com': 'XRP',
+                        'bloks.io': 'EOS',
+                        'stellar.expert': 'XLM',
+                        'blockchair.com/bitcoin': 'BTC',
+                        'blockchair.com/bitcoin-cash': 'BCH',
+                        'blockchair.com/ecash': 'XEC',
+                        'explorer.litecoin.net': 'LTC',
+                        'explorer.avax.network': 'AVAX',
+                        'solscan.io': 'SOL',
+                        'polkadot.subscan.io': 'DOT',
+                        'dashboard.internetcomputer.org': 'ICP',
+                        'explorer.chiliz.com': 'CHZ',
+                        'cardanoscan.io': 'ADA',
+                        'mainnet.theoan.com': 'AION',
+                        'algoexplorer.io': 'ALGO',
+                        'explorer.ambrosus.com': 'AMB',
+                        'viewblock.io/zilliqa': 'ZIL',
+                        'viewblock.io/arweave': 'AR',
+                        'explorer.ark.io': 'ARK',
+                        'atomscan.com': 'ATOM',
+                        'www.mintscan.io': 'CTK',
+                        'explorer.bitcoindiamond.org': 'BCD',
+                        'btgexplorer.com': 'BTG',
+                        'bts.ai': 'BTS',
+                        'explorer.celo.org': 'CELO',
+                        'explorer.nervos.org': 'CKB',
+                        'cerebro.cortexlabs.ai': 'CTXC',
+                        'chainz.cryptoid.info': 'VIA',
+                        'explorer.dcrdata.org': 'DCR',
+                        'digiexplorer.info': 'DGB',
+                        'dock.subscan.io': 'DOCK',
+                        'dogechain.info': 'DOGE',
+                        'explorer.elrond.com': 'EGLD',
+                        'blockscout.com': 'ETC',
+                        'explore-fetchhub.fetch.ai': 'FET',
+                        'filfox.info': 'FIL',
+                        'fio.bloks.io': 'FIO',
+                        'explorer.firo.org': 'FIRO',
+                        'neoscan.io': 'NEO',
+                        'ftmscan.com': 'FTM',
+                        'explorer.gochain.io': 'GO',
+                        'block.gxb.io': 'GXS',
+                        'hash-hash.info': 'HBAR',
+                        'www.hiveblockexplorer.com': 'HIVE',
+                        'explorer.helium.com': 'HNT',
+                        'tracker.icon.foundation': 'ICX',
+                        'www.iostabc.com': 'IOST',
+                        'explorer.iota.org': 'IOTA',
+                        'iotexscan.io': 'IOTX',
+                        'irishub.iobscan.io': 'IRIS',
+                        'kava.mintscan.io': 'KAVA',
+                        'scope.klaytn.com': 'KLAY',
+                        'kmdexplorer.io': 'KMD',
+                        'kusama.subscan.io': 'KSM',
+                        'explorer.lto.network': 'LTO',
+                        'polygonscan.com': 'POLYGON',
+                        'explorer.ont.io': 'ONT',
+                        'minaexplorer.com': 'MINA',
+                        'nanolooker.com': 'NANO',
+                        'explorer.nebulas.io': 'NAS',
+                        'explorer.nbs.plus': 'NBS',
+                        'explorer.nebl.io': 'NEBL',
+                        'nulscan.io': 'NULS',
+                        'nxscan.com': 'NXS',
+                        'explorer.harmony.one': 'ONE',
+                        'explorer.poa.network': 'POA',
+                        'qtum.info': 'QTUM',
+                        'explorer.rsk.co': 'RSK',
+                        'www.oasisscan.com': 'ROSE',
+                        'ravencoin.network': 'RVN',
+                        'sc.tokenview.com': 'SC',
+                        'secretnodes.com': 'SCRT',
+                        'explorer.skycoin.com': 'SKY',
+                        'steemscan.com': 'STEEM',
+                        'explorer.stacks.co': 'STX',
+                        'www.thetascan.io': 'THETA',
+                        'scan.tomochain.com': 'TOMO',
+                        'explore.vechain.org': 'VET',
+                        'explorer.vite.net': 'VITE',
+                        'www.wanscan.org': 'WAN',
+                        'wavesexplorer.com': 'WAVES',
+                        'wax.eosx.io': 'WAXP',
+                        'waltonchain.pro': 'WTC',
+                        'chain.nem.ninja': 'XEM',
+                        'verge-blockchain.info': 'XVG',
+                        'explorer.yoyow.org': 'YOYOW',
+                        'explorer.zcha.in': 'ZEC',
+                        'explorer.zensystem.io': 'ZEN',
+                    },
+                    'impliedNetworks': {
+                        'ETH': {'ERC20': 'ETH'},
+                        'TRX': {'TRC20': 'TRX'},
+                    },
+                    'legalMoney': {
+                        'MXN': True,
+                        'UGX': True,
+                        'SEK': True,
+                        'CHF': True,
+                        'VND': True,
+                        'AED': True,
+                        'DKK': True,
+                        'KZT': True,
+                        'HUF': True,
+                        'PEN': True,
+                        'PHP': True,
+                        'USD': True,
+                        'TRY': True,
+                        'EUR': True,
+                        'NGN': True,
+                        'PLN': True,
+                        'BRL': True,
+                        'ZAR': True,
+                        'KES': True,
+                        'ARS': True,
+                        'RUB': True,
+                        'AUD': True,
+                        'NOK': True,
+                        'CZK': True,
+                        'GBP': True,
+                        'UAH': True,
+                        'GHS': True,
+                        'HKD': True,
+                        'CAD': True,
+                        'INR': True,
+                        'JPY': True,
+                        'NZD': True,
+                    },
+                    'legalMoneyCurrenciesById': {
+                        'BUSD': 'USD',
+                    },
+                },
+                # https://binance-docs.github.io/apidocs/spot/en/#error-codes-2
+                'exceptions': {
+                    'exact': {
+                        'System is under maintenance.': OnMaintenance,  # {"code":1,"msg":"System is under maintenance."}
+                        'System abnormality': ExchangeError,  # {"code":-1000,"msg":"System abnormality"}
+                        'You are not authorized to execute self request.': PermissionDenied,  # {"msg":"You are not authorized to execute self request."}
+                        'API key does not exist': AuthenticationError,
+                        'Order would trigger immediately.': OrderImmediatelyFillable,
+                        'Stop price would trigger immediately.': OrderImmediatelyFillable,  # {"code":-2010,"msg":"Stop price would trigger immediately."}
+                        'Order would immediately match and take.': OrderImmediatelyFillable,  # {"code":-2010,"msg":"Order would immediately match and take."}
+                        'Account has insufficient balance for requested action.': InsufficientFunds,
+                        'Rest API trading is not enabled.': ExchangeNotAvailable,
+                        'This account may not place or cancel orders.': ExchangeNotAvailable,
+                        "You don't have permission.": PermissionDenied,  # {"msg":"You don't have permission.","success":false}
+                        'Market is closed.': ExchangeNotAvailable,  # {"code":-1013,"msg":"Market is closed."}
+                        'Too many requests. Please try again later.': DDoSProtection,  # {"msg":"Too many requests. Please try again later.","success":false}
+                        'This action is disabled on self account.': AccountSuspended,  # {"code":-2011,"msg":"This action is disabled on self account."}
+                        'Limit orders require GTC for self phase.': BadRequest,
+                        'This order type is not hasattr(self, possible) trading phase.': BadRequest,
+                        'This type of sub-account exceeds the maximum number limit': BadRequest,  # {"code":-9000,"msg":"This type of sub-account exceeds the maximum number limit"}
+                        'This symbol is restricted for self account.': PermissionDenied,
+                        'This symbol is not permitted for self account.': PermissionDenied,  # {"code":-2010,"msg":"This symbol is not permitted for self account."}
+                        '-1000': ExchangeNotAvailable,  # {"code":-1000,"msg":"An unknown error occured while processing the request."}
+                        '-1001': ExchangeNotAvailable,  # {"code":-1001,"msg":"'Internal error; unable to process your request. Please try again.'"}
+                        '-1002': AuthenticationError,  # {"code":-1002,"msg":"'You are not authorized to execute self request.'"}
+                        '-1003': RateLimitExceeded,  # {"code":-1003,"msg":"Too much request weight used, current limit is 1200 request weight per 1 MINUTE. Please use the websocket for live updates to avoid polling the API."}
+                        '-1004': DDoSProtection,  # {"code":-1004,"msg":"Server is busy, please wait and try again"}
+                        '-1005': PermissionDenied,  # {"code":-1005,"msg":"No such IP has been white listed"}
+                        '-1006': BadResponse,  # {"code":-1006,"msg":"An unexpected response was received from the message bus. Execution status unknown."}
+                        '-1007': RequestTimeout,  # {"code":-1007,"msg":"Timeout waiting for response from backend server. Send status unknown; execution status unknown."}
+                        '-1010': BadResponse,  # {"code":-1010,"msg":"ERROR_MSG_RECEIVED."}
+                        '-1011': PermissionDenied,  # {"code":-1011,"msg":"This IP cannot access self route."}
+                        '-1013': InvalidOrder,  # {"code":-1013,"msg":"createOrder -> 'invalid quantity'/'invalid price'/MIN_NOTIONAL"}
+                        '-1014': InvalidOrder,  # {"code":-1014,"msg":"Unsupported order combination."}
+                        '-1015': RateLimitExceeded,  # {"code":-1015,"msg":"'Too many new orders; current limit is %s orders per %s.'"}
+                        '-1016': ExchangeNotAvailable,  # {"code":-1016,"msg":"'This service is no longer available.',"}
+                        '-1020': BadRequest,  # {"code":-1020,"msg":"'This operation is not supported.'"}
+                        '-1021': InvalidNonce,  # {"code":-1021,"msg":"'your time is ahead of server'"}
+                        '-1022': AuthenticationError,  # {"code":-1022,"msg":"Signature for self request is not valid."}
+                        '-1023': BadRequest,  # {"code":-1023,"msg":"Start time is greater than end time."}
+                        '-1099': AuthenticationError,  # {"code":-1099,"msg":"Not found, authenticated, or authorized"}
+                        '-1100': BadRequest,  # {"code":-1100,"msg":"createOrder(symbol, 1, asdf) -> 'Illegal characters found in parameter 'price'"}
+                        '-1101': BadRequest,  # {"code":-1101,"msg":"Too many parameters; expected %s and received %s."}
+                        '-1102': BadRequest,  # {"code":-1102,"msg":"Param %s or %s must be sent, but both were empty"}
+                        '-1103': BadRequest,  # {"code":-1103,"msg":"An unknown parameter was sent."}
+                        '-1104': BadRequest,  # {"code":-1104,"msg":"Not all sent parameters were read, read 8 parameters but was sent 9"}
+                        '-1105': BadRequest,  # {"code":-1105,"msg":"Parameter %s was empty."}
+                        '-1106': BadRequest,  # {"code":-1106,"msg":"Parameter %s sent when not required."}
+                        '-1108': BadRequest,  # {"code":-1108,"msg":"Invalid asset."}
+                        '-1109': AuthenticationError,  # {"code":-1109,"msg":"Invalid account."}
+                        '-1110': BadRequest,  # {"code":-1110,"msg":"Invalid symbolType."}
+                        '-1111': BadRequest,  # {"code":-1111,"msg":"Precision is over the maximum defined for self asset."}
+                        '-1112': InvalidOrder,  # {"code":-1112,"msg":"No orders on book for symbol."}
+                        '-1113': BadRequest,  # {"code":-1113,"msg":"Withdrawal amount must be negative."}
+                        '-1114': BadRequest,  # {"code":-1114,"msg":"TimeInForce parameter sent when not required."}
+                        '-1115': BadRequest,  # {"code":-1115,"msg":"Invalid timeInForce."}
+                        '-1116': BadRequest,  # {"code":-1116,"msg":"Invalid orderType."}
+                        '-1117': BadRequest,  # {"code":-1117,"msg":"Invalid side."}
+                        '-1118': BadRequest,  # {"code":-1118,"msg":"New client order ID was empty."}
+                        '-1119': BadRequest,  # {"code":-1119,"msg":"Original client order ID was empty."}
+                        '-1120': BadRequest,  # {"code":-1120,"msg":"Invalid interval."}
+                        '-1121': BadSymbol,  # {"code":-1121,"msg":"Invalid symbol."}
+                        '-1125': AuthenticationError,  # {"code":-1125,"msg":"This listenKey does not exist."}
+                        '-1127': BadRequest,  # {"code":-1127,"msg":"More than %s hours between startTime and endTime."}
+                        '-1128': BadRequest,  # {"code":-1128,"msg":"{"code":-1128,"msg":"Combination of optional parameters invalid."}"}
+                        '-1130': BadRequest,  # {"code":-1130,"msg":"Data sent for paramter %s is not valid."}
+                        '-1131': BadRequest,  # {"code":-1131,"msg":"recvWindow must be less than 60000"}
+                        '-1135': BadRequest,  # This error code will occur if a parameter requiring a JSON object is invalid.
+                        '-1136': BadRequest,  # {"code":-1136,"msg":"Invalid newOrderRespType"}
+                        '-2008': AuthenticationError,  # {"code":-2008,"msg":"Invalid Api-Key ID."}
+                        '-2010': ExchangeError,  # {"code":-2010,"msg":"generic error code for createOrder -> 'Account has insufficient balance for requested action.', {"code":-2010,"msg":"Rest API trading is not enabled."}, etc..."}
+                        '-2011': OrderNotFound,  # {"code":-2011,"msg":"cancelOrder(1, 'BTC/USDT') -> 'UNKNOWN_ORDER'"}
+                        '-2013': OrderNotFound,  # {"code":-2013,"msg":"fetchOrder(1, 'BTC/USDT') -> 'Order does not exist'"}
+                        '-2014': AuthenticationError,  # {"code":-2014,"msg":"API-key format invalid."}
+                        '-2015': AuthenticationError,  # {"code":-2015,"msg":"Invalid API-key, IP, or permissions for action."}
+                        '-2016': BadRequest,  # {"code":-2016,"msg":"No trading window could be found for the symbol. Try ticker/24hrs instead."}
+                        '-2018': InsufficientFunds,  # {"code":-2018,"msg":"Balance is insufficient"}
+                        '-2019': InsufficientFunds,  # {"code":-2019,"msg":"Margin is insufficient."}
+                        '-2020': OrderNotFillable,  # {"code":-2020,"msg":"Unable to fill."}
+                        '-2021': OrderImmediatelyFillable,  # {"code":-2021,"msg":"Order would immediately trigger."}
+                        '-2022': InvalidOrder,  # {"code":-2022,"msg":"ReduceOnly Order is rejected."}
+                        '-2023': InsufficientFunds,  # {"code":-2023,"msg":"User in liquidation mode now."}
+                        '-2024': InsufficientFunds,  # {"code":-2024,"msg":"Position is not sufficient."}
+                        '-2025': InvalidOrder,  # {"code":-2025,"msg":"Reach max open order limit."}
+                        '-2026': InvalidOrder,  # {"code":-2026,"msg":"This OrderType is not supported when reduceOnly."}
+                        '-2027': InvalidOrder,  # {"code":-2027,"msg":"Exceeded the maximum allowable position at current leverage."}
+                        '-2028': InsufficientFunds,  # {"code":-2028,"msg":"Leverage is smaller than permitted: insufficient margin balance"}
+                        '-3000': ExchangeError,  # {"code":-3000,"msg":"Internal server error."}
+                        '-3001': AuthenticationError,  # {"code":-3001,"msg":"Please enable 2FA first."}
+                        '-3002': BadSymbol,  # {"code":-3002,"msg":"We don't have self asset."}
+                        '-3003': BadRequest,  # {"code":-3003,"msg":"Margin account does not exist."}
+                        '-3004': ExchangeError,  # {"code":-3004,"msg":"Trade not allowed."}
+                        '-3005': InsufficientFunds,  # {"code":-3005,"msg":"Transferring out not allowed. Transfer out amount exceeds max amount."}
+                        '-3006': InsufficientFunds,  # {"code":-3006,"msg":"Your borrow amount has exceed maximum borrow amount."}
+                        '-3007': ExchangeError,  # {"code":-3007,"msg":"You have pending transaction, please try again later.."}
+                        '-3008': InsufficientFunds,  # {"code":-3008,"msg":"Borrow not allowed. Your borrow amount has exceed maximum borrow amount."}
+                        '-3009': BadRequest,  # {"code":-3009,"msg":"This asset are not allowed to transfer into margin account currently."}
+                        '-3010': BadRequest,  # {"code":-3010,"msg":"Repay not allowed. Repay amount exceeds borrow amount."}
+                        '-3011': BadRequest,  # {"code":-3011,"msg":"Your input date is invalid."}
+                        '-3012': InsufficientFunds,  # {"code":-3012,"msg":"Borrow is banned for self asset."}
+                        '-3013': BadRequest,  # {"code":-3013,"msg":"Borrow amount less than minimum borrow amount."}
+                        '-3014': AccountSuspended,  # {"code":-3014,"msg":"Borrow is banned for self account."}
+                        '-3015': BadRequest,  # {"code":-3015,"msg":"Repay amount exceeds borrow amount."}
+                        '-3016': BadRequest,  # {"code":-3016,"msg":"Repay amount less than minimum repay amount."}
+                        '-3017': ExchangeError,  # {"code":-3017,"msg":"This asset are not allowed to transfer into margin account currently."}
+                        '-3018': AccountSuspended,  # {"code":-3018,"msg":"Transferring in has been banned for self account."}
+                        '-3019': AccountSuspended,  # {"code":-3019,"msg":"Transferring out has been banned for self account."}
+                        '-3020': InsufficientFunds,  # {"code":-3020,"msg":"Transfer out amount exceeds max amount."}
+                        '-3021': BadRequest,  # {"code":-3021,"msg":"Margin account are not allowed to trade self trading pair."}
+                        '-3022': AccountSuspended,  # {"code":-3022,"msg":"You account's trading is banned."}
+                        '-3023': BadRequest,  # {"code":-3023,"msg":"You can't transfer out/place order under current margin level."}
+                        '-3024': ExchangeError,  # {"code":-3024,"msg":"The unpaid debt is too small after self repayment."}
+                        '-3025': BadRequest,  # {"code":-3025,"msg":"Your input date is invalid."}
+                        '-3026': BadRequest,  # {"code":-3026,"msg":"Your input param is invalid."}
+                        '-3027': BadSymbol,  # {"code":-3027,"msg":"Not a valid margin asset."}
+                        '-3028': BadSymbol,  # {"code":-3028,"msg":"Not a valid margin pair."}
+                        '-3029': ExchangeError,  # {"code":-3029,"msg":"Transfer failed."}
+                        '-3036': AccountSuspended,  # {"code":-3036,"msg":"This account is not allowed to repay."}
+                        '-3037': ExchangeError,  # {"code":-3037,"msg":"PNL is clearing. Wait a second."}
+                        '-3038': BadRequest,  # {"code":-3038,"msg":"Listen key not found."}
+                        '-3041': InsufficientFunds,  # {"code":-3041,"msg":"Balance is not enough"}
+                        '-3042': BadRequest,  # {"code":-3042,"msg":"PriceIndex not available for self margin pair."}
+                        '-3043': BadRequest,  # {"code":-3043,"msg":"Transferring in not allowed."}
+                        '-3044': DDoSProtection,  # {"code":-3044,"msg":"System busy."}
+                        '-3045': ExchangeError,  # {"code":-3045,"msg":"The system doesn't have enough asset now."}
+                        '-3999': ExchangeError,  # {"code":-3999,"msg":"This function is only available for invited users."}
+                        '-4001': BadRequest,  # {"code":-4001 ,"msg":"Invalid operation."}
+                        '-4002': BadRequest,  # {"code":-4002 ,"msg":"Invalid get."}
+                        '-4003': BadRequest,  # {"code":-4003 ,"msg":"Your input email is invalid."}
+                        '-4004': AuthenticationError,  # {"code":-4004,"msg":"You don't login or auth."}
+                        '-4005': RateLimitExceeded,  # {"code":-4005 ,"msg":"Too many new requests."}
+                        '-4006': BadRequest,  # {"code":-4006 ,"msg":"Support main account only."}
+                        '-4007': BadRequest,  # {"code":-4007 ,"msg":"Address validation is not passed."}
+                        '-4008': BadRequest,  # {"code":-4008 ,"msg":"Address tag validation is not passed."}
+                        '-4010': BadRequest,  # {"code":-4010 ,"msg":"White list mail has been confirmed."}  # [TODO] possible bug: it should probably be "has not been confirmed"
+                        '-4011': BadRequest,  # {"code":-4011 ,"msg":"White list mail is invalid."}
+                        '-4012': BadRequest,  # {"code":-4012 ,"msg":"White list is not opened."}
+                        '-4013': AuthenticationError,  # {"code":-4013 ,"msg":"2FA is not opened."}
+                        '-4014': PermissionDenied,  # {"code":-4014 ,"msg":"Withdraw is not allowed within 2 min login."}
+                        '-4015': ExchangeError,  # {"code":-4015 ,"msg":"Withdraw is limited."}
+                        '-4016': PermissionDenied,  # {"code":-4016 ,"msg":"Within 24 hours after password modification, withdrawal is prohibited."}
+                        '-4017': PermissionDenied,  # {"code":-4017 ,"msg":"Within 24 hours after the release of 2FA, withdrawal is prohibited."}
+                        '-4018': BadSymbol,  # {"code":-4018,"msg":"We don't have self asset."}
+                        '-4019': BadSymbol,  # {"code":-4019,"msg":"Current asset is not open for withdrawal."}
+                        '-4021': BadRequest,  # {"code":-4021,"msg":"Asset withdrawal must be an %s multiple of %s."}
+                        '-4022': BadRequest,  # {"code":-4022,"msg":"Not less than the minimum pick-up quantity %s."}
+                        '-4023': ExchangeError,  # {"code":-4023,"msg":"Within 24 hours, the withdrawal exceeds the maximum amount."}
+                        '-4024': InsufficientFunds,  # {"code":-4024,"msg":"You don't have self asset."}
+                        '-4025': InsufficientFunds,  # {"code":-4025,"msg":"The number of hold asset is less than zero."}
+                        '-4026': InsufficientFunds,  # {"code":-4026,"msg":"You have insufficient balance."}
+                        '-4027': ExchangeError,  # {"code":-4027,"msg":"Failed to obtain tranId."}
+                        '-4028': BadRequest,  # {"code":-4028,"msg":"The amount of withdrawal must be greater than the Commission."}
+                        '-4029': BadRequest,  # {"code":-4029,"msg":"The withdrawal record does not exist."}
+                        '-4030': ExchangeError,  # {"code":-4030,"msg":"Confirmation of successful asset withdrawal. [TODO] possible bug in docs"}
+                        '-4031': ExchangeError,  # {"code":-4031,"msg":"Cancellation failed."}
+                        '-4032': ExchangeError,  # {"code":-4032,"msg":"Withdraw verification exception."}
+                        '-4033': BadRequest,  # {"code":-4033,"msg":"Illegal address."}
+                        '-4034': ExchangeError,  # {"code":-4034,"msg":"The address is suspected of fake."}
+                        '-4035': PermissionDenied,  # {"code":-4035,"msg":"This address is not on the whitelist. Please join and try again."}
+                        '-4036': BadRequest,  # {"code":-4036,"msg":"The new address needs to be withdrawn in {0} hours."}
+                        '-4037': ExchangeError,  # {"code":-4037,"msg":"Re-sending Mail failed."}
+                        '-4038': ExchangeError,  # {"code":-4038,"msg":"Please try again in 5 minutes."}
+                        '-4039': BadRequest,  # {"code":-4039,"msg":"The user does not exist."}
+                        '-4040': BadRequest,  # {"code":-4040,"msg":"This address not charged."}
+                        '-4041': ExchangeError,  # {"code":-4041,"msg":"Please try again in one minute."}
+                        '-4042': ExchangeError,  # {"code":-4042,"msg":"This asset cannot get deposit address again."}
+                        '-4043': BadRequest,  # {"code":-4043,"msg":"More than 100 recharge addresses were used in 24 hours."}
+                        '-4044': BadRequest,  # {"code":-4044,"msg":"This is a blacklist country."}
+                        '-4045': ExchangeError,  # {"code":-4045,"msg":"Failure to acquire assets."}
+                        '-4046': AuthenticationError,  # {"code":-4046,"msg":"Agreement not confirmed."}
+                        '-4047': BadRequest,  # {"code":-4047,"msg":"Time interval must be within 0-90 days"}
+                        '-5001': BadRequest,  # {"code":-5001,"msg":"Don't allow transfer to micro assets."}
+                        '-5002': InsufficientFunds,  # {"code":-5002,"msg":"You have insufficient balance."}
+                        '-5003': InsufficientFunds,  # {"code":-5003,"msg":"You don't have self asset."}
+                        '-5004': BadRequest,  # {"code":-5004,"msg":"The residual balances of %s have exceeded 0.001BTC, Please re-choose."}
+                        '-5005': InsufficientFunds,  # {"code":-5005,"msg":"The residual balances of %s is too low, Please re-choose."}
+                        '-5006': BadRequest,  # {"code":-5006,"msg":"Only transfer once in 24 hours."}
+                        '-5007': BadRequest,  # {"code":-5007,"msg":"Quantity must be greater than zero."}
+                        '-5008': InsufficientFunds,  # {"code":-5008,"msg":"Insufficient amount of returnable assets."}
+                        '-5009': BadRequest,  # {"code":-5009,"msg":"Product does not exist."}
+                        '-5010': ExchangeError,  # {"code":-5010,"msg":"Asset transfer fail."}
+                        '-5011': BadRequest,  # {"code":-5011,"msg":"future account not exists."}
+                        '-5012': ExchangeError,  # {"code":-5012,"msg":"Asset transfer is in pending."}
+                        '-5013': InsufficientFunds,  # {"code":-5013,"msg":"Asset transfer failed: insufficient balance""}  # undocumented
+                        '-5021': BadRequest,  # {"code":-5021,"msg":"This parent sub have no relation"}
+                        '-6001': BadRequest,  # {"code":-6001,"msg":"Daily product not exists."}
+                        '-6003': BadRequest,  # {"code":-6003,"msg":"Product not exist or you don't have permission"}
+                        '-6004': ExchangeError,  # {"code":-6004,"msg":"Product not in purchase status"}
+                        '-6005': InvalidOrder,  # {"code":-6005,"msg":"Smaller than min purchase limit"}
+                        '-6006': BadRequest,  # {"code":-6006,"msg":"Redeem amount error"}
+                        '-6007': BadRequest,  # {"code":-6007,"msg":"Not in redeem time"}
+                        '-6008': BadRequest,  # {"code":-6008,"msg":"Product not in redeem status"}
+                        '-6009': RateLimitExceeded,  # {"code":-6009,"msg":"Request frequency too high"}
+                        '-6011': BadRequest,  # {"code":-6011,"msg":"Exceeding the maximum num allowed to purchase per user"}
+                        '-6012': InsufficientFunds,  # {"code":-6012,"msg":"Balance not enough"}
+                        '-6013': ExchangeError,  # {"code":-6013,"msg":"Purchasing failed"}
+                        '-6014': BadRequest,  # {"code":-6014,"msg":"Exceed up-limit allowed to purchased"}
+                        '-6015': BadRequest,  # {"code":-6015,"msg":"Empty request body"}
+                        '-6016': BadRequest,  # {"code":-6016,"msg":"Parameter err"}
+                        '-6017': BadRequest,  # {"code":-6017,"msg":"Not in whitelist"}
+                        '-6018': BadRequest,  # {"code":-6018,"msg":"Asset not enough"}
+                        '-6019': AuthenticationError,  # {"code":-6019,"msg":"Need confirm"}
+                        '-6020': BadRequest,  # {"code":-6020,"msg":"Project not exists"}
+                        '-7001': BadRequest,  # {"code":-7001,"msg":"Date range is not supported."}
+                        '-7002': BadRequest,  # {"code":-7002,"msg":"Data request type is not supported."}
+                        '-9000': InsufficientFunds,  # {"code":-9000,"msg":"user have no avaliable amount"}"
+                        '-10017': BadRequest,  # {"code":-10017,"msg":"Repay amount should not be larger than liability."}
+                        '-11008': InsufficientFunds,  # {"code":-11008,"msg":"Exceeding the account's maximum borrowable limit."}  # undocumented
+                        '-12014': RateLimitExceeded,  # {"code":-12014,"msg":"More than 1 request in 3 seconds"}
+                        '-13000': BadRequest,  # {"code":-13000,"msg":"Redeption of the token is forbiden now"}
+                        '-13001': BadRequest,  # {"code":-13001,"msg":"Exceeds individual 24h redemption limit of the token"}
+                        '-13002': BadRequest,  # {"code":-13002,"msg":"Exceeds total 24h redemption limit of the token"}
+                        '-13003': BadRequest,  # {"code":-13003,"msg":"Subscription of the token is forbiden now"}
+                        '-13004': BadRequest,  # {"code":-13004,"msg":"Exceeds individual 24h subscription limit of the token"}
+                        '-13005': BadRequest,  # {"code":-13005,"msg":"Exceeds total 24h subscription limit of the token"}
+                        '-13006': InvalidOrder,  # {"code":-13006,"msg":"Subscription amount is too small"}
+                        '-13007': AuthenticationError,  # {"code":-13007,"msg":"The Agreement is not signed"}
+                        '-21001': BadRequest,  # {"code":-21001,"msg":"USER_IS_NOT_UNIACCOUNT"}
+                        '-21002': BadRequest,  # {"code":-21002,"msg":"UNI_ACCOUNT_CANT_TRANSFER_FUTURE"}
+                        '-21003': BadRequest,  # {"code":-21003,"msg":"NET_ASSET_MUST_LTE_RATIO"}
+                        '100001003': AuthenticationError,  # {"code":100001003,"msg":"Verification failed"}  # undocumented
+                        '200003903': AuthenticationError,  # {"code":200003903,"msg":"Your identity verification has been rejected. Please complete identity verification again."}
+                    },
+                    'broad': {
+                        'has no operation privilege': PermissionDenied,
+                        'MAX_POSITION': InvalidOrder,  # {"code":-2010,"msg":"Filter failure: MAX_POSITION"}
+                    },
+                },
             },
-            'commonCurrencies': {
-                'BCC': 'BCC',  # kept for backward-compatibility https://github.com/ccxt/ccxt/issues/4848
-                'YOYO': 'YOYOW',
-            },
-            'precisionMode': DECIMAL_PLACES,
-            # exchange-specific options
-            'options': {
-                'sandboxMode': False,
-                'fetchMarkets': [
-                    'spot',  # allows CORS in browsers
-                    'linear',  # allows CORS in browsers
-                    'inverse',  # allows CORS in browsers
-                    # 'option',  # does not allow CORS, enable outside of the browser only
-                ],
-                'fetchCurrencies': True,  # self is a private call and it requires API keys
-                # 'fetchTradesMethod': 'publicGetAggTrades',  # publicGetTrades, publicGetHistoricalTrades, eapiPublicGetTrades
-                'defaultTimeInForce': 'GTC',  # 'GTC' = Good To Cancel(default), 'IOC' = Immediate Or Cancel
-                'defaultType': 'spot',  # 'spot', 'future', 'margin', 'delivery', 'option'
-                'defaultSubType': None,  # 'linear', 'inverse'
-                'hasAlreadyAuthenticatedSuccessfully': False,
-                'warnOnFetchOpenOrdersWithoutSymbol': True,
-                # not an error
-                # https://github.com/ccxt/ccxt/issues/11268
-                # https://github.com/ccxt/ccxt/pull/11624
-                # POST https://fapi.binance.com/fapi/v1/marginType 400 Bad Request
-                # binanceusdm
-                'throwMarginModeAlreadySet': False,
-                'fetchPositions': 'positionRisk',  # or 'account' or 'option'
-                'recvWindow': 10 * 1000,  # 10 sec
-                'timeDifference': 0,  # the difference between system clock and Binance clock
-                'adjustForTimeDifference': False,  # controls the adjustment logic upon instantiation
-                'newOrderRespType': {
-                    'market': 'FULL',  # 'ACK' for order id, 'RESULT' for full order or 'FULL' for order with fills
-                    'limit': 'FULL',  # we change it from 'ACK' by default to 'FULL'(returns immediately if limit is not hit)
-                },
-                'quoteOrderQty': True,  # whether market orders support amounts in quote currency
-                'broker': {
-                    'spot': 'x-AuresCap',
-                    'margin': 'x-AuresCap',
-                    'future': 'x-AuresCap',
-                    'delivery': 'x-AuresCap',
-                    'swap': 'x-AuresCap',
-                    'option': 'x-AuresCap',
-                },
-                'accountsByType': {
-                    'main': 'MAIN',
-                    'spot': 'MAIN',
-                    'funding': 'FUNDING',
-                    'margin': 'MARGIN',
-                    'cross': 'MARGIN',
-                    'future': 'UMFUTURE',  # backwards compatibility
-                    'delivery': 'CMFUTURE',  # backwards compatbility
-                    'linear': 'UMFUTURE',
-                    'inverse': 'CMFUTURE',
-                    'option': 'OPTION',
-                },
-                'accountsById': {
-                    'MAIN': 'spot',
-                    'FUNDING': 'funding',
-                    'MARGIN': 'margin',
-                    'UMFUTURE': 'linear',
-                    'CMFUTURE': 'inverse',
-                    'OPTION': 'option',
-                },
-                'networks': {
-                    'ERC20': 'ETH',
-                    'TRC20': 'TRX',
-                    'BEP2': 'BNB',
-                    'BEP20': 'BSC',
-                    'OMNI': 'OMNI',
-                    'EOS': 'EOS',
-                    'SPL': 'SOL',
-                },
-                # keeping self object for backward-compatibility
-                'reverseNetworks': {
-                    'tronscan.org': 'TRC20',
-                    'etherscan.io': 'ERC20',
-                    'bscscan.com': 'BSC',
-                    'explorer.binance.org': 'BEP2',
-                    'bithomp.com': 'XRP',
-                    'bloks.io': 'EOS',
-                    'stellar.expert': 'XLM',
-                    'blockchair.com/bitcoin': 'BTC',
-                    'blockchair.com/bitcoin-cash': 'BCH',
-                    'blockchair.com/ecash': 'XEC',
-                    'explorer.litecoin.net': 'LTC',
-                    'explorer.avax.network': 'AVAX',
-                    'solscan.io': 'SOL',
-                    'polkadot.subscan.io': 'DOT',
-                    'dashboard.internetcomputer.org': 'ICP',
-                    'explorer.chiliz.com': 'CHZ',
-                    'cardanoscan.io': 'ADA',
-                    'mainnet.theoan.com': 'AION',
-                    'algoexplorer.io': 'ALGO',
-                    'explorer.ambrosus.com': 'AMB',
-                    'viewblock.io/zilliqa': 'ZIL',
-                    'viewblock.io/arweave': 'AR',
-                    'explorer.ark.io': 'ARK',
-                    'atomscan.com': 'ATOM',
-                    'www.mintscan.io': 'CTK',
-                    'explorer.bitcoindiamond.org': 'BCD',
-                    'btgexplorer.com': 'BTG',
-                    'bts.ai': 'BTS',
-                    'explorer.celo.org': 'CELO',
-                    'explorer.nervos.org': 'CKB',
-                    'cerebro.cortexlabs.ai': 'CTXC',
-                    'chainz.cryptoid.info': 'VIA',
-                    'explorer.dcrdata.org': 'DCR',
-                    'digiexplorer.info': 'DGB',
-                    'dock.subscan.io': 'DOCK',
-                    'dogechain.info': 'DOGE',
-                    'explorer.elrond.com': 'EGLD',
-                    'blockscout.com': 'ETC',
-                    'explore-fetchhub.fetch.ai': 'FET',
-                    'filfox.info': 'FIL',
-                    'fio.bloks.io': 'FIO',
-                    'explorer.firo.org': 'FIRO',
-                    'neoscan.io': 'NEO',
-                    'ftmscan.com': 'FTM',
-                    'explorer.gochain.io': 'GO',
-                    'block.gxb.io': 'GXS',
-                    'hash-hash.info': 'HBAR',
-                    'www.hiveblockexplorer.com': 'HIVE',
-                    'explorer.helium.com': 'HNT',
-                    'tracker.icon.foundation': 'ICX',
-                    'www.iostabc.com': 'IOST',
-                    'explorer.iota.org': 'IOTA',
-                    'iotexscan.io': 'IOTX',
-                    'irishub.iobscan.io': 'IRIS',
-                    'kava.mintscan.io': 'KAVA',
-                    'scope.klaytn.com': 'KLAY',
-                    'kmdexplorer.io': 'KMD',
-                    'kusama.subscan.io': 'KSM',
-                    'explorer.lto.network': 'LTO',
-                    'polygonscan.com': 'POLYGON',
-                    'explorer.ont.io': 'ONT',
-                    'minaexplorer.com': 'MINA',
-                    'nanolooker.com': 'NANO',
-                    'explorer.nebulas.io': 'NAS',
-                    'explorer.nbs.plus': 'NBS',
-                    'explorer.nebl.io': 'NEBL',
-                    'nulscan.io': 'NULS',
-                    'nxscan.com': 'NXS',
-                    'explorer.harmony.one': 'ONE',
-                    'explorer.poa.network': 'POA',
-                    'qtum.info': 'QTUM',
-                    'explorer.rsk.co': 'RSK',
-                    'www.oasisscan.com': 'ROSE',
-                    'ravencoin.network': 'RVN',
-                    'sc.tokenview.com': 'SC',
-                    'secretnodes.com': 'SCRT',
-                    'explorer.skycoin.com': 'SKY',
-                    'steemscan.com': 'STEEM',
-                    'explorer.stacks.co': 'STX',
-                    'www.thetascan.io': 'THETA',
-                    'scan.tomochain.com': 'TOMO',
-                    'explore.vechain.org': 'VET',
-                    'explorer.vite.net': 'VITE',
-                    'www.wanscan.org': 'WAN',
-                    'wavesexplorer.com': 'WAVES',
-                    'wax.eosx.io': 'WAXP',
-                    'waltonchain.pro': 'WTC',
-                    'chain.nem.ninja': 'XEM',
-                    'verge-blockchain.info': 'XVG',
-                    'explorer.yoyow.org': 'YOYOW',
-                    'explorer.zcha.in': 'ZEC',
-                    'explorer.zensystem.io': 'ZEN',
-                },
-                'networksById': {
-                    'tronscan.org': 'TRC20',
-                    'etherscan.io': 'ERC20',
-                    'bscscan.com': 'BSC',
-                    'explorer.binance.org': 'BEP2',
-                    'bithomp.com': 'XRP',
-                    'bloks.io': 'EOS',
-                    'stellar.expert': 'XLM',
-                    'blockchair.com/bitcoin': 'BTC',
-                    'blockchair.com/bitcoin-cash': 'BCH',
-                    'blockchair.com/ecash': 'XEC',
-                    'explorer.litecoin.net': 'LTC',
-                    'explorer.avax.network': 'AVAX',
-                    'solscan.io': 'SOL',
-                    'polkadot.subscan.io': 'DOT',
-                    'dashboard.internetcomputer.org': 'ICP',
-                    'explorer.chiliz.com': 'CHZ',
-                    'cardanoscan.io': 'ADA',
-                    'mainnet.theoan.com': 'AION',
-                    'algoexplorer.io': 'ALGO',
-                    'explorer.ambrosus.com': 'AMB',
-                    'viewblock.io/zilliqa': 'ZIL',
-                    'viewblock.io/arweave': 'AR',
-                    'explorer.ark.io': 'ARK',
-                    'atomscan.com': 'ATOM',
-                    'www.mintscan.io': 'CTK',
-                    'explorer.bitcoindiamond.org': 'BCD',
-                    'btgexplorer.com': 'BTG',
-                    'bts.ai': 'BTS',
-                    'explorer.celo.org': 'CELO',
-                    'explorer.nervos.org': 'CKB',
-                    'cerebro.cortexlabs.ai': 'CTXC',
-                    'chainz.cryptoid.info': 'VIA',
-                    'explorer.dcrdata.org': 'DCR',
-                    'digiexplorer.info': 'DGB',
-                    'dock.subscan.io': 'DOCK',
-                    'dogechain.info': 'DOGE',
-                    'explorer.elrond.com': 'EGLD',
-                    'blockscout.com': 'ETC',
-                    'explore-fetchhub.fetch.ai': 'FET',
-                    'filfox.info': 'FIL',
-                    'fio.bloks.io': 'FIO',
-                    'explorer.firo.org': 'FIRO',
-                    'neoscan.io': 'NEO',
-                    'ftmscan.com': 'FTM',
-                    'explorer.gochain.io': 'GO',
-                    'block.gxb.io': 'GXS',
-                    'hash-hash.info': 'HBAR',
-                    'www.hiveblockexplorer.com': 'HIVE',
-                    'explorer.helium.com': 'HNT',
-                    'tracker.icon.foundation': 'ICX',
-                    'www.iostabc.com': 'IOST',
-                    'explorer.iota.org': 'IOTA',
-                    'iotexscan.io': 'IOTX',
-                    'irishub.iobscan.io': 'IRIS',
-                    'kava.mintscan.io': 'KAVA',
-                    'scope.klaytn.com': 'KLAY',
-                    'kmdexplorer.io': 'KMD',
-                    'kusama.subscan.io': 'KSM',
-                    'explorer.lto.network': 'LTO',
-                    'polygonscan.com': 'POLYGON',
-                    'explorer.ont.io': 'ONT',
-                    'minaexplorer.com': 'MINA',
-                    'nanolooker.com': 'NANO',
-                    'explorer.nebulas.io': 'NAS',
-                    'explorer.nbs.plus': 'NBS',
-                    'explorer.nebl.io': 'NEBL',
-                    'nulscan.io': 'NULS',
-                    'nxscan.com': 'NXS',
-                    'explorer.harmony.one': 'ONE',
-                    'explorer.poa.network': 'POA',
-                    'qtum.info': 'QTUM',
-                    'explorer.rsk.co': 'RSK',
-                    'www.oasisscan.com': 'ROSE',
-                    'ravencoin.network': 'RVN',
-                    'sc.tokenview.com': 'SC',
-                    'secretnodes.com': 'SCRT',
-                    'explorer.skycoin.com': 'SKY',
-                    'steemscan.com': 'STEEM',
-                    'explorer.stacks.co': 'STX',
-                    'www.thetascan.io': 'THETA',
-                    'scan.tomochain.com': 'TOMO',
-                    'explore.vechain.org': 'VET',
-                    'explorer.vite.net': 'VITE',
-                    'www.wanscan.org': 'WAN',
-                    'wavesexplorer.com': 'WAVES',
-                    'wax.eosx.io': 'WAXP',
-                    'waltonchain.pro': 'WTC',
-                    'chain.nem.ninja': 'XEM',
-                    'verge-blockchain.info': 'XVG',
-                    'explorer.yoyow.org': 'YOYOW',
-                    'explorer.zcha.in': 'ZEC',
-                    'explorer.zensystem.io': 'ZEN',
-                },
-                'impliedNetworks': {
-                    'ETH': {'ERC20': 'ETH'},
-                    'TRX': {'TRC20': 'TRX'},
-                },
-                'legalMoney': {
-                    'MXN': True,
-                    'UGX': True,
-                    'SEK': True,
-                    'CHF': True,
-                    'VND': True,
-                    'AED': True,
-                    'DKK': True,
-                    'KZT': True,
-                    'HUF': True,
-                    'PEN': True,
-                    'PHP': True,
-                    'USD': True,
-                    'TRY': True,
-                    'EUR': True,
-                    'NGN': True,
-                    'PLN': True,
-                    'BRL': True,
-                    'ZAR': True,
-                    'KES': True,
-                    'ARS': True,
-                    'RUB': True,
-                    'AUD': True,
-                    'NOK': True,
-                    'CZK': True,
-                    'GBP': True,
-                    'UAH': True,
-                    'GHS': True,
-                    'HKD': True,
-                    'CAD': True,
-                    'INR': True,
-                    'JPY': True,
-                    'NZD': True,
-                },
-                'legalMoneyCurrenciesById': {
-                    'BUSD': 'USD',
-                },
-            },
-            # https://binance-docs.github.io/apidocs/spot/en/#error-codes-2
-            'exceptions': {
-                'exact': {
-                    'System is under maintenance.': OnMaintenance,  # {"code":1,"msg":"System is under maintenance."}
-                    'System abnormality': ExchangeError,  # {"code":-1000,"msg":"System abnormality"}
-                    'You are not authorized to execute self request.': PermissionDenied,  # {"msg":"You are not authorized to execute self request."}
-                    'API key does not exist': AuthenticationError,
-                    'Order would trigger immediately.': OrderImmediatelyFillable,
-                    'Stop price would trigger immediately.': OrderImmediatelyFillable,  # {"code":-2010,"msg":"Stop price would trigger immediately."}
-                    'Order would immediately match and take.': OrderImmediatelyFillable,  # {"code":-2010,"msg":"Order would immediately match and take."}
-                    'Account has insufficient balance for requested action.': InsufficientFunds,
-                    'Rest API trading is not enabled.': ExchangeNotAvailable,
-                    'This account may not place or cancel orders.': ExchangeNotAvailable,
-                    "You don't have permission.": PermissionDenied,  # {"msg":"You don't have permission.","success":false}
-                    'Market is closed.': ExchangeNotAvailable,  # {"code":-1013,"msg":"Market is closed."}
-                    'Too many requests. Please try again later.': DDoSProtection,  # {"msg":"Too many requests. Please try again later.","success":false}
-                    'This action is disabled on self account.': AccountSuspended,  # {"code":-2011,"msg":"This action is disabled on self account."}
-                    'Limit orders require GTC for self phase.': BadRequest,
-                    'This order type is not hasattr(self, possible) trading phase.': BadRequest,
-                    'This type of sub-account exceeds the maximum number limit': BadRequest,  # {"code":-9000,"msg":"This type of sub-account exceeds the maximum number limit"}
-                    'This symbol is restricted for self account.': PermissionDenied,
-                    'This symbol is not permitted for self account.': PermissionDenied,  # {"code":-2010,"msg":"This symbol is not permitted for self account."}
-                    '-1000': ExchangeNotAvailable,  # {"code":-1000,"msg":"An unknown error occured while processing the request."}
-                    '-1001': ExchangeNotAvailable,  # {"code":-1001,"msg":"'Internal error; unable to process your request. Please try again.'"}
-                    '-1002': AuthenticationError,  # {"code":-1002,"msg":"'You are not authorized to execute self request.'"}
-                    '-1003': RateLimitExceeded,  # {"code":-1003,"msg":"Too much request weight used, current limit is 1200 request weight per 1 MINUTE. Please use the websocket for live updates to avoid polling the API."}
-                    '-1004': DDoSProtection,  # {"code":-1004,"msg":"Server is busy, please wait and try again"}
-                    '-1005': PermissionDenied,  # {"code":-1005,"msg":"No such IP has been white listed"}
-                    '-1006': BadResponse,  # {"code":-1006,"msg":"An unexpected response was received from the message bus. Execution status unknown."}
-                    '-1007': RequestTimeout,  # {"code":-1007,"msg":"Timeout waiting for response from backend server. Send status unknown; execution status unknown."}
-                    '-1010': BadResponse,  # {"code":-1010,"msg":"ERROR_MSG_RECEIVED."}
-                    '-1011': PermissionDenied,  # {"code":-1011,"msg":"This IP cannot access self route."}
-                    '-1013': InvalidOrder,  # {"code":-1013,"msg":"createOrder -> 'invalid quantity'/'invalid price'/MIN_NOTIONAL"}
-                    '-1014': InvalidOrder,  # {"code":-1014,"msg":"Unsupported order combination."}
-                    '-1015': RateLimitExceeded,  # {"code":-1015,"msg":"'Too many new orders; current limit is %s orders per %s.'"}
-                    '-1016': ExchangeNotAvailable,  # {"code":-1016,"msg":"'This service is no longer available.',"}
-                    '-1020': BadRequest,  # {"code":-1020,"msg":"'This operation is not supported.'"}
-                    '-1021': InvalidNonce,  # {"code":-1021,"msg":"'your time is ahead of server'"}
-                    '-1022': AuthenticationError,  # {"code":-1022,"msg":"Signature for self request is not valid."}
-                    '-1023': BadRequest,  # {"code":-1023,"msg":"Start time is greater than end time."}
-                    '-1099': AuthenticationError,  # {"code":-1099,"msg":"Not found, authenticated, or authorized"}
-                    '-1100': BadRequest,  # {"code":-1100,"msg":"createOrder(symbol, 1, asdf) -> 'Illegal characters found in parameter 'price'"}
-                    '-1101': BadRequest,  # {"code":-1101,"msg":"Too many parameters; expected %s and received %s."}
-                    '-1102': BadRequest,  # {"code":-1102,"msg":"Param %s or %s must be sent, but both were empty"}
-                    '-1103': BadRequest,  # {"code":-1103,"msg":"An unknown parameter was sent."}
-                    '-1104': BadRequest,  # {"code":-1104,"msg":"Not all sent parameters were read, read 8 parameters but was sent 9"}
-                    '-1105': BadRequest,  # {"code":-1105,"msg":"Parameter %s was empty."}
-                    '-1106': BadRequest,  # {"code":-1106,"msg":"Parameter %s sent when not required."}
-                    '-1108': BadRequest,  # {"code":-1108,"msg":"Invalid asset."}
-                    '-1109': AuthenticationError,  # {"code":-1109,"msg":"Invalid account."}
-                    '-1110': BadRequest,  # {"code":-1110,"msg":"Invalid symbolType."}
-                    '-1111': BadRequest,  # {"code":-1111,"msg":"Precision is over the maximum defined for self asset."}
-                    '-1112': InvalidOrder,  # {"code":-1112,"msg":"No orders on book for symbol."}
-                    '-1113': BadRequest,  # {"code":-1113,"msg":"Withdrawal amount must be negative."}
-                    '-1114': BadRequest,  # {"code":-1114,"msg":"TimeInForce parameter sent when not required."}
-                    '-1115': BadRequest,  # {"code":-1115,"msg":"Invalid timeInForce."}
-                    '-1116': BadRequest,  # {"code":-1116,"msg":"Invalid orderType."}
-                    '-1117': BadRequest,  # {"code":-1117,"msg":"Invalid side."}
-                    '-1118': BadRequest,  # {"code":-1118,"msg":"New client order ID was empty."}
-                    '-1119': BadRequest,  # {"code":-1119,"msg":"Original client order ID was empty."}
-                    '-1120': BadRequest,  # {"code":-1120,"msg":"Invalid interval."}
-                    '-1121': BadSymbol,  # {"code":-1121,"msg":"Invalid symbol."}
-                    '-1125': AuthenticationError,  # {"code":-1125,"msg":"This listenKey does not exist."}
-                    '-1127': BadRequest,  # {"code":-1127,"msg":"More than %s hours between startTime and endTime."}
-                    '-1128': BadRequest,  # {"code":-1128,"msg":"{"code":-1128,"msg":"Combination of optional parameters invalid."}"}
-                    '-1130': BadRequest,  # {"code":-1130,"msg":"Data sent for paramter %s is not valid."}
-                    '-1131': BadRequest,  # {"code":-1131,"msg":"recvWindow must be less than 60000"}
-                    '-1135': BadRequest,  # This error code will occur if a parameter requiring a JSON object is invalid.
-                    '-1136': BadRequest,  # {"code":-1136,"msg":"Invalid newOrderRespType"}
-                    '-2008': AuthenticationError,  # {"code":-2008,"msg":"Invalid Api-Key ID."}
-                    '-2010': ExchangeError,  # {"code":-2010,"msg":"generic error code for createOrder -> 'Account has insufficient balance for requested action.', {"code":-2010,"msg":"Rest API trading is not enabled."}, etc..."}
-                    '-2011': OrderNotFound,  # {"code":-2011,"msg":"cancelOrder(1, 'BTC/USDT') -> 'UNKNOWN_ORDER'"}
-                    '-2013': OrderNotFound,  # {"code":-2013,"msg":"fetchOrder(1, 'BTC/USDT') -> 'Order does not exist'"}
-                    '-2014': AuthenticationError,  # {"code":-2014,"msg":"API-key format invalid."}
-                    '-2015': AuthenticationError,  # {"code":-2015,"msg":"Invalid API-key, IP, or permissions for action."}
-                    '-2016': BadRequest,  # {"code":-2016,"msg":"No trading window could be found for the symbol. Try ticker/24hrs instead."}
-                    '-2018': InsufficientFunds,  # {"code":-2018,"msg":"Balance is insufficient"}
-                    '-2019': InsufficientFunds,  # {"code":-2019,"msg":"Margin is insufficient."}
-                    '-2020': OrderNotFillable,  # {"code":-2020,"msg":"Unable to fill."}
-                    '-2021': OrderImmediatelyFillable,  # {"code":-2021,"msg":"Order would immediately trigger."}
-                    '-2022': InvalidOrder,  # {"code":-2022,"msg":"ReduceOnly Order is rejected."}
-                    '-2023': InsufficientFunds,  # {"code":-2023,"msg":"User in liquidation mode now."}
-                    '-2024': InsufficientFunds,  # {"code":-2024,"msg":"Position is not sufficient."}
-                    '-2025': InvalidOrder,  # {"code":-2025,"msg":"Reach max open order limit."}
-                    '-2026': InvalidOrder,  # {"code":-2026,"msg":"This OrderType is not supported when reduceOnly."}
-                    '-2027': InvalidOrder,  # {"code":-2027,"msg":"Exceeded the maximum allowable position at current leverage."}
-                    '-2028': InsufficientFunds,  # {"code":-2028,"msg":"Leverage is smaller than permitted: insufficient margin balance"}
-                    '-3000': ExchangeError,  # {"code":-3000,"msg":"Internal server error."}
-                    '-3001': AuthenticationError,  # {"code":-3001,"msg":"Please enable 2FA first."}
-                    '-3002': BadSymbol,  # {"code":-3002,"msg":"We don't have self asset."}
-                    '-3003': BadRequest,  # {"code":-3003,"msg":"Margin account does not exist."}
-                    '-3004': ExchangeError,  # {"code":-3004,"msg":"Trade not allowed."}
-                    '-3005': InsufficientFunds,  # {"code":-3005,"msg":"Transferring out not allowed. Transfer out amount exceeds max amount."}
-                    '-3006': InsufficientFunds,  # {"code":-3006,"msg":"Your borrow amount has exceed maximum borrow amount."}
-                    '-3007': ExchangeError,  # {"code":-3007,"msg":"You have pending transaction, please try again later.."}
-                    '-3008': InsufficientFunds,  # {"code":-3008,"msg":"Borrow not allowed. Your borrow amount has exceed maximum borrow amount."}
-                    '-3009': BadRequest,  # {"code":-3009,"msg":"This asset are not allowed to transfer into margin account currently."}
-                    '-3010': BadRequest,  # {"code":-3010,"msg":"Repay not allowed. Repay amount exceeds borrow amount."}
-                    '-3011': BadRequest,  # {"code":-3011,"msg":"Your input date is invalid."}
-                    '-3012': InsufficientFunds,  # {"code":-3012,"msg":"Borrow is banned for self asset."}
-                    '-3013': BadRequest,  # {"code":-3013,"msg":"Borrow amount less than minimum borrow amount."}
-                    '-3014': AccountSuspended,  # {"code":-3014,"msg":"Borrow is banned for self account."}
-                    '-3015': BadRequest,  # {"code":-3015,"msg":"Repay amount exceeds borrow amount."}
-                    '-3016': BadRequest,  # {"code":-3016,"msg":"Repay amount less than minimum repay amount."}
-                    '-3017': ExchangeError,  # {"code":-3017,"msg":"This asset are not allowed to transfer into margin account currently."}
-                    '-3018': AccountSuspended,  # {"code":-3018,"msg":"Transferring in has been banned for self account."}
-                    '-3019': AccountSuspended,  # {"code":-3019,"msg":"Transferring out has been banned for self account."}
-                    '-3020': InsufficientFunds,  # {"code":-3020,"msg":"Transfer out amount exceeds max amount."}
-                    '-3021': BadRequest,  # {"code":-3021,"msg":"Margin account are not allowed to trade self trading pair."}
-                    '-3022': AccountSuspended,  # {"code":-3022,"msg":"You account's trading is banned."}
-                    '-3023': BadRequest,  # {"code":-3023,"msg":"You can't transfer out/place order under current margin level."}
-                    '-3024': ExchangeError,  # {"code":-3024,"msg":"The unpaid debt is too small after self repayment."}
-                    '-3025': BadRequest,  # {"code":-3025,"msg":"Your input date is invalid."}
-                    '-3026': BadRequest,  # {"code":-3026,"msg":"Your input param is invalid."}
-                    '-3027': BadSymbol,  # {"code":-3027,"msg":"Not a valid margin asset."}
-                    '-3028': BadSymbol,  # {"code":-3028,"msg":"Not a valid margin pair."}
-                    '-3029': ExchangeError,  # {"code":-3029,"msg":"Transfer failed."}
-                    '-3036': AccountSuspended,  # {"code":-3036,"msg":"This account is not allowed to repay."}
-                    '-3037': ExchangeError,  # {"code":-3037,"msg":"PNL is clearing. Wait a second."}
-                    '-3038': BadRequest,  # {"code":-3038,"msg":"Listen key not found."}
-                    '-3041': InsufficientFunds,  # {"code":-3041,"msg":"Balance is not enough"}
-                    '-3042': BadRequest,  # {"code":-3042,"msg":"PriceIndex not available for self margin pair."}
-                    '-3043': BadRequest,  # {"code":-3043,"msg":"Transferring in not allowed."}
-                    '-3044': DDoSProtection,  # {"code":-3044,"msg":"System busy."}
-                    '-3045': ExchangeError,  # {"code":-3045,"msg":"The system doesn't have enough asset now."}
-                    '-3999': ExchangeError,  # {"code":-3999,"msg":"This function is only available for invited users."}
-                    '-4001': BadRequest,  # {"code":-4001 ,"msg":"Invalid operation."}
-                    '-4002': BadRequest,  # {"code":-4002 ,"msg":"Invalid get."}
-                    '-4003': BadRequest,  # {"code":-4003 ,"msg":"Your input email is invalid."}
-                    '-4004': AuthenticationError,  # {"code":-4004,"msg":"You don't login or auth."}
-                    '-4005': RateLimitExceeded,  # {"code":-4005 ,"msg":"Too many new requests."}
-                    '-4006': BadRequest,  # {"code":-4006 ,"msg":"Support main account only."}
-                    '-4007': BadRequest,  # {"code":-4007 ,"msg":"Address validation is not passed."}
-                    '-4008': BadRequest,  # {"code":-4008 ,"msg":"Address tag validation is not passed."}
-                    '-4010': BadRequest,  # {"code":-4010 ,"msg":"White list mail has been confirmed."}  # [TODO] possible bug: it should probably be "has not been confirmed"
-                    '-4011': BadRequest,  # {"code":-4011 ,"msg":"White list mail is invalid."}
-                    '-4012': BadRequest,  # {"code":-4012 ,"msg":"White list is not opened."}
-                    '-4013': AuthenticationError,  # {"code":-4013 ,"msg":"2FA is not opened."}
-                    '-4014': PermissionDenied,  # {"code":-4014 ,"msg":"Withdraw is not allowed within 2 min login."}
-                    '-4015': ExchangeError,  # {"code":-4015 ,"msg":"Withdraw is limited."}
-                    '-4016': PermissionDenied,  # {"code":-4016 ,"msg":"Within 24 hours after password modification, withdrawal is prohibited."}
-                    '-4017': PermissionDenied,  # {"code":-4017 ,"msg":"Within 24 hours after the release of 2FA, withdrawal is prohibited."}
-                    '-4018': BadSymbol,  # {"code":-4018,"msg":"We don't have self asset."}
-                    '-4019': BadSymbol,  # {"code":-4019,"msg":"Current asset is not open for withdrawal."}
-                    '-4021': BadRequest,  # {"code":-4021,"msg":"Asset withdrawal must be an %s multiple of %s."}
-                    '-4022': BadRequest,  # {"code":-4022,"msg":"Not less than the minimum pick-up quantity %s."}
-                    '-4023': ExchangeError,  # {"code":-4023,"msg":"Within 24 hours, the withdrawal exceeds the maximum amount."}
-                    '-4024': InsufficientFunds,  # {"code":-4024,"msg":"You don't have self asset."}
-                    '-4025': InsufficientFunds,  # {"code":-4025,"msg":"The number of hold asset is less than zero."}
-                    '-4026': InsufficientFunds,  # {"code":-4026,"msg":"You have insufficient balance."}
-                    '-4027': ExchangeError,  # {"code":-4027,"msg":"Failed to obtain tranId."}
-                    '-4028': BadRequest,  # {"code":-4028,"msg":"The amount of withdrawal must be greater than the Commission."}
-                    '-4029': BadRequest,  # {"code":-4029,"msg":"The withdrawal record does not exist."}
-                    '-4030': ExchangeError,  # {"code":-4030,"msg":"Confirmation of successful asset withdrawal. [TODO] possible bug in docs"}
-                    '-4031': ExchangeError,  # {"code":-4031,"msg":"Cancellation failed."}
-                    '-4032': ExchangeError,  # {"code":-4032,"msg":"Withdraw verification exception."}
-                    '-4033': BadRequest,  # {"code":-4033,"msg":"Illegal address."}
-                    '-4034': ExchangeError,  # {"code":-4034,"msg":"The address is suspected of fake."}
-                    '-4035': PermissionDenied,  # {"code":-4035,"msg":"This address is not on the whitelist. Please join and try again."}
-                    '-4036': BadRequest,  # {"code":-4036,"msg":"The new address needs to be withdrawn in {0} hours."}
-                    '-4037': ExchangeError,  # {"code":-4037,"msg":"Re-sending Mail failed."}
-                    '-4038': ExchangeError,  # {"code":-4038,"msg":"Please try again in 5 minutes."}
-                    '-4039': BadRequest,  # {"code":-4039,"msg":"The user does not exist."}
-                    '-4040': BadRequest,  # {"code":-4040,"msg":"This address not charged."}
-                    '-4041': ExchangeError,  # {"code":-4041,"msg":"Please try again in one minute."}
-                    '-4042': ExchangeError,  # {"code":-4042,"msg":"This asset cannot get deposit address again."}
-                    '-4043': BadRequest,  # {"code":-4043,"msg":"More than 100 recharge addresses were used in 24 hours."}
-                    '-4044': BadRequest,  # {"code":-4044,"msg":"This is a blacklist country."}
-                    '-4045': ExchangeError,  # {"code":-4045,"msg":"Failure to acquire assets."}
-                    '-4046': AuthenticationError,  # {"code":-4046,"msg":"Agreement not confirmed."}
-                    '-4047': BadRequest,  # {"code":-4047,"msg":"Time interval must be within 0-90 days"}
-                    '-5001': BadRequest,  # {"code":-5001,"msg":"Don't allow transfer to micro assets."}
-                    '-5002': InsufficientFunds,  # {"code":-5002,"msg":"You have insufficient balance."}
-                    '-5003': InsufficientFunds,  # {"code":-5003,"msg":"You don't have self asset."}
-                    '-5004': BadRequest,  # {"code":-5004,"msg":"The residual balances of %s have exceeded 0.001BTC, Please re-choose."}
-                    '-5005': InsufficientFunds,  # {"code":-5005,"msg":"The residual balances of %s is too low, Please re-choose."}
-                    '-5006': BadRequest,  # {"code":-5006,"msg":"Only transfer once in 24 hours."}
-                    '-5007': BadRequest,  # {"code":-5007,"msg":"Quantity must be greater than zero."}
-                    '-5008': InsufficientFunds,  # {"code":-5008,"msg":"Insufficient amount of returnable assets."}
-                    '-5009': BadRequest,  # {"code":-5009,"msg":"Product does not exist."}
-                    '-5010': ExchangeError,  # {"code":-5010,"msg":"Asset transfer fail."}
-                    '-5011': BadRequest,  # {"code":-5011,"msg":"future account not exists."}
-                    '-5012': ExchangeError,  # {"code":-5012,"msg":"Asset transfer is in pending."}
-                    '-5013': InsufficientFunds,  # {"code":-5013,"msg":"Asset transfer failed: insufficient balance""}  # undocumented
-                    '-5021': BadRequest,  # {"code":-5021,"msg":"This parent sub have no relation"}
-                    '-6001': BadRequest,  # {"code":-6001,"msg":"Daily product not exists."}
-                    '-6003': BadRequest,  # {"code":-6003,"msg":"Product not exist or you don't have permission"}
-                    '-6004': ExchangeError,  # {"code":-6004,"msg":"Product not in purchase status"}
-                    '-6005': InvalidOrder,  # {"code":-6005,"msg":"Smaller than min purchase limit"}
-                    '-6006': BadRequest,  # {"code":-6006,"msg":"Redeem amount error"}
-                    '-6007': BadRequest,  # {"code":-6007,"msg":"Not in redeem time"}
-                    '-6008': BadRequest,  # {"code":-6008,"msg":"Product not in redeem status"}
-                    '-6009': RateLimitExceeded,  # {"code":-6009,"msg":"Request frequency too high"}
-                    '-6011': BadRequest,  # {"code":-6011,"msg":"Exceeding the maximum num allowed to purchase per user"}
-                    '-6012': InsufficientFunds,  # {"code":-6012,"msg":"Balance not enough"}
-                    '-6013': ExchangeError,  # {"code":-6013,"msg":"Purchasing failed"}
-                    '-6014': BadRequest,  # {"code":-6014,"msg":"Exceed up-limit allowed to purchased"}
-                    '-6015': BadRequest,  # {"code":-6015,"msg":"Empty request body"}
-                    '-6016': BadRequest,  # {"code":-6016,"msg":"Parameter err"}
-                    '-6017': BadRequest,  # {"code":-6017,"msg":"Not in whitelist"}
-                    '-6018': BadRequest,  # {"code":-6018,"msg":"Asset not enough"}
-                    '-6019': AuthenticationError,  # {"code":-6019,"msg":"Need confirm"}
-                    '-6020': BadRequest,  # {"code":-6020,"msg":"Project not exists"}
-                    '-7001': BadRequest,  # {"code":-7001,"msg":"Date range is not supported."}
-                    '-7002': BadRequest,  # {"code":-7002,"msg":"Data request type is not supported."}
-                    '-9000': InsufficientFunds,  # {"code":-9000,"msg":"user have no avaliable amount"}"
-                    '-10017': BadRequest,  # {"code":-10017,"msg":"Repay amount should not be larger than liability."}
-                    '-11008': InsufficientFunds,  # {"code":-11008,"msg":"Exceeding the account's maximum borrowable limit."}  # undocumented
-                    '-12014': RateLimitExceeded,  # {"code":-12014,"msg":"More than 1 request in 3 seconds"}
-                    '-13000': BadRequest,  # {"code":-13000,"msg":"Redeption of the token is forbiden now"}
-                    '-13001': BadRequest,  # {"code":-13001,"msg":"Exceeds individual 24h redemption limit of the token"}
-                    '-13002': BadRequest,  # {"code":-13002,"msg":"Exceeds total 24h redemption limit of the token"}
-                    '-13003': BadRequest,  # {"code":-13003,"msg":"Subscription of the token is forbiden now"}
-                    '-13004': BadRequest,  # {"code":-13004,"msg":"Exceeds individual 24h subscription limit of the token"}
-                    '-13005': BadRequest,  # {"code":-13005,"msg":"Exceeds total 24h subscription limit of the token"}
-                    '-13006': InvalidOrder,  # {"code":-13006,"msg":"Subscription amount is too small"}
-                    '-13007': AuthenticationError,  # {"code":-13007,"msg":"The Agreement is not signed"}
-                    '-21001': BadRequest,  # {"code":-21001,"msg":"USER_IS_NOT_UNIACCOUNT"}
-                    '-21002': BadRequest,  # {"code":-21002,"msg":"UNI_ACCOUNT_CANT_TRANSFER_FUTURE"}
-                    '-21003': BadRequest,  # {"code":-21003,"msg":"NET_ASSET_MUST_LTE_RATIO"}
-                    '100001003': AuthenticationError,  # {"code":100001003,"msg":"Verification failed"}  # undocumented
-                    '200003903': AuthenticationError,  # {"code":200003903,"msg":"Your identity verification has been rejected. Please complete identity verification again."}
-                },
-                'broad': {
-                    'has no operation privilege': PermissionDenied,
-                    'MAX_POSITION': InvalidOrder,  # {"code":-2010,"msg":"Filter failure: MAX_POSITION"}
-                },
-            },
-        })
+        )
 
     def is_inverse(self, type, subType=None):
         if subType is None:
@@ -1594,7 +1597,7 @@ class binance(Exchange, ImplicitAPI):
 
     def is_linear(self, type, subType=None):
         if subType is None:
-            return(type == 'future') or (type == 'swap')
+            return (type == 'future') or (type == 'swap')
         else:
             return subType == 'linear'
 
@@ -1907,7 +1910,7 @@ class binance(Exchange, ImplicitAPI):
                 if not Precise.string_eq(precisionTick, '0'):
                     minPrecision = precisionTick if (minPrecision is None) else Precise.string_min(minPrecision, precisionTick)
             trading = self.safe_value(entry, 'trading')
-            active = (isWithdrawEnabled and isDepositEnabled and trading)
+            active = isWithdrawEnabled and isDepositEnabled and trading
             maxDecimalPlaces = None
             if minPrecision is not None:
                 maxDecimalPlaces = int(self.number_to_string(self.precision_from_string(minPrecision)))
@@ -2190,7 +2193,7 @@ class binance(Exchange, ImplicitAPI):
         base = self.safe_currency_code(baseId)
         quote = self.safe_currency_code(quoteId)
         contractType = self.safe_string(market, 'contractType')
-        contract = ('contractType' in market)
+        contract = 'contractType' in market
         expiry = self.safe_integer_2(market, 'deliveryDate', 'expiryDate')
         settleId = self.safe_string(market, 'marginAsset')
         if (contractType == 'PERPETUAL') or (expiry == 4133404800000):  # some swap markets do not have contract type, eg: BTCST
@@ -2225,7 +2228,7 @@ class binance(Exchange, ImplicitAPI):
             inverse = settle == base
             feesType = 'linear' if linear else 'inverse'
             fees = self.safe_value(self.fees, feesType, {})
-        active = (status == 'TRADING')
+        active = status == 'TRADING'
         if spot:
             permissions = self.safe_value(market, 'permissions', [])
             for j in range(0, len(permissions)):
@@ -2830,14 +2833,14 @@ class binance(Exchange, ImplicitAPI):
         #
         timestamp = self.safe_integer(ticker, 'closeTime')
         marketType = None
-        if ('time' in ticker):
+        if 'time' in ticker:
             marketType = 'contract'
         if marketType is None:
             marketType = 'spot' if ('bidQty' in ticker) else 'contract'
         marketId = self.safe_string(ticker, 'symbol')
         symbol = self.safe_symbol(marketId, market, None, marketType)
         last = self.safe_string(ticker, 'lastPrice')
-        isCoinm = ('baseVolume' in ticker)
+        isCoinm = 'baseVolume' in ticker
         baseVolume = None
         quoteVolume = None
         if isCoinm:
@@ -2846,28 +2849,31 @@ class binance(Exchange, ImplicitAPI):
         else:
             baseVolume = self.safe_string(ticker, 'volume')
             quoteVolume = self.safe_string_2(ticker, 'quoteVolume', 'amount')
-        return self.safe_ticker({
-            'symbol': symbol,
-            'timestamp': timestamp,
-            'datetime': self.iso8601(timestamp),
-            'high': self.safe_string_2(ticker, 'highPrice', 'high'),
-            'low': self.safe_string_2(ticker, 'lowPrice', 'low'),
-            'bid': self.safe_string(ticker, 'bidPrice'),
-            'bidVolume': self.safe_string(ticker, 'bidQty'),
-            'ask': self.safe_string(ticker, 'askPrice'),
-            'askVolume': self.safe_string(ticker, 'askQty'),
-            'vwap': self.safe_string(ticker, 'weightedAvgPrice'),
-            'open': self.safe_string_2(ticker, 'openPrice', 'open'),
-            'close': last,
-            'last': last,
-            'previousClose': self.safe_string(ticker, 'prevClosePrice'),  # previous day close
-            'change': self.safe_string(ticker, 'priceChange'),
-            'percentage': self.safe_string(ticker, 'priceChangePercent'),
-            'average': None,
-            'baseVolume': baseVolume,
-            'quoteVolume': quoteVolume,
-            'info': ticker,
-        }, market)
+        return self.safe_ticker(
+            {
+                'symbol': symbol,
+                'timestamp': timestamp,
+                'datetime': self.iso8601(timestamp),
+                'high': self.safe_string_2(ticker, 'highPrice', 'high'),
+                'low': self.safe_string_2(ticker, 'lowPrice', 'low'),
+                'bid': self.safe_string(ticker, 'bidPrice'),
+                'bidVolume': self.safe_string(ticker, 'bidQty'),
+                'ask': self.safe_string(ticker, 'askPrice'),
+                'askVolume': self.safe_string(ticker, 'askQty'),
+                'vwap': self.safe_string(ticker, 'weightedAvgPrice'),
+                'open': self.safe_string_2(ticker, 'openPrice', 'open'),
+                'close': last,
+                'last': last,
+                'previousClose': self.safe_string(ticker, 'prevClosePrice'),  # previous day close
+                'change': self.safe_string(ticker, 'priceChange'),
+                'percentage': self.safe_string(ticker, 'priceChangePercent'),
+                'average': None,
+                'baseVolume': baseVolume,
+                'quoteVolume': quoteVolume,
+                'info': ticker,
+            },
+            market,
+        )
 
     async def fetch_status(self, params={}):
         """
@@ -3173,7 +3179,7 @@ class binance(Exchange, ImplicitAPI):
             'limit': limit,
         }
         if price == 'index':
-            request['pair'] = market['id']   # Index price takes self argument instead of symbol
+            request['pair'] = market['id']  # Index price takes self argument instead of symbol
         else:
             request['symbol'] = market['id']
         # duration = self.parse_timeframe(timeframe)
@@ -3413,21 +3419,24 @@ class binance(Exchange, ImplicitAPI):
             if 'optionSide' in trade:
                 if side != 'buy':
                     amount = Precise.string_mul('-1', amount)
-        return self.safe_trade({
-            'info': trade,
-            'timestamp': timestamp,
-            'datetime': self.iso8601(timestamp),
-            'symbol': symbol,
-            'id': id,
-            'order': orderId,
-            'type': self.safe_string_lower(trade, 'type'),
-            'side': side,
-            'takerOrMaker': takerOrMaker,
-            'price': price,
-            'amount': amount,
-            'cost': cost,
-            'fee': fee,
-        }, market)
+        return self.safe_trade(
+            {
+                'info': trade,
+                'timestamp': timestamp,
+                'datetime': self.iso8601(timestamp),
+                'symbol': symbol,
+                'id': id,
+                'order': orderId,
+                'type': self.safe_string_lower(trade, 'type'),
+                'side': side,
+                'takerOrMaker': takerOrMaker,
+                'price': price,
+                'amount': amount,
+                'cost': cost,
+                'fee': fee,
+            },
+            market,
+        )
 
     async def fetch_trades(self, symbol: str, since: Optional[int] = None, limit: Optional[int] = None, params={}):
         """
@@ -4018,35 +4027,38 @@ class binance(Exchange, ImplicitAPI):
             type = 'limit'
         stopPriceString = self.safe_string(order, 'stopPrice')
         stopPrice = self.parse_number(self.omit_zero(stopPriceString))
-        return self.safe_order({
-            'info': order,
-            'id': id,
-            'clientOrderId': clientOrderId,
-            'timestamp': timestamp,
-            'datetime': self.iso8601(timestamp),
-            'lastTradeTimestamp': lastTradeTimestamp,
-            'lastUpdateTimestamp': lastUpdateTimestamp,
-            'symbol': symbol,
-            'type': type,
-            'timeInForce': timeInForce,
-            'postOnly': postOnly,
-            'reduceOnly': self.safe_value(order, 'reduceOnly'),
-            'side': side,
-            'price': price,
-            'triggerPrice': stopPrice,
-            'amount': amount,
-            'cost': cost,
-            'average': average,
-            'filled': filled,
-            'remaining': None,
-            'status': status,
-            'fee': {
-                'currency': self.safe_string(order, 'quoteAsset'),
-                'cost': self.safe_number(order, 'fee'),
-                'rate': None,
+        return self.safe_order(
+            {
+                'info': order,
+                'id': id,
+                'clientOrderId': clientOrderId,
+                'timestamp': timestamp,
+                'datetime': self.iso8601(timestamp),
+                'lastTradeTimestamp': lastTradeTimestamp,
+                'lastUpdateTimestamp': lastUpdateTimestamp,
+                'symbol': symbol,
+                'type': type,
+                'timeInForce': timeInForce,
+                'postOnly': postOnly,
+                'reduceOnly': self.safe_value(order, 'reduceOnly'),
+                'side': side,
+                'price': price,
+                'triggerPrice': stopPrice,
+                'amount': amount,
+                'cost': cost,
+                'average': average,
+                'filled': filled,
+                'remaining': None,
+                'status': status,
+                'fee': {
+                    'currency': self.safe_string(order, 'quoteAsset'),
+                    'cost': self.safe_number(order, 'fee'),
+                    'rate': None,
+                },
+                'trades': fills,
             },
-            'trades': fills,
-        }, market)
+            market,
+        )
 
     async def create_order(self, symbol: str, type: OrderType, side: OrderSide, amount, price=None, params={}):
         """
@@ -4448,7 +4460,14 @@ class binance(Exchange, ImplicitAPI):
             symbols = self.symbols
             numSymbols = len(symbols)
             fetchOpenOrdersRateLimit = self.parse_to_int(numSymbols / 2)
-            raise ExchangeError(self.id + ' fetchOpenOrders() WARNING: fetching open orders without specifying a symbol is rate-limited to one call per ' + str(fetchOpenOrdersRateLimit) + ' seconds. Do not call self method frequently to avoid ban. Set ' + self.id + '.options["warnOnFetchOpenOrdersWithoutSymbol"] = False to suppress self warning message.')
+            raise ExchangeError(
+                self.id
+                + ' fetchOpenOrders() WARNING: fetching open orders without specifying a symbol is rate-limited to one call per '
+                + str(fetchOpenOrdersRateLimit)
+                + ' seconds. Do not call self method frequently to avoid ban. Set '
+                + self.id
+                + '.options["warnOnFetchOpenOrdersWithoutSymbol"] = False to suppress self warning message.'
+            )
         else:
             defaultType = self.safe_string_2(self.options, 'fetchOpenOrders', 'defaultType', 'spot')
             type = self.safe_string(query, 'type', defaultType)
@@ -5485,10 +5504,14 @@ class binance(Exchange, ImplicitAPI):
                 if subLevel is not None:
                     topLevel = topLevel + '/' + subLevel
             impliedNetwork = self.safe_string(reverseNetworks, topLevel)
-            impliedNetworks = self.safe_value(self.options, 'impliedNetworks', {
-                'ETH': {'ERC20': 'ETH'},
-                'TRX': {'TRC20': 'TRX'},
-            })
+            impliedNetworks = self.safe_value(
+                self.options,
+                'impliedNetworks',
+                {
+                    'ETH': {'ERC20': 'ETH'},
+                    'TRX': {'TRC20': 'TRX'},
+                },
+            )
             if code in impliedNetworks:
                 conversion = self.safe_value(impliedNetworks, code, {})
                 impliedNetwork = self.safe_string(conversion, impliedNetwork, impliedNetwork)
@@ -6086,13 +6109,15 @@ class binance(Exchange, ImplicitAPI):
         for i in range(0, len(response)):
             entry = response[i]
             timestamp = self.safe_integer(entry, 'fundingTime')
-            rates.append({
-                'info': entry,
-                'symbol': self.safe_symbol(self.safe_string(entry, 'symbol'), None, None, 'swap'),
-                'fundingRate': self.safe_number(entry, 'fundingRate'),
-                'timestamp': timestamp,
-                'datetime': self.iso8601(timestamp),
-            })
+            rates.append(
+                {
+                    'info': entry,
+                    'symbol': self.safe_symbol(self.safe_string(entry, 'symbol'), None, None, 'swap'),
+                    'fundingRate': self.safe_number(entry, 'fundingRate'),
+                    'timestamp': timestamp,
+                    'datetime': self.iso8601(timestamp),
+                }
+            )
         sorted = self.sort_by(rates, 'timestamp')
         return self.filter_by_symbol_since_limit(sorted, symbol, since, limit)
 
@@ -6190,10 +6215,16 @@ class binance(Exchange, ImplicitAPI):
             code = market['quote'] if market['linear'] else market['base']
             # sometimes not all the codes are correctly returned...
             if code in balances:
-                parsed = self.parse_account_position(self.extend(position, {
-                    'crossMargin': balances[code]['crossMargin'],
-                    'crossWalletBalance': balances[code]['crossWalletBalance'],
-                }), market)
+                parsed = self.parse_account_position(
+                    self.extend(
+                        position,
+                        {
+                            'crossMargin': balances[code]['crossMargin'],
+                            'crossWalletBalance': balances[code]['crossWalletBalance'],
+                        },
+                    ),
+                    market,
+                )
                 result.append(parsed)
         return result
 
@@ -6250,7 +6281,7 @@ class binance(Exchange, ImplicitAPI):
         if not rational:
             initialMarginPercentageString = Precise.string_div(Precise.string_add(initialMarginPercentageString, '1e-8'), '1', 8)
         # to notionalValue
-        usdm = ('notional' in position)
+        usdm = 'notional' in position
         maintenanceMarginString = self.safe_string(position, 'maintMargin')
         maintenanceMargin = self.parse_number(maintenanceMarginString)
         entryPriceString = self.safe_string(position, 'entryPrice')
@@ -6456,7 +6487,7 @@ class binance(Exchange, ImplicitAPI):
         contractSize = self.safe_value(market, 'contractSize')
         contractSizeString = self.number_to_string(contractSize)
         # to notionalValue
-        linear = ('notional' in position)
+        linear = 'notional' in position
         if marginMode == 'cross':
             # calculate collateral
             precision = self.safe_value(market, 'precision', {})
@@ -6663,15 +6694,17 @@ class binance(Exchange, ImplicitAPI):
         tiers = []
         for j in range(0, len(brackets)):
             bracket = brackets[j]
-            tiers.append({
-                'tier': self.safe_number(bracket, 'bracket'),
-                'currency': market['quote'],
-                'minNotional': self.safe_number_2(bracket, 'notionalFloor', 'qtyFloor'),
-                'maxNotional': self.safe_number_2(bracket, 'notionalCap', 'qtyCap'),
-                'maintenanceMarginRate': self.safe_number(bracket, 'maintMarginRatio'),
-                'maxLeverage': self.safe_number(bracket, 'initialLeverage'),
-                'info': bracket,
-            })
+            tiers.append(
+                {
+                    'tier': self.safe_number(bracket, 'bracket'),
+                    'currency': market['quote'],
+                    'minNotional': self.safe_number_2(bracket, 'notionalFloor', 'qtyFloor'),
+                    'maxNotional': self.safe_number_2(bracket, 'notionalCap', 'qtyCap'),
+                    'maintenanceMarginRate': self.safe_number(bracket, 'maintMarginRatio'),
+                    'maxLeverage': self.safe_number(bracket, 'initialLeverage'),
+                    'info': bracket,
+                }
+            )
         return tiers
 
     async def fetch_position(self, symbol: str, params={}):
@@ -6797,31 +6830,33 @@ class binance(Exchange, ImplicitAPI):
         if side != 'long':
             quantity = Precise.string_mul('-1', quantity)
         timestamp = self.safe_integer(position, 'time')
-        return self.safe_position({
-            'info': position,
-            'id': None,
-            'symbol': symbol,
-            'entryPrice': self.safe_number(position, 'entryPrice'),
-            'markPrice': self.safe_number(position, 'markPrice'),
-            'notional': self.safe_number(position, 'markValue'),
-            'collateral': self.safe_number(position, 'positionCost'),
-            'unrealizedPnl': self.safe_number(position, 'unrealizedPNL'),
-            'side': side,
-            'contracts': self.parse_number(quantity),
-            'contractSize': None,
-            'timestamp': timestamp,
-            'datetime': self.iso8601(timestamp),
-            'hedged': None,
-            'maintenanceMargin': None,
-            'maintenanceMarginPercentage': None,
-            'initialMargin': None,
-            'initialMarginPercentage': None,
-            'leverage': None,
-            'liquidationPrice': None,
-            'marginRatio': None,
-            'marginMode': None,
-            'percentage': None,
-        })
+        return self.safe_position(
+            {
+                'info': position,
+                'id': None,
+                'symbol': symbol,
+                'entryPrice': self.safe_number(position, 'entryPrice'),
+                'markPrice': self.safe_number(position, 'markPrice'),
+                'notional': self.safe_number(position, 'markValue'),
+                'collateral': self.safe_number(position, 'positionCost'),
+                'unrealizedPnl': self.safe_number(position, 'unrealizedPNL'),
+                'side': side,
+                'contracts': self.parse_number(quantity),
+                'contractSize': None,
+                'timestamp': timestamp,
+                'datetime': self.iso8601(timestamp),
+                'hedged': None,
+                'maintenanceMargin': None,
+                'maintenanceMarginPercentage': None,
+                'initialMargin': None,
+                'initialMarginPercentage': None,
+                'leverage': None,
+                'liquidationPrice': None,
+                'marginRatio': None,
+                'marginMode': None,
+                'percentage': None,
+            }
+        )
 
     async def fetch_positions(self, symbols: Optional[List[str]] = None, params={}):
         """
@@ -7359,13 +7394,26 @@ class binance(Exchange, ImplicitAPI):
                     body = self.urlencode(params)
             else:
                 raise AuthenticationError(self.id + ' userDataStream endpoint requires `apiKey` credential')
-        elif (api == 'private') or (api == 'eapiPrivate') or (api == 'sapi' and path != 'system/status') or (api == 'sapiV2') or (api == 'sapiV3') or (api == 'sapiV4') or (api == 'wapi' and path != 'systemStatus') or (api == 'dapiPrivate') or (api == 'dapiPrivateV2') or (api == 'fapiPrivate') or (api == 'fapiPrivateV2') or (api == 'papi'):
+        elif (
+            (api == 'private')
+            or (api == 'eapiPrivate')
+            or (api == 'sapi' and path != 'system/status')
+            or (api == 'sapiV2')
+            or (api == 'sapiV3')
+            or (api == 'sapiV4')
+            or (api == 'wapi' and path != 'systemStatus')
+            or (api == 'dapiPrivate')
+            or (api == 'dapiPrivateV2')
+            or (api == 'fapiPrivate')
+            or (api == 'fapiPrivateV2')
+            or (api == 'papi')
+        ):
             self.check_required_credentials()
             if method == 'POST' and path == 'order':
                 # inject in implicit API calls
                 newClientOrderId = self.safe_string(params, 'newClientOrderId')
                 if newClientOrderId is None:
-                    isSpotOrMargin = (api.find('sapi') > -1 or api == 'private')
+                    isSpotOrMargin = api.find('sapi') > -1 or api == 'private'
                     marketType = 'spot' if isSpotOrMargin else 'future'
                     defaultId = 'x-xcKtGhcu' if (not isSpotOrMargin) else 'x-R4BD3S82'
                     broker = self.safe_value(self.options, 'broker', {})
@@ -7373,15 +7421,18 @@ class binance(Exchange, ImplicitAPI):
                     params['newClientOrderId'] = brokerId + self.uuid22()
             query = None
             defaultRecvWindow = self.safe_integer(self.options, 'recvWindow')
-            extendedParams = self.extend({
-                'timestamp': self.nonce(),
-            }, params)
+            extendedParams = self.extend(
+                {
+                    'timestamp': self.nonce(),
+                },
+                params,
+            )
             if defaultRecvWindow is not None:
                 extendedParams['recvWindow'] = defaultRecvWindow
             recvWindow = self.safe_integer(params, 'recvWindow')
             if recvWindow is not None:
                 extendedParams['recvWindow'] = recvWindow
-            if (api == 'sapi') and (path == 'asset/dust' or path == 'margin/dust'):
+            if (api == 'sapi') and (path == 'asset/dust' or path == 'margin/dust' or path == 'margin/apiKey' or path == 'margin/apiKey/ip'):
                 query = self.urlencode_with_array_repeat(extendedParams)
             elif (path == 'batchOrders') or (path.find('sub-account') >= 0) or (path == 'capital/withdraw/apply') or (path.find('staking') >= 0):
                 query = self.rawencode(extendedParams)
@@ -7521,9 +7572,12 @@ class binance(Exchange, ImplicitAPI):
         #         "type": 1
         #     }
         #
-        return self.extend(self.parse_margin_modification(response, market), {
-            'code': code,
-        })
+        return self.extend(
+            self.parse_margin_modification(response, market),
+            {
+                'code': code,
+            },
+        )
 
     def parse_margin_modification(self, data, market=None):
         rawType = self.safe_integer(data, 'type')
