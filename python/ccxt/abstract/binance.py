@@ -4,6 +4,8 @@ from ccxt.base.types import Entry
 class ImplicitAPI:
     sapi_get_system_status = sapiGetSystemStatus = Entry('system/status', 'sapi', 'GET', {'cost': 0.1})
     sapi_get_accountsnapshot = sapiGetAccountSnapshot = Entry('accountSnapshot', 'sapi', 'GET', {'cost': 240})
+    sapi_get_margin_apikey = sapiGetMarginApikey = Entry('margin/apiKey', 'sapi', 'GET', {'cost': 1})
+    sapi_get_margin_apikey_list = sapiGetMarginApikey = Entry('margin/api-key-list', 'sapi', 'GET', {'cost': 1})
     sapi_get_margin_asset = sapiGetMarginAsset = Entry('margin/asset', 'sapi', 'GET', {'cost': 1})
     sapi_get_margin_pair = sapiGetMarginPair = Entry('margin/pair', 'sapi', 'GET', {'cost': 1})
     sapi_get_margin_allassets = sapiGetMarginAllAssets = Entry('margin/allAssets', 'sapi', 'GET', {'cost': 0.1})
@@ -316,8 +318,10 @@ class ImplicitAPI:
     sapi_post_simple_earn_locked_redeem = sapiPostSimpleEarnLockedRedeem = Entry('simple-earn/locked/redeem', 'sapi', 'POST', {'cost': 0.1})
     sapi_post_simple_earn_flexible_setautosubscribe = sapiPostSimpleEarnFlexibleSetAutoSubscribe = Entry('simple-earn/flexible/setAutoSubscribe', 'sapi', 'POST', {'cost': 15})
     sapi_post_simple_earn_locked_setautosubscribe = sapiPostSimpleEarnLockedSetAutoSubscribe = Entry('simple-earn/locked/setAutoSubscribe', 'sapi', 'POST', {'cost': 15})
+    sapi_put_margin_apikey_ip = sapiPutMarginApikeyIp = Entry('margin/apiKey/ip', 'sapi', 'PUT', {'cost': 0.1})
     sapi_put_userdatastream = sapiPutUserDataStream = Entry('userDataStream', 'sapi', 'PUT', {'cost': 0.1})
     sapi_put_userdatastream_isolated = sapiPutUserDataStreamIsolated = Entry('userDataStream/isolated', 'sapi', 'PUT', {'cost': 0.1})
+    sapi_delete_margin_apikey = sapiDeleteMarginApikey = Entry('margin/apiKey', 'sapi', 'DELETE', {'cost': 0.1})
     sapi_delete_margin_openorders = sapiDeleteMarginOpenOrders = Entry('margin/openOrders', 'sapi', 'DELETE', {'cost': 0.1})
     sapi_delete_margin_order = sapiDeleteMarginOrder = Entry('margin/order', 'sapi', 'DELETE', {'cost': 0.0066667})
     sapi_delete_margin_orderlist = sapiDeleteMarginOrderList = Entry('margin/orderList', 'sapi', 'DELETE', {'cost': 0.0066667})
@@ -617,4 +621,3 @@ class ImplicitAPI:
     papi_delete_margin_allopenorders = papiDeleteMarginAllOpenOrders = Entry('margin/allOpenOrders', 'papi', 'DELETE', {'cost': 5})
     papi_delete_margin_orderlist = papiDeleteMarginOrderList = Entry('margin/orderList', 'papi', 'DELETE', {'cost': 2})
     papi_delete_listenkey = papiDeleteListenKey = Entry('listenKey', 'papi', 'DELETE', {'cost': 1})
-    
