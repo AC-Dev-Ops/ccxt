@@ -226,6 +226,7 @@ class ImplicitAPI:
     sapi_post_capital_withdraw_apply = sapiPostCapitalWithdrawApply = Entry('capital/withdraw/apply', 'sapi', 'POST', {'cost': 4.0002})
     sapi_post_capital_contract_convertible_coins = sapiPostCapitalContractConvertibleCoins = Entry('capital/contract/convertible-coins', 'sapi', 'POST', {'cost': 4.0002})
     sapi_post_capital_deposit_credit_apply = sapiPostCapitalDepositCreditApply = Entry('capital/deposit/credit-apply', 'sapi', 'POST', {'cost': 0.1})
+    sapi_post_margin_apikey = sapiPostMarginApikey = Entry('margin/apiKey', 'sapi', 'POST', {'cost': 1})
     sapi_post_margin_borrow_repay = sapiPostMarginBorrowRepay = Entry('margin/borrow-repay', 'sapi', 'POST', {'cost': 150})
     sapi_post_margin_transfer = sapiPostMarginTransfer = Entry('margin/transfer', 'sapi', 'POST', {'cost': 1})
     sapi_post_margin_loan = sapiPostMarginLoan = Entry('margin/loan', 'sapi', 'POST', {'cost': 20.001})
