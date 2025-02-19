@@ -334,6 +334,7 @@ class ImplicitAPI:
     sapi_delete_algo_futures_order = sapiDeleteAlgoFuturesOrder = Entry('algo/futures/order', 'sapi', 'DELETE', {'cost': 0.1})
     sapiv2_get_sub_account_futures_account = sapiV2GetSubAccountFuturesAccount = Entry('sub-account/futures/account', 'sapiV2', 'GET', {'cost': 0.1})
     sapiv2_get_sub_account_futures_positionrisk = sapiV2GetSubAccountFuturesPositionRisk = Entry('sub-account/futures/positionRisk', 'sapiV2', 'GET', {'cost': 0.1})
+    sapiv2_get_portfolio_collateralrate = sapiV2GetPortfolioCollateralRate = Entry('portfolio/collateralRate', 'sapiV2', 'GET', {'cost': 5})
     sapiv3_get_sub_account_assets = sapiV3GetSubAccountAssets = Entry('sub-account/assets', 'sapiV3', 'GET', {'cost': 1})
     sapiv3_post_asset_getuserasset = sapiV3PostAssetGetUserAsset = Entry('asset/getUserAsset', 'sapiV3', 'POST', {'cost': 0.5})
     sapiv4_get_sub_account_assets = sapiV4GetSubAccountAssets = Entry('sub-account/assets', 'sapiV4', 'GET', {'cost': 1})
