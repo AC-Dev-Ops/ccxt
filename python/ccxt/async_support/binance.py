@@ -7434,7 +7434,7 @@ class binance(Exchange, ImplicitAPI):
             if recvWindow is not None:
                 extendedParams['recvWindow'] = recvWindow
             if (api == 'sapi') and (path == 'asset/dust' or path == 'margin/dust'):
-                query = self.urlencode_with_array_repeat(extendedParams)
+                query = urlencode(extendedParams, safe=',')
             elif api == 'sapi' and (path == "margin/apiKey" or path == "margin/apiKey/ip"):
                 query = urlencode(extendedParams, safe=',')
             elif (path == 'batchOrders') or (path.find('sub-account') >= 0) or (path == 'capital/withdraw/apply') or (path.find('staking') >= 0):
