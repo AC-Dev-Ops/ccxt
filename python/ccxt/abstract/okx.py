@@ -171,6 +171,7 @@ class ImplicitAPI:
     private_get_finance_sfp_dcd_orders = privateGetFinanceSfpDcdOrders = Entry('finance/sfp/dcd/orders', 'private', 'GET', {'cost': 2})
     private_get_broker_fd_rebate_per_orders = privateGetBrokerFdRebatePerOrders = Entry('broker/fd/rebate-per-orders', 'private', 'GET', {'cost': 300})
     private_get_broker_fd_if_rebate = privateGetBrokerFdIfRebate = Entry('broker/fd/if-rebate', 'private', 'GET', {'cost': 5})
+    private_post_account_bills_archive = privatePostAccountBillsArchive = Entry('account/bills-history-archive', 'private', 'POST', {'cost': 1.6666666666666667})
     private_post_account_fixed_loan_borrow_order = privatePostAccountFixedLoanBorrowOrder = Entry('account/fixed-loan/borrowing-order', 'private', 'POST', {'cost': 4})
     private_post_account_fixed_loan_amend_borrow_order = privatePostAccountFixedLoanAmendBorrowOrder = Entry('account/fixed-loan/amend-borrowing-order', 'private', 'POST', {'cost': 4})
     private_post_account_fixed_loan_repay_borrow_order = privatePostAccountFixedLoanRepayBorrowOrder = Entry('account/fixed-loan/repay-borrowing-order', 'private', 'POST', {'cost': 4})
