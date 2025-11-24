@@ -106,6 +106,7 @@ class ImplicitAPI:
     private_get_account_account_position_risk = privateGetAccountAccountPositionRisk = Entry('account/account-position-risk', 'private', 'GET', {'cost': 2})
     private_get_account_bills = privateGetAccountBills = Entry('account/bills', 'private', 'GET', {'cost': 1.6666666666666667})
     private_get_account_bills_archive = privateGetAccountBillsArchive = Entry('account/bills-archive', 'private', 'GET', {'cost': 1.6666666666666667})
+    private_get_account_bills_history_archive = privateGetAccountBillsHistoryArchive = Entry('account/bills-history-archive', 'private', 'GET', {'cost': 1.6666666666666667})
     private_get_account_config = privateGetAccountConfig = Entry('account/config', 'private', 'GET', {'cost': 4})
     private_get_account_max_size = privateGetAccountMaxSize = Entry('account/max-size', 'private', 'GET', {'cost': 1})
     private_get_account_max_avail_size = privateGetAccountMaxAvailSize = Entry('account/max-avail-size', 'private', 'GET', {'cost': 1})
