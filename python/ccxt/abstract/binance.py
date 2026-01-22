@@ -512,6 +512,29 @@ class ImplicitAPI:
     sapi_get_simple_earn_flexible_history_collateralrecord = sapiGetSimpleEarnFlexibleHistoryCollateralRecord = Entry(
         'simple-earn/flexible/history/collateralRecord', 'sapi', 'GET', {'cost': 0.1}
     )
+    sapi_get_sol_staking_account = sapiGetSolStakingAccount = Entry('sol-staking/account', 'sapi', 'GET', {'cost': 150})
+    sapi_get_sol_staking_sol_history_staking_history = sapiGetSolStakingSolHistoryStakingHistory = Entry(
+        'sol-staking/sol/history/stakingHistory', 'sapi', 'GET', {'cost': 150}
+    )
+    sapi_get_sol_staking_sol_history_redemption_history = sapiGetSolStakingSolHistoryRedemptionHistory = Entry(
+        'sol-staking/sol/history/redemptionHistory', 'sapi', 'GET', {'cost': 150}
+    )
+    sapi_get_sol_staking_sol_history_boost_rewards_history = sapiGetSolStakingSolHistoryBoostRewardsHistory = Entry(
+        'sol-staking/sol/history/boostRewardsHistory', 'sapi', 'GET', {'cost': 150}
+    )
+    sapi_get_sol_staking_sol_history_bnsol_rewards_history = sapiGetSolStakingSolHistoryBnsolRewardsHistory = Entry(
+        'sol-staking/sol/history/bnsolRewardsHistory', 'sapi', 'GET', {'cost': 150}
+    )
+    sapi_get_sol_staking_sol_history_rate_history = sapiGetSolStakingSolHistoryRateHistory = Entry(
+        'sol-staking/sol/history/rateHistory', 'sapi', 'GET', {'cost': 150}
+    )
+    sapi_get_sol_staking_sol_history_unclaimed_rewards = sapiGetSolStakingSolHistoryUnclaimedRewards = Entry(
+        'sol-staking/sol/history/unclaimedRewards', 'sapi', 'GET', {'cost': 150}
+    )
+    sapi_get_sol_staking_sol_quota = sapiGetSolStakingSolQuota = Entry(
+        'sol-staking/sol/quota', 'sapi', 'GET', {'cost': 150}
+    )
+
     sapi_post_asset_dust = sapiPostAssetDust = Entry('asset/dust', 'sapi', 'POST', {'cost': 1})
     sapi_post_asset_dust_btc = sapiPostAssetDustBtc = Entry('asset/dust-btc', 'sapi', 'POST', {'cost': 0.1})
     sapi_post_asset_transfer = sapiPostAssetTransfer = Entry('asset/transfer', 'sapi', 'POST', {'cost': 0.1})
@@ -759,6 +782,15 @@ class ImplicitAPI:
     )
     sapi_post_simple_earn_locked_setautosubscribe = sapiPostSimpleEarnLockedSetAutoSubscribe = Entry(
         'simple-earn/locked/setAutoSubscribe', 'sapi', 'POST', {'cost': 15}
+    )
+    sapi_post_sol_staking_sol_claim = sapiPostSolStakingSolClaim = Entry(
+        'sol-staking/sol/claim', 'sapi', 'POST', {'cost': 150}
+    )
+    sapi_post_sol_staking_sol_redeem = sapiPostSolStakingSolRedeem = Entry(
+        'sol-staking/sol/redeem', 'sapi', 'POST', {'cost': 150}
+    )
+    sapi_post_sol_staking_sol_stake = sapiPostSolStakingSolStake = Entry(
+        'sol-staking/sol/stake', 'sapi', 'POST', {'cost': 150}
     )
     sapi_put_margin_apikey_ip = sapiPutMarginApikeyIp = Entry('margin/apiKey/ip', 'sapi', 'PUT', {'cost': 0.1})
     sapi_put_userdatastream = sapiPutUserDataStream = Entry('userDataStream', 'sapi', 'PUT', {'cost': 0.1})
