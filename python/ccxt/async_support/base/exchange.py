@@ -34,11 +34,11 @@ from ccxt.base.precise import Precise
 
 # -----------------------------------------------------------------------------
 
+from ccxt.async_support.base.dns_resolver import DnsResolver
 from ccxt.async_support.base.ws.functions import inflate, inflate64, gunzip
 from ccxt.async_support.base.ws.fast_client import FastClient
 from ccxt.async_support.base.ws.future import Future
 from ccxt.async_support.base.ws.order_book import OrderBook, IndexedOrderBook, CountedOrderBook
-
 
 # -----------------------------------------------------------------------------
 
@@ -111,8 +111,17 @@ class Exchange(BaseExchange):
         if self.own_session and self.session is None:
             # Create our SSL context object with our CA cert file
             context = ssl.create_default_context(cafile=self.cafile) if self.verify else self.verify
+            # Create DNS Resolver
+            if self.enable_custom_dns_resolver:
+                self.dns_resolver = DnsResolver(
+                    ttl=self.dns_ttl,
+                    prefetch_hosts=self.prefetch_hosts,
+                    loop=self.asyncio_loop,
+                )
             # Pass this SSL context to aiohttp and create a TCPConnector
-            connector = aiohttp.TCPConnector(ssl=context, loop=self.asyncio_loop, enable_cleanup_closed=True)
+            connector = aiohttp.TCPConnector(
+                ssl=context, loop=self.asyncio_loop, enable_cleanup_closed=True, resolver=self.dns_resolver
+            )
             self.session = aiohttp.ClientSession(loop=self.asyncio_loop, connector=connector, trust_env=self.aiohttp_trust_env)
 
     async def close(self):
@@ -201,6 +210,13 @@ class Exchange(BaseExchange):
                 if self.verbose:
                     self.log("\nfetch Response:", self.id, method, url, http_status_code, "ResponseHeaders:", headers, "ResponseBody:", http_response)
                 self.logger.debug("%s %s, Response: %s %s %s", method, url, http_status_code, headers, http_response)
+
+        except aiohttp.ClientConnectorDNSError as e:
+            if self.enable_custom_dns_resolver:
+                self.logger.info(f"Triggered force refresh for all prefetch_host. Error: {e}")
+                for hostname in self.prefetch_hosts:
+                    self.dns_resolver.force_refresh(host=hostname)
+            raise
 
         except socket.gaierror as e:
             details = ' '.join([self.id, method, url])
