@@ -7462,17 +7462,17 @@ class binance(Exchange, ImplicitAPI):
 
     def handle_errors(self, code, reason, url, method, headers, body, response, requestHeaders, requestBody):
         if (code == 418) or (code == 429):
-            raise DDoSProtection(self.id + ' ' + str(code) + ' ' + reason + ' ' + body)
+            raise DDoSProtection(self.id + ' ' + body)
         # error response in a form: {"code": -1013, "msg": "Invalid quantity."}
         # following block cointains legacy checks against message patterns in "msg" property
         # will switch "code" checks eventually, when we know all of them
         if code >= 400:
             if body.find('Price * QTY is zero or less') >= 0:
-                raise InvalidOrder(self.id + ' order cost = amount * price is zero or less ' + body)
+                raise InvalidOrder(self.id + ' ' + body)
             if body.find('LOT_SIZE') >= 0:
-                raise InvalidOrder(self.id + ' order amount should be evenly divisible by lot size ' + body)
+                raise InvalidOrder(self.id + ' ' + body)
             if body.find('PRICE_FILTER') >= 0:
-                raise InvalidOrder(self.id + ' order price is invalid, i.e. exceeds allowed price precision, exceeds min price or max price limits or is invalid value in general, use self.price_to_precision(symbol, amount) ' + body)
+                raise InvalidOrder(self.id + ' ' + body)
         if response is None:
             return None  # fallback to default error handler
         # check success value for wapi endpoints
@@ -7491,8 +7491,8 @@ class binance(Exchange, ImplicitAPI):
                     response = parsedMessage
         message = self.safe_string(response, 'msg')
         if message is not None:
-            self.throw_exactly_matched_exception(self.exceptions['exact'], message, self.id + ' ' + message)
-            self.throw_broadly_matched_exception(self.exceptions['broad'], message, self.id + ' ' + message)
+            self.throw_exactly_matched_exception(self.exceptions['exact'], message, self.id + ' ' + body)
+            self.throw_broadly_matched_exception(self.exceptions['broad'], message, self.id + ' ' + body)
         # checks against error codes
         error = self.safe_string(response, 'code')
         if error is not None:
