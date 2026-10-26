@@ -425,6 +425,7 @@ class ImplicitAPI:
     sapi_get_portfolio_collateralrate = sapiGetPortfolioCollateralRate = Entry(
         'portfolio/collateralRate', 'sapi', 'GET', {'cost': 5}
     )
+    sapi_get_portfolio_delta_mode = sapiGetPortfolioDeltaMode = Entry('portfolio/delta-mode', 'sapi', 'GET', {'cost': 150})
     sapi_get_portfolio_pmloan = sapiGetPortfolioPmLoan = Entry('portfolio/pmLoan', 'sapi', 'GET', {'cost': 3.3335})
     sapi_get_portfolio_interest_history = sapiGetPortfolioInterestHistory = Entry(
         'portfolio/interest-history', 'sapi', 'GET', {'cost': 0.6667}
