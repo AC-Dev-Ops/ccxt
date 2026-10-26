@@ -750,7 +750,6 @@ class ImplicitAPI:
     sapi_post_staking_setautostaking = sapiPostStakingSetAutoStaking = Entry(
         'staking/setAutoStaking', 'sapi', 'POST', {'cost': 0.1}
     )
-    sapi_post_portfolio_repay = sapiPostPortfolioRepay = Entry('portfolio/repay', 'sapi', 'POST', {'cost': 20.001})
     sapi_post_loan_vip_renew = sapiPostLoanVipRenew = Entry('loan/vip/renew', 'sapi', 'POST', {'cost': 40})
     sapi_post_loan_vip_borrow = sapiPostLoanVipBorrow = Entry('loan/vip/borrow', 'sapi', 'POST', {'cost': 40})
     sapi_post_loan_borrow = sapiPostLoanBorrow = Entry('loan/borrow', 'sapi', 'POST', {'cost': 40})
@@ -774,6 +773,8 @@ class ImplicitAPI:
     sapi_post_portfolio_bnb_transfer = sapiPostPortfolioBnbTransfer = Entry(
         'portfolio/bnb-transfer', 'sapi', 'POST', {'cost': 150}
     )
+    sapi_post_portfolio_delta_mode = sapiPostPortfolioDeltaMode = Entry('portfolio/delta-mode', 'sapi', 'POST', {'cost': 150})
+    sapi_post_portfolio_repay = sapiPostPortfolioRepay = Entry('portfolio/repay', 'sapi', 'POST', {'cost': 20.001})
     sapi_post_portfolio_repay_futures_switch = sapiPostPortfolioRepayFuturesSwitch = Entry(
         'portfolio/repay-futures-switch', 'sapi', 'POST', {'cost': 150}
     )
