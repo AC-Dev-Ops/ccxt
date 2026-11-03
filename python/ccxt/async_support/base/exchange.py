@@ -209,7 +209,7 @@ class Exchange(BaseExchange):
                     self.last_json_response = json_response
                 if self.verbose:
                     self.log("\nfetch Response:", self.id, method, url, http_status_code, "ResponseHeaders:", headers, "ResponseBody:", http_response)
-                self.logger.debug("%s %s, Response: %s %s %s", method, url, http_status_code, headers, http_response)
+                self.logger.info(f"{method} {url}, HTTP[{http_status_code}] Headers: {headers} Body:{http_response}")
 
         except aiohttp.ClientConnectorDNSError as e:
             if self.enable_custom_dns_resolver:
