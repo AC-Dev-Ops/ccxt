@@ -171,7 +171,7 @@ class Exchange(BaseExchange):
 
         if self.verbose:
             self.log("\nfetch Request:", self.id, method, url, "RequestHeaders:", request_headers, "RequestBody:", body)
-        self.logger.debug("%s %s, Request: %s %s", method, url, headers, body)
+        self.logger.info(f"{method} {url}, Headers: {headers} Body: {body}")
 
         request_body = body
         encoded_body = body.encode() if body else None
