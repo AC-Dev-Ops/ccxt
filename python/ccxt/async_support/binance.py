@@ -7536,7 +7536,6 @@ class binance(Exchange, ImplicitAPI):
         return self.safe_value(config, 'cost', 1)
 
     async def request(self, path, api='public', method='GET', params={}, headers=None, body=None, config={}, context={}):
-        self.logger.info(f"Submitting {method} request. endpoint: {path} | headers: {headers} | params: {params} | body: {body}")
         response = await self.fetch2(path, api, method, params, headers, body, config)
         self.logger.info(f"Received Response: {response}")
         # a workaround for {"code":-2015,"msg":"Invalid API-key, IP, or permissions for action."}
