@@ -9,6 +9,7 @@ __version__ = '4.0.57'
 import asyncio
 import concurrent.futures
 import socket
+import time
 import certifi
 import aiohttp
 import ssl
@@ -171,7 +172,6 @@ class Exchange(BaseExchange):
 
         if self.verbose:
             self.log("\nfetch Request:", self.id, method, url, "RequestHeaders:", request_headers, "RequestBody:", body)
-        self.logger.info(f"{method} {url}, Headers: {headers} Body: {body}")
 
         request_body = body
         encoded_body = body.encode() if body else None
@@ -183,6 +183,7 @@ class Exchange(BaseExchange):
         http_status_text = None
         json_response = None
         try:
+            request_ts: int = int(time.time() * 1e3)
             async with session_method(yarl.URL(url, encoded=True),
                                       data=encoded_body,
                                       headers=request_headers,
@@ -233,6 +234,11 @@ class Exchange(BaseExchange):
         except aiohttp.ClientError as e:  # base exception class
             details = ' '.join([self.id, method, url])
             raise ExchangeError(details) from e
+        finally:
+            resp_ts: int = int(time.time() * 1e3)
+            if "/order" in url:
+                self.logger.info(f"{method} {url} | Request Body: {encoded_body} | request_ts: {request_ts}")
+                self.logger.info(f"HTTP[{http_status_code}] Response Body: {http_response} | resp_ts: {resp_ts}")
 
         self.handle_errors(http_status_code, http_status_text, url, method, headers, http_response, json_response, request_headers, request_body)
         self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
