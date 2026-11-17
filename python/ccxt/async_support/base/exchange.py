@@ -237,7 +237,7 @@ class Exchange(BaseExchange):
             resp_ts: int = int(time.time() * 1e3)
             if "/order" in url:
                 self.logger.info(f"{method} {url} | Request Body: {encoded_body} | request_ts: {request_ts}")
-                self.logger.info(f"HTTP[{http_status_c1ode}] Response Body: {http_response} | resp_ts: {resp_ts}")
+                self.logger.info(f"HTTP[{http_status_code}] Response Body: {http_response} | resp_ts: {resp_ts}")
 
         self.handle_errors(http_status_code, http_status_text, url, method, headers, http_response, json_response, request_headers, request_body)
         self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
